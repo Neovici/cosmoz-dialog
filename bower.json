@@ -1,6 +1,6 @@
 {
-  "name": "cosmoz-Dialog",
-  "main": "cosmoz-Dialog.html",
+  "name": "cosmoz-dialog",
+  "main": "cosmoz-dialog.html",
   "version": "0.0.1",
   "homepage": "https://github.com/Neovici/cosmoz-dialog",
   "authors": [
