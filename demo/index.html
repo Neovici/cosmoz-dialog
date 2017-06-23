@@ -4,40 +4,63 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Cosmoz Dialog</title>
+	<title>cosmoz-dialog demo</title>
 
 	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../../paper-styles/paper-styles.html">
-	<link rel="import" href="../../paper-button/paper-button.html">
-    <link rel="import" href="../../neon-animation/neon-animated-pages.html">
-    <link rel="import" href="../../neon-animation/neon-animatable.html">
-    <link rel="import" href="../../neon-animation/neon-animations.html">
-	<link rel="import" href="../cosmoz-dialog.html">
 
+	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 
-	<style is="custom-style" include="demo-pages-shared-styles">
-		
+	<link rel="import" href="../../paper-button/paper-button.html">
+	<link rel="import" href="../cosmoz-dialog.html">
 
+	<style is="custom-style" include="demo-pages-shared-styles">
 	</style>
 
 </head>
-<body class="fullbleed layout vertical">
-	<template is="dom-bind" id="template">
-		<paper-button raised onclick="dialog.open()">plain dialog</paper-button>
-		<cosmoz-dialog id="dialog">
-        <h2>Dialog Title</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </cosmoz-dialog>
-	</template>
+<body unresolved>
+
+	<h3>cosmoz-dialog with backdrop but without fit-into</h3>
+	<demo-snippet>
+		<template>
+			<paper-button raised onclick="dialog.open()">open dialog</paper-button>	
+			<cosmoz-dialog with-backdrop id="dialog">
+		        <h2>Dialog Title</h2>
+				<p>
+					This dialog will be centered in the document. The backdrop will occupy the whole document.
+				</p>
+		        <p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+					irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+					Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+      		</cosmoz-dialog>
+		</template>
+	</demo-snippet>
+
+	<h3>cosmoz-dialog with backdrop that fits the demo-snippet</h3>
+	<demo-snippet id="backdropFitSnippet">
+		<template is="dom-bind" id="template">
+			<paper-button raised onclick="dialogWithBackdropFit.open()">open dialog</paper-button>	
+			<cosmoz-dialog with-backdrop fit-into="[[backdropFitSnippet]]" id="dialogWithBackdropFit">
+				<h2>Dialog Title</h2>
+				<p>
+					This dialog will be centered in the current demo snippet. The backdrop will occupy the whole demo-snippet.
+				</p>
+		        <p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+					irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+					Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>			
+			</cosmoz-dialog>
+		</template>
+	</demo-snippet>
 
 	<script>
-		/*global document*/
-
-		"use strict";
-		
-
+		var backdropFitSnippet = document.getElementById('backdropFitSnippet');
+		template.backdropFitSnippet = backdropFitSnippet;
 	</script>
 </body>
 </html>
