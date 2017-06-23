@@ -2,8 +2,19 @@
 <link rel="import" href="../neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../paper-dialog-behavior/paper-dialog-behavior.html">
 <link rel="import" href="../paper-dialog-behavior/paper-dialog-shared-styles.html">
-<link rel="import" href="../iron-overlay-behavior/iron-overlay-manager.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
+<!-- 
+
+`<cosmoz-dialog>` is a dialog similar to `<paper-dialog>`, but that will fit the backdrop element 
+into the element specified by the `fitInto` property if present.
+
+The `fitInto` property is inherited from Polymer.PaperDialogBehavior, which inherits it from Polymer.IronFitBehavior.
+When this property is specified, the dialog overlay will be centered inside the `fitInto` element.
+
+This element can be used when you want to workaround `paper-dialog` behavior that fit the backdrop to the whole window.
+
+-->
 <dom-module id="cosmoz-dialog">
 	<template>
 		<style include="paper-dialog-shared-styles"></style>
@@ -21,19 +32,33 @@
 
 		behaviors: [
 			Polymer.PaperDialogBehavior,
+			Polymer.IronResizableBehavior,
 			Polymer.NeonAnimationRunnerBehavior
 		],
 
 		listeners: {
-			'neon-animation-finish': '_onNeonAnimationFinish'
+			'neon-animation-finish': '_onNeonAnimationFinish',
+		},
+
+		detached: function() {
+			// Just in case the dialog is detached while opened
+			this.unlisten(this, 'iron-resize', '_onResize');
 		},
 
 		_renderOpened: function() {
+			if (this.withBackdrop && this.fitInto !== window) {
+				this._fitBackdrop();
+			}
+
 			this.cancelAnimation();
 			this.playAnimation('entry');
 		},
 
 		_renderClosed: function() {
+			if (this.withBackdrop && this.fitInto !== window) {
+				this._unfitBackdrop();
+			}
+
 			this.cancelAnimation();
 			this.playAnimation('exit');
 		},
@@ -46,13 +71,38 @@
 			}
 		},
 
-		attached: function () {
-			// Create a local backdrop element within the view
-			var backdropElement = document.createElement('iron-overlay-backdrop');
-			Polymer.dom(this).parentNode.appendChild(backdropElement);
-			this._manager._backdropElement = backdropElement;
-		}
+		_onResize: function (event) {
+			if (this.opened && this.withBackdrop) {
+				this._fitBackdrop();
+			}
+		},
 
+		_fitBackdrop: function () {
+			var rect = this.fitInto.getBoundingClientRect(),
+				backdropElement = this.backdropElement;
+			
+			backdropElement.style.top = rect.top + 'px';
+			backdropElement.style.left = rect.left + 'px';
+			backdropElement.style.width = rect.width + 'px';
+			backdropElement.style.height = rect.height + 'px';
+
+			// Backdrop might need to be resized while dialog is opened
+			this.listen(this, "iron-resize", '_onResize');
+		},
+
+		/**
+		 * We must reset the backdrop size, as the backdrop element in iron-overlay-manager 
+		 * is a singleton and is thus shared with paper-dialog as well.
+		 */
+		_unfitBackdrop: function () {
+			var backdropElement = this.backdropElement;
+
+			backdropElement.style.top = '';
+			backdropElement.style.left = '';
+			backdropElement.style.width = '';
+			backdropElement.style.height = '';
+			this.unlisten(this, "iron-resize", "_onResize");
+		}
 	});
 
 })();

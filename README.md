@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Neovici/cosmoz-dialog.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-dialog)
 
-cosmoz-dialog is a Polymer component workaround for paper-dialog that creates the backdrop in the dialog context (which only backdrops the view, not the whole app)
+cosmoz-dialog is a Polymer component workaround for paper-dialog that fit the backdrop to the element specified by the `fitInto` property.
 
 ## Credits
 

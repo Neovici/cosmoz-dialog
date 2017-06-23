@@ -24,9 +24,12 @@
     "polymer": "^1.2.0",    
     "neon-animation": "polymerelements/neon-animation#^1.0.0",
     "paper-dialog-behavior": "PolymerElements/paper-dialog-behavior#^1.0.0",
-    "iron-overlay-behavior": "PolymerElements/iron-overlay-behavior#^1.7.0"
+    "iron-overlay-behavior": "PolymerElements/iron-overlay-behavior#^1.7.0",
+    "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^1.0.6"
   },
   "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^4.2.1",
     "paper-button": "PolymerElements/paper-button#^1.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0"
   }
