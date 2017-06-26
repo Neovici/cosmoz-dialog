@@ -36,29 +36,34 @@ This element can be used when you want to workaround `paper-dialog` behavior tha
 			Polymer.NeonAnimationRunnerBehavior
 		],
 
+		observers: [
+			'_beforeOpened(opened)'
+		],
+
 		listeners: {
 			'neon-animation-finish': '_onNeonAnimationFinish',
 		},
 
-		detached: function() {
-			// Just in case the dialog is detached while opened
-			this.unlisten(this, 'iron-resize', '_onResize');
+		_beforeOpened: function (opened) {
+			var stackingContext;
+			if (!this.withBackdrop) {
+				return;
+			}
+
+			stackingContext = this._getClosestStackingContext(this.parentNode);
+			// HACK(plequang): temporary hack to workaround stacking context issues when
+			// dialog are defined in a deep element.
+			if (stackingContext.reason !== 'root') {
+				this.withBackdrop = false;
+			}
 		},
 
 		_renderOpened: function() {
-			if (this.withBackdrop && this.fitInto !== window) {
-				this._fitBackdrop();
-			}
-
 			this.cancelAnimation();
 			this.playAnimation('entry');
 		},
 
 		_renderClosed: function() {
-			if (this.withBackdrop && this.fitInto !== window) {
-				this._unfitBackdrop();
-			}
-
 			this.cancelAnimation();
 			this.playAnimation('exit');
 		},
@@ -71,37 +76,80 @@ This element can be used when you want to workaround `paper-dialog` behavior tha
 			}
 		},
 
-		_onResize: function (event) {
-			if (this.opened && this.withBackdrop) {
-				this._fitBackdrop();
-			}
-		},
-
-		_fitBackdrop: function () {
-			var rect = this.fitInto.getBoundingClientRect(),
-				backdropElement = this.backdropElement;
-			
-			backdropElement.style.top = rect.top + 'px';
-			backdropElement.style.left = rect.left + 'px';
-			backdropElement.style.width = rect.width + 'px';
-			backdropElement.style.height = rect.height + 'px';
-
-			// Backdrop might need to be resized while dialog is opened
-			this.listen(this, "iron-resize", '_onResize');
-		},
-
 		/**
-		 * We must reset the backdrop size, as the backdrop element in iron-overlay-manager 
-		 * is a singleton and is thus shared with paper-dialog as well.
+		 * See https://github.com/gwwar/z-context/blob/master/devtools/index.js 
 		 */
-		_unfitBackdrop: function () {
-			var backdropElement = this.backdropElement;
+		_getClosestStackingContext: function (nodeOrObject) {
+			var node = nodeOrObject.node || nodeOrObject;
+			//the root element (HTML)
+			if( ! node || node.nodeName === 'HTML' || node.nodeName === '#document-fragment') {
+				return { node: document.documentElement, reason: 'root' };
+			}
 
-			backdropElement.style.top = '';
-			backdropElement.style.left = '';
-			backdropElement.style.width = '';
-			backdropElement.style.height = '';
-			this.unlisten(this, "iron-resize", "_onResize");
+			var computedStyle = getComputedStyle( node );
+
+			// position: fixed
+			if ( computedStyle.position === 'fixed' ) {
+				return { node: node, reason: 'position: fixed' };
+			}
+
+			// positioned (absolutely or relatively) with a z-index value other than "auto",
+			if ( computedStyle.zIndex !== 'auto' && computedStyle.position !== 'static' ) {
+				return { node: node, reason: 'position: ' + computedStyle.position + '; z-index: ' + computedStyle.zIndex };
+			}
+
+			// elements with an opacity value less than 1.
+			if ( computedStyle.opacity !== '1' ) {
+				return { node: node, reason: 'opacity: ' + computedStyle.opacity };
+			}
+
+			// elements with a transform value other than "none"
+			if ( computedStyle.transform !== 'none' ) {
+				return { node: node, reason: 'transform: ' + computedStyle.transform };
+			}
+
+			// elements with a mix-blend-mode value other than "normal"
+			if ( computedStyle.mixBlendMode !== 'normal' ) {
+				return { node: node, reason: 'mixBlendMode: ' + computedStyle.mixBlendMode };
+			}
+
+			// elements with a filter value other than "none"
+			if ( computedStyle.filter !== 'none' ) {
+				return { node: node, reason: 'filter: ' + computedStyle.filter };
+			}
+
+			// elements with a perspective value other than "none"
+			if ( computedStyle.perspective !== 'none' ) {
+				return { node: node, reason: 'perspective: ' + computedStyle.perspective };
+			}
+
+			// elements with isolation set to "isolate"
+			if ( computedStyle.isolation === 'isolate' ) {
+				return { node: node, reason: 'isolation: ' + computedStyle.isolation };
+			}
+
+			// specifying any attribute above in will-change even if you don't specify values for these attributes directly
+			if( computedStyle.willChange !== 'auto' ) {
+				return { node: node, reason: 'willChange: ' + computedStyle.willChange };
+			}
+
+			// elements with -webkit-overflow-scrolling set to "touch"
+			if ( computedStyle.webkitOverflowScrolling === 'touch' ) {
+				return { node: node, reason: '-webkit-overflow-scrolling: touch' };
+			}
+
+			// a flex item with a z-index value other than "auto", that is the parent element display: flex|inline-flex,
+			if ( computedStyle.zIndex !== 'auto' ) {
+				var parentStyle = getComputedStyle( node.parentNode );
+				if ( parentStyle.display === 'flex' || parentStyle.display === 'inline-flex' ) {
+					return {
+						node: node,
+						reason: 'flex-item; z-index: ' + computedStyle.zIndex
+					};
+				}
+			}
+
+			return this._getClosestStackingContext( { node: node.parentNode, reason: 'not a stacking context' } );
 		}
 	});
 
