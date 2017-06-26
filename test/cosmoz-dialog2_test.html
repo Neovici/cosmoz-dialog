@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <title>cosmoz-dialog tests</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <link rel="import" href="../cosmoz-dialog2.html">
+
+    <style>
+        /* This will create a new stacking context above the dialog */
+        #stackingContext {
+            transform: translateX(0);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <test-fixture id="withoutStackingContext">
+        <template>
+            <cosmoz-dialog2 with-backdrop>
+                <template>
+                    <p>Dialog</p>
+                </template>
+            </cosmoz-dialog2>
+        </template>
+    </test-fixture>
+
+    <test-fixture id="withStackingContext">
+        <template>
+            <div id="stackingContext">
+                <cosmoz-dialog2 with-backdrop>
+                    <template>
+                        <p>Dialog</p>
+                    </template>
+                </cosmoz-dialog2>
+            </div>
+        </template>
+    </test-fixture>
+
+ 
+
+<script>
+    suite('withoutStackingContext', function() {
+
+        test('backdrop is behing dialog', function(done) {
+            var dialog = fixture('withoutStackingContext');
+            dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
+                // Need to wait a bit before checking elements, because
+                // backdrop is displayed with animations.
+                Polymer.Base.async(function () {
+
+                    var dialogSize = dialog.paperDialog.getBoundingClientRect(),
+                        backdropElementSize = dialog.paperDialog.backdropElement.getBoundingClientRect(),
+                        expectedDialogElement,
+                        expectedBackdrop;
+                    expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
+                    expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
+
+                    assert.equal(dialog.paperDialog, expectedDialogElement);
+                    assert.equal(dialog.paperDialog.backdropElement, expectedBackdrop);
+
+                    done();
+                }, 100);
+            });
+            dialog.open();
+        
+        });
+    });
+
+    suite('withStackingContext', function() {
+
+        test('backdrop is behing dialog', function(done) {
+            var dialog = fixture('withStackingContext').children[0];
+            dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
+                // Need to wait a bit before checking elements, because
+                // backdrop is displayed with animations.
+                Polymer.Base.async(function () {
+
+                    var dialogSize = dialog.paperDialog.getBoundingClientRect(),
+                        backdropElementSize = dialog.paperDialog.backdropElement.getBoundingClientRect(),
+                        expectedDialogElement,
+                        expectedBackdrop;
+                    expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
+                    expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
+
+                    assert.equal(dialog.paperDialog, expectedDialogElement);
+                    assert.equal(dialog.paperDialog.backdropElement, expectedBackdrop);
+
+                    done();
+                }, 100);
+            });
+            dialog.open();
+        
+        });
+    });
+</script>
+
+</body>
+
+</html>
