@@ -14,20 +14,24 @@
 	<link rel="import" href="../../paper-button/paper-button.html">
 	<link rel="import" href="../cosmoz-dialog.html">
 
-	<style is="custom-style" include="demo-pages-shared-styles">
-	</style>
 
+	<style is="custom-style" include="demo-pages-shared-styles">
+       /* This will create a new stacking context above the dialog */
+        #stackingContext {
+            transform: translateX(0);
+        }
+	</style>
 </head>
 <body unresolved>
 
-	<h3>cosmoz-dialog with backdrop but without fit-into</h3>
+	<h3>cosmoz-dialog in root stacking context</h3>
 	<demo-snippet>
 		<template>
 			<paper-button raised onclick="dialog.open()">open dialog</paper-button>	
 			<cosmoz-dialog with-backdrop id="dialog">
 		        <h2>Dialog Title</h2>
 				<p>
-					This dialog will be centered in the document. The backdrop will occupy the whole document.
+					This dialog is created in the root stacking context.
 				</p>
 		        <p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -39,28 +43,25 @@
 		</template>
 	</demo-snippet>
 
-	<h3>cosmoz-dialog with backdrop that fits the demo-snippet</h3>
-	<demo-snippet id="backdropFitSnippet">
-		<template is="dom-bind" id="template">
-			<paper-button raised onclick="dialogWithBackdropFit.open()">open dialog</paper-button>	
-			<cosmoz-dialog with-backdrop fit-into="[[backdropFitSnippet]]" id="dialogWithBackdropFit">
-				<h2>Dialog Title</h2>
-				<p>
-					This dialog will be centered in the current demo snippet. The backdrop will occupy the whole demo-snippet.
-				</p>
-		        <p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-					irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-					Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>			
-			</cosmoz-dialog>
+	<h3>cosmoz-dialog in a new stacking context</h3>
+	<demo-snippet>
+		<template>
+			<paper-button raised onclick="dialogInNewStackingContext.open()">open dialog</paper-button>	
+			<div id="stackingContext">
+				<cosmoz-dialog with-backdrop id="dialogInNewStackingContext">
+					<h2>Dialog Title</h2>
+					<p>
+						This dialog is created in an element that creates a new stacking context.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+						irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>			
+				</cosmoz-dialog>
+			</div>
 		</template>
 	</demo-snippet>
-
-	<script>
-		var backdropFitSnippet = document.getElementById('backdropFitSnippet');
-		template.backdropFitSnippet = backdropFitSnippet;
-	</script>
 </body>
 </html>
