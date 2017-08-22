@@ -3,102 +3,97 @@
 
 <head>
 
-    <title>cosmoz-dialog tests</title>
+		<title>cosmoz-dialog tests</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
-    <link rel="import" href="../cosmoz-dialog.html">
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<link rel="import" href="../cosmoz-dialog.html">
 
-    <style>
-        #stackingContext {
-            transform: translateX(0);
-        }
-    </style>
+		<style>
+			#stackingContext {
+					transform: translateX(0);
+			}
+		</style>
 
 </head>
 
 <body>
+	<test-fixture id="withoutStackingContext">
+		<template>
+			<cosmoz-dialog with-backdrop>
+				<p>Dialog</p>
+			</cosmoz-dialog>
+		</template>
+	</test-fixture>
 
-    <test-fixture id="withoutStackingContext">
-        <template>
-            <cosmoz-dialog with-backdrop>
-                <p>Dialog</p>
-            </cosmoz-dialog>
-        </template>
-    </test-fixture>
+	<test-fixture id="withStackingContext">
+		<template>
+			<div id="stackingContext">
+				<cosmoz-dialog with-backdrop>
+					<p>Dialog</p>
+				</cosmoz-dialog>
+			</div>
+		</template>
+	</test-fixture>
 
-    <test-fixture id="withStackingContext">
-        <template>
-            <div id="stackingContext">
-                <cosmoz-dialog with-backdrop>
-                    <p>Dialog</p>
-                </cosmoz-dialog>
-            </div>
-        </template>
-    </test-fixture>
+	<script>
+		suite('withoutStackingContext', function () {
 
- 
+			test('backdrop is behing dialog', function (done) {
+				var dialog = fixture('withoutStackingContext');
+				dialog.addEventListener('iron-overlay-opened', function () {
+								// Need to wait a bit before checking elements, because
+								// backdrop is displayed with animations.
+					Polymer.Base.async(function () {
 
-<script>
-    suite('withoutStackingContext', function() {
+						var dialogSize = dialog.getBoundingClientRect(),
+							backdropElementSize = dialog.backdropElement.getBoundingClientRect(),
+							expectedDialogElement,
+							expectedBackdrop;
+						expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
+						expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
 
-        test('backdrop is behing dialog', function(done) {
-            var dialog = fixture('withoutStackingContext');
-            dialog.addEventListener('iron-overlay-opened', function () {
-                // Need to wait a bit before checking elements, because
-                // backdrop is displayed with animations.
-                Polymer.Base.async(function () {
+						assert.equal(dialog, expectedDialogElement);
+						assert.equal(dialog.backdropElement, expectedBackdrop);
 
-                    var dialogSize = dialog.getBoundingClientRect(),
-                        backdropElementSize = dialog.backdropElement.getBoundingClientRect(),
-                        expectedDialogElement,
-                        expectedBackdrop;
-                    expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
-                    expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
+						done();
+					}, 100);
+				});
+				dialog.open();
 
-                    assert.equal(dialog, expectedDialogElement);
-                    assert.equal(dialog.backdropElement, expectedBackdrop);
+			});
+		});
 
-                    done();
-                }, 100);
-            });
-            dialog.open();
-        
-        });
-    });
+		suite('withStackingContext', function () {
 
-    suite('withStackingContext', function() {
+			test('no backdrop when stacking context is not root', function (done) {
+				var dialog = fixture('withStackingContext').children[0];
+				dialog.addEventListener('iron-overlay-opened', function () {
+										// Need to wait a bit before checking elements, because
+										// backdrop is displayed with animations.
+					Polymer.Base.async(function () {
 
-        test('no backdrop when stacking context is not root', function(done) {
-            var dialog = fixture('withStackingContext').children[0];
-            dialog.addEventListener('iron-overlay-opened', function () {
-                // Need to wait a bit before checking elements, because
-                // backdrop is displayed with animations.
-                Polymer.Base.async(function () {
+						var dialogSize = dialog.getBoundingClientRect(),
+							backdropElementSize = dialog.backdropElement.getBoundingClientRect(),
+							expectedDialogElement,
+							expectedBody;
+						expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
+						expectedBody = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
 
-                    var dialogSize = dialog.getBoundingClientRect(),
-                        backdropElementSize = dialog.backdropElement.getBoundingClientRect(),
-                        expectedDialogElement,
-                        expectedBody;
-                    expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
-                    expectedBody = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
+						assert.equal(dialog, expectedDialogElement);
+						assert.equal(document.body, expectedBody);
 
-                    assert.equal(dialog, expectedDialogElement);
-                    assert.equal(document.body, expectedBody);
+						done();
+					}, 100);
+				});
+				dialog.open();
 
-                    done();
-                }, 100);
-            });
-            dialog.open();
-        
-        });
-    });
-</script>
-
-</body>
-
+			});
+		});
+		</script>
+	</body>
 </html>
