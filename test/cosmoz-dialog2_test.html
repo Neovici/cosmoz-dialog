@@ -51,8 +51,8 @@
 			test('backdrop is behing dialog', function (done) {
 				var dialog = fixture('withoutStackingContext');
 				dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
-									// Need to wait a bit before checking elements, because
-									// backdrop is displayed with animations.
+					// Need to wait a bit before checking elements, because
+					// backdrop is displayed with animations.
 					Polymer.Base.async(function () {
 
 						var dialogSize = dialog.paperDialog.getBoundingClientRect(),
@@ -78,8 +78,8 @@
 			test('backdrop is behing dialog', function (done) {
 				var dialog = fixture('withStackingContext').children[0];
 				dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
-								// Need to wait a bit before checking elements, because
-								// backdrop is displayed with animations.
+					// Need to wait a bit before checking elements, because
+					// backdrop is displayed with animations.
 					Polymer.Base.async(function () {
 
 						var dialogSize = dialog.paperDialog.getBoundingClientRect(),
