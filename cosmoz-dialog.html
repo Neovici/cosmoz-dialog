@@ -4,9 +4,9 @@
 <link rel="import" href="../paper-dialog-behavior/paper-dialog-shared-styles.html">
 <link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
-<!-- 
+<!--
 
-`<cosmoz-dialog>` is a dialog similar to `<paper-dialog>`, but that will fit the backdrop element 
+`<cosmoz-dialog>` is a dialog similar to `<paper-dialog>`, but that will fit the backdrop element
 into the element specified by the `fitInto` property if present.
 
 The `fitInto` property is inherited from Polymer.PaperDialogBehavior, which inherits it from Polymer.IronFitBehavior.
@@ -23,136 +23,138 @@ This element can be used when you want to workaround `paper-dialog` behavior tha
 </dom-module>
 
 <script>
+	(function () {
 
-(function() {
+		Polymer({
 
-	Polymer({
+			is: 'cosmoz-dialog',
 
-		is: 'cosmoz-dialog',
+			behaviors: [
+				Polymer.PaperDialogBehavior,
+				Polymer.IronResizableBehavior,
+				Polymer.NeonAnimationRunnerBehavior
+			],
 
-		behaviors: [
-			Polymer.PaperDialogBehavior,
-			Polymer.IronResizableBehavior,
-			Polymer.NeonAnimationRunnerBehavior
-		],
+			observers: [
+				'_beforeOpened(opened)'
+			],
 
-		observers: [
-			'_beforeOpened(opened)'
-		],
+			listeners: {
+				'neon-animation-finish': '_onNeonAnimationFinish',
+			},
 
-		listeners: {
-			'neon-animation-finish': '_onNeonAnimationFinish',
-		},
-
-		_beforeOpened: function (opened) {
-			var stackingContext;
-			if (!this.withBackdrop) {
-				return;
-			}
-
-			stackingContext = this._getClosestStackingContext(this.parentNode);
-			// HACK(plequang): temporary hack to workaround stacking context issues when
-			// dialog are defined in a deep element.
-			if (stackingContext.reason !== 'root') {
-				this.withBackdrop = false;
-			}
-		},
-
-		_renderOpened: function() {
-			this.cancelAnimation();
-			this.playAnimation('entry');
-		},
-
-		_renderClosed: function() {
-			this.cancelAnimation();
-			this.playAnimation('exit');
-		},
-
-		_onNeonAnimationFinish: function() {
-			if (this.opened) {
-				this._finishRenderOpened();
-			} else {
-				this._finishRenderClosed();
-			}
-		},
-
-		/**
-		 * See https://github.com/gwwar/z-context/blob/master/devtools/index.js 
-		 */
-		_getClosestStackingContext: function (nodeOrObject) {
-			var node = nodeOrObject.node || nodeOrObject;
-			//the root element (HTML)
-			if( ! node || node.nodeName === 'HTML' || node.nodeName === '#document-fragment') {
-				return { node: document.documentElement, reason: 'root' };
-			}
-
-			var computedStyle = getComputedStyle( node );
-
-			// position: fixed
-			if ( computedStyle.position === 'fixed' ) {
-				return { node: node, reason: 'position: fixed' };
-			}
-
-			// positioned (absolutely or relatively) with a z-index value other than "auto",
-			if ( computedStyle.zIndex !== 'auto' && computedStyle.position !== 'static' ) {
-				return { node: node, reason: 'position: ' + computedStyle.position + '; z-index: ' + computedStyle.zIndex };
-			}
-
-			// elements with an opacity value less than 1.
-			if ( computedStyle.opacity !== '1' ) {
-				return { node: node, reason: 'opacity: ' + computedStyle.opacity };
-			}
-
-			// elements with a transform value other than "none"
-			if ( computedStyle.transform !== 'none' ) {
-				return { node: node, reason: 'transform: ' + computedStyle.transform };
-			}
-
-			// elements with a mix-blend-mode value other than "normal"
-			if ( computedStyle.mixBlendMode !== 'normal' ) {
-				return { node: node, reason: 'mixBlendMode: ' + computedStyle.mixBlendMode };
-			}
-
-			// elements with a filter value other than "none"
-			if ( computedStyle.filter !== 'none' ) {
-				return { node: node, reason: 'filter: ' + computedStyle.filter };
-			}
-
-			// elements with a perspective value other than "none"
-			if ( computedStyle.perspective !== 'none' ) {
-				return { node: node, reason: 'perspective: ' + computedStyle.perspective };
-			}
-
-			// elements with isolation set to "isolate"
-			if ( computedStyle.isolation === 'isolate' ) {
-				return { node: node, reason: 'isolation: ' + computedStyle.isolation };
-			}
-
-			// specifying any attribute above in will-change even if you don't specify values for these attributes directly
-			if( computedStyle.willChange !== 'auto' ) {
-				return { node: node, reason: 'willChange: ' + computedStyle.willChange };
-			}
-
-			// elements with -webkit-overflow-scrolling set to "touch"
-			if ( computedStyle.webkitOverflowScrolling === 'touch' ) {
-				return { node: node, reason: '-webkit-overflow-scrolling: touch' };
-			}
-
-			// a flex item with a z-index value other than "auto", that is the parent element display: flex|inline-flex,
-			if ( computedStyle.zIndex !== 'auto' ) {
-				var parentStyle = getComputedStyle( node.parentNode );
-				if ( parentStyle.display === 'flex' || parentStyle.display === 'inline-flex' ) {
-					return {
-						node: node,
-						reason: 'flex-item; z-index: ' + computedStyle.zIndex
-					};
+			_beforeOpened: function (opened) {
+				var stackingContext;
+				if (!this.withBackdrop) {
+					return;
 				}
+
+				stackingContext = this._getClosestStackingContext(this.parentNode);
+				// HACK(plequang): temporary hack to workaround stacking context issues when
+				// dialog are defined in a deep element.
+				if (stackingContext.reason !== 'root') {
+					this.withBackdrop = false;
+				}
+			},
+
+			_renderOpened: function () {
+				this.cancelAnimation();
+				this.playAnimation('entry');
+			},
+
+			_renderClosed: function () {
+				this.cancelAnimation();
+				this.playAnimation('exit');
+			},
+
+			_onNeonAnimationFinish: function () {
+				if (this.opened) {
+					this._finishRenderOpened();
+				} else {
+					this._finishRenderClosed();
+				}
+			},
+
+			/**
+			 * See https://github.com/gwwar/z-context/blob/master/devtools/index.js
+			 */
+			_getClosestStackingContext: function (nodeOrObject) {
+				var node = nodeOrObject.node || nodeOrObject,
+					computedStyle,
+					parentStyle;
+
+				//the root element (HTML)
+				if (! node || node.nodeName === 'HTML' || node.nodeName === '#document-fragment') {
+					return { node: document.documentElement, reason: 'root' };
+				}
+
+				computedStyle = getComputedStyle(node);
+
+				// position: fixed
+				if (computedStyle.position === 'fixed') {
+					return { node: node, reason: 'position: fixed' };
+				}
+
+				// positioned (absolutely or relatively) with a z-index value other than "auto",
+				if (computedStyle.zIndex !== 'auto' && computedStyle.position !== 'static') {
+					return { node: node, reason: 'position: ' + computedStyle.position + '; z-index: ' + computedStyle.zIndex };
+				}
+
+				// elements with an opacity value less than 1.
+				if (computedStyle.opacity !== '1') {
+					return { node: node, reason: 'opacity: ' + computedStyle.opacity };
+				}
+
+				// elements with a transform value other than "none"
+				if (computedStyle.transform !== 'none') {
+					return { node: node, reason: 'transform: ' + computedStyle.transform };
+				}
+
+				// elements with a mix-blend-mode value other than "normal"
+				if (computedStyle.mixBlendMode !== 'normal') {
+					return { node: node, reason: 'mixBlendMode: ' + computedStyle.mixBlendMode };
+				}
+
+				// elements with a filter value other than "none"
+				if (computedStyle.filter !== 'none') {
+					return { node: node, reason: 'filter: ' + computedStyle.filter };
+				}
+
+				// elements with a perspective value other than "none"
+				if (computedStyle.perspective !== 'none') {
+					return { node: node, reason: 'perspective: ' + computedStyle.perspective };
+				}
+
+				// elements with isolation set to "isolate"
+				if (computedStyle.isolation === 'isolate') {
+					return { node: node, reason: 'isolation: ' + computedStyle.isolation };
+				}
+
+				// specifying any attribute above in will-change even if you don't specify values for these attributes directly
+				if (computedStyle.willChange !== 'auto') {
+					return { node: node, reason: 'willChange: ' + computedStyle.willChange };
+				}
+
+				// elements with -webkit-overflow-scrolling set to "touch"
+				if (computedStyle.webkitOverflowScrolling === 'touch') {
+					return { node: node, reason: '-webkit-overflow-scrolling: touch' };
+				}
+
+				// a flex item with a z-index value other than "auto", that is the parent element display: flex|inline-flex,
+				if (computedStyle.zIndex !== 'auto') {
+					parentStyle = getComputedStyle(node.parentNode);
+					if (parentStyle.display === 'flex' || parentStyle.display === 'inline-flex') {
+						return {
+							node: node,
+							reason: 'flex-item; z-index: ' + computedStyle.zIndex
+						};
+					}
+				}
+
+				return this._getClosestStackingContext({ node: node.parentNode, reason: 'not a stacking context' });
 			}
+		});
 
-			return this._getClosestStackingContext( { node: node.parentNode, reason: 'not a stacking context' } );
-		}
-	});
-
-})();
+	})();
 
 </script>
