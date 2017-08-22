@@ -2,27 +2,27 @@
 <link rel="import" href="../iron-signals/iron-signals.html">
 
 <dom-module id="cosmoz-dialog-container">
-    <template>
-        <iron-signals on-iron-signal-cosmoz-dialog-attached="_onCosmozDialogAttached"></iron-signals>
-        <slot></slot>
-    </template>
+	<template>
+		<iron-signals on-iron-signal-cosmoz-dialog-attached="_onCosmozDialogAttached"></iron-signals>
+		<slot></slot>
+	</template>
 </dom-module>
 
 <script>
-(function() {
+	(function () {
 
-    Polymer({
+		Polymer({
 
-        is: 'cosmoz-dialog-container',
+			is: 'cosmoz-dialog-container',
 
-        _onCosmozDialogAttached: function (event) {
-            var dialog = event.detail;
+			_onCosmozDialogAttached: function (event) {
+				var dialog = event.detail;
 
-            dialog._container = this;
-            event.preventDefault();
-            event.stopPropagation();
-        }
+				dialog._container = this;
+				event.preventDefault();
+				event.stopPropagation();
+			}
+		});
 
-    });
-}());
+	}());
 </script>
