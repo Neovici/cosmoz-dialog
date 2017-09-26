@@ -14,11 +14,12 @@ When this property is specified, the dialog overlay will be centered inside the 
 
 This element can be used when you want to workaround `paper-dialog` behavior that fit the backdrop to the whole window.
 
+@demo demo/index.html Dialog Demo
 -->
 <dom-module id="cosmoz-dialog">
 	<template>
 		<style include="paper-dialog-shared-styles"></style>
-		<content></content>
+		<slot></slot>
 	</template>
 </dom-module>
 
@@ -77,6 +78,8 @@ This element can be used when you want to workaround `paper-dialog` behavior tha
 
 			/**
 			 * See https://github.com/gwwar/z-context/blob/master/devtools/index.js
+			 * @param {HTMLElement|Object} nodeOrObject The node to get context for
+			 * @returns {Object} The closest stacking context
 			 */
 			_getClosestStackingContext: function (nodeOrObject) {
 				var node = nodeOrObject.node || nodeOrObject,
@@ -84,7 +87,7 @@ This element can be used when you want to workaround `paper-dialog` behavior tha
 					parentStyle;
 
 				//the root element (HTML)
-				if (! node || node.nodeName === 'HTML' || node.nodeName === '#document-fragment') {
+				if (! node || node.nodeName === 'HTML' || node.nodeName === '#document-fragment' || node.nodeName === 'DEMO-SNIPPET') {
 					return { node: document.documentElement, reason: 'root' };
 				}
 

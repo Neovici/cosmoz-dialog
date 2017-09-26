@@ -7,71 +7,6 @@
       "path": "cosmoz-dialog2.html",
       "properties": [
         {
-          "name": "__hideTemplateChildren__",
-          "type": "?",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4240,
-              "column": 14
-            },
-            "end": {
-              "line": 4240,
-              "column": 73
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_showHideChildren\""
-            }
-          },
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_instanceProps",
-          "type": "Member",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4241,
-              "column": 0
-            },
-            "end": {
-              "line": 4241,
-              "column": 27
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_parentPropPrefix",
-          "type": "string",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4242,
-              "column": 0
-            },
-            "end": {
-              "line": 4242,
-              "column": 29
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
           "name": "modal",
           "type": "boolean",
           "description": "",
@@ -191,574 +126,90 @@
       "methods": [
         {
           "name": "templatize",
-          "description": "",
+          "description": "Generates an anonymous `TemplateInstance` class (stored as `this.ctor`)\nfor the provided template.  This method should be called once per\ntemplate to prepare an element for stamping the template, followed\nby `stamp` to create new instances of the template.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
+            "file": "bower_components/polymer/lib/legacy/templatizer-behavior.html",
             "start": {
-              "line": 4243,
-              "column": 0
+              "line": 105,
+              "column": 6
             },
             "end": {
-              "line": 4275,
-              "column": 1
+              "line": 114,
+              "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "template"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_getRootDataHost",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4276,
-              "column": 0
-            },
-            "end": {
-              "line": 4278,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_showHideChildrenImpl",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4279,
-              "column": 0
-            },
-            "end": {
-              "line": 4302,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "hide"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "__setPropertyImpl",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4303,
-              "column": 0
-            },
-            "end": {
-              "line": 4308,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "property"
+              "name": "template",
+              "type": "HTMLTemplateElement",
+              "description": "Template to prepare"
             },
             {
-              "name": "value"
-            },
-            {
-              "name": "fromAbove"
-            },
-            {
-              "name": "node"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_debounceTemplate",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4309,
-              "column": 0
-            },
-            "end": {
-              "line": 4311,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "fn"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_flushTemplates",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4312,
-              "column": 0
-            },
-            "end": {
-              "line": 4314,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_customPrepEffects",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4315,
-              "column": 0
-            },
-            "end": {
-              "line": 4323,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "archetype"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_customPrepAnnotations",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4324,
-              "column": 0
-            },
-            "end": {
-              "line": 4340,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "archetype"
-            },
-            {
-              "name": "template"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_prepParentProperties",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4341,
-              "column": 0
-            },
-            "end": {
-              "line": 4386,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "archetype"
-            },
-            {
-              "name": "template"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_createForwardPropEffector",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4387,
-              "column": 0
-            },
-            "end": {
-              "line": 4391,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "prop"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_createHostPropEffector",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4392,
-              "column": 0
-            },
-            "end": {
-              "line": 4397,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "prop"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_createInstancePropEffector",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4398,
-              "column": 0
-            },
-            "end": {
-              "line": 4404,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "prop"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_extendTemplate",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4405,
-              "column": 0
-            },
-            "end": {
-              "line": 4423,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "template"
-            },
-            {
-              "name": "proto"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_showHideChildren",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4424,
-              "column": 0
-            },
-            "end": {
-              "line": 4425,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "hidden"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_forwardInstancePath",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4426,
-              "column": 0
-            },
-            "end": {
-              "line": 4427,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "inst"
-            },
-            {
-              "name": "path"
-            },
-            {
-              "name": "value"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_forwardInstanceProp",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4428,
-              "column": 0
-            },
-            "end": {
-              "line": 4429,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "inst"
-            },
-            {
-              "name": "prop"
-            },
-            {
-              "name": "value"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_notifyPathUpImpl",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4430,
-              "column": 0
-            },
-            "end": {
-              "line": 4437,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "path"
-            },
-            {
-              "name": "value"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_pathEffectorImpl",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4438,
-              "column": 0
-            },
-            "end": {
-              "line": 4449,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "path"
-            },
-            {
-              "name": "value"
-            },
-            {
-              "name": "fromAbove"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_constructorImpl",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4450,
-              "column": 0
-            },
-            "end": {
-              "line": 4472,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "model"
-            },
-            {
-              "name": "host"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_listenImpl",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4473,
-              "column": 0
-            },
-            "end": {
-              "line": 4482,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "node"
-            },
-            {
-              "name": "eventName"
-            },
-            {
-              "name": "methodName"
-            }
-          ],
-          "inheritedFrom": "Polymer.Templatizer"
-        },
-        {
-          "name": "_scopeElementClassImpl",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
-            "start": {
-              "line": 4483,
-              "column": 0
-            },
-            "end": {
-              "line": 4489,
-              "column": 1
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "node"
-            },
-            {
-              "name": "value"
+              "name": "mutableData",
+              "type": "boolean=",
+              "description": "When `true`, the generated class will skip\n  strict dirty-checking for objects and arrays (always consider them to\n  be \"dirty\"). Defaults to false."
             }
           ],
           "inheritedFrom": "Polymer.Templatizer"
         },
         {
           "name": "stamp",
-          "description": "",
+          "description": "Creates an instance of the template prepared by `templatize`.  The object\nreturned is an instance of the anonymous class generated by `templatize`\nwhose `root` property is a document fragment containing newly cloned\ntemplate content, and which has property accessors corresponding to\nproperties referenced in template bindings.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
+            "file": "bower_components/polymer/lib/legacy/templatizer-behavior.html",
             "start": {
-              "line": 4490,
-              "column": 0
+              "line": 129,
+              "column": 6
             },
             "end": {
-              "line": 4501,
-              "column": 1
+              "line": 131,
+              "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "model"
+              "name": "model",
+              "type": "Object=",
+              "description": "Object containing initial property values to\n  populate into the template bindings."
             }
           ],
+          "return": {
+            "type": "TemplateInstanceBase",
+            "desc": "Returns the created instance of\nthe template prepared by `templatize`."
+          },
           "inheritedFrom": "Polymer.Templatizer"
         },
         {
           "name": "modelForElement",
-          "description": "",
+          "description": "Returns the template \"model\" (`TemplateInstance`) associated with\na given element, which serves as the binding scope for the template\ninstance the element is contained in.  A template model should be used\nto manipulate data associated with this template instance.",
           "privacy": "public",
           "sourceRange": {
-            "file": "bower_components/polymer/polymer.html",
+            "file": "bower_components/polymer/lib/legacy/templatizer-behavior.html",
             "start": {
-              "line": 4502,
-              "column": 0
+              "line": 144,
+              "column": 6
             },
             "end": {
-              "line": 4515,
-              "column": 1
+              "line": 146,
+              "column": 7
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "el"
+              "name": "el",
+              "type": "HTMLElement",
+              "description": "Element for which to return a template model."
             }
           ],
+          "return": {
+            "type": "TemplateInstanceBase",
+            "desc": "Model representing the binding scope for\n  the element."
+          },
           "inheritedFrom": "Polymer.Templatizer"
         },
         {
@@ -1009,7 +460,24 @@
       "properties": [],
       "methods": [
         {
-          "name": "_onCosmozDialogAttached",
+          "name": "attached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 14,
+              "column": 3
+            },
+            "end": {
+              "line": 16,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "detached",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1018,7 +486,24 @@
               "column": 3
             },
             "end": {
-              "line": 23,
+              "line": 19,
+              "column": 4
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_dialogAttached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 20,
+              "column": 3
+            },
+            "end": {
+              "line": 26,
               "column": 4
             }
           },
@@ -1035,11 +520,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 13,
+          "line": 10,
           "column": 10
         },
         "end": {
-          "line": 24,
+          "line": 27,
           "column": 3
         }
       },
@@ -1058,11 +543,11 @@
           "range": {
             "file": "cosmoz-dialog-container.html",
             "start": {
-              "line": 6,
+              "line": 4,
               "column": 2
             },
             "end": {
-              "line": 6,
+              "line": 4,
               "column": 15
             }
           }
@@ -2705,11 +2190,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 59,
+              "line": 60,
               "column": 3
             },
             "end": {
-              "line": 62,
+              "line": 63,
               "column": 4
             }
           },
@@ -2722,11 +2207,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 65,
               "column": 3
             },
             "end": {
-              "line": 67,
+              "line": 68,
               "column": 4
             }
           },
@@ -3358,11 +2843,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 45,
+              "line": 46,
               "column": 3
             },
             "end": {
-              "line": 57,
+              "line": 58,
               "column": 4
             }
           },
@@ -3379,11 +2864,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 70,
               "column": 3
             },
             "end": {
-              "line": 75,
+              "line": 76,
               "column": 4
             }
           },
@@ -3396,11 +2881,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 81,
               "column": 3
             },
             "end": {
-              "line": 154,
+              "line": 155,
               "column": 4
             }
           },
@@ -3413,15 +2898,20 @@
         }
       ],
       "staticMethods": [],
-      "demos": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": "Dialog Demo"
+        }
+      ],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 27,
+          "line": 28,
           "column": 10
         },
         "end": {
-          "line": 155,
+          "line": 156,
           "column": 3
         }
       },

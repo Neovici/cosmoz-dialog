@@ -55,6 +55,7 @@
 							backdropElementSize = dialog.backdropElement.getBoundingClientRect(),
 							expectedDialogElement,
 							expectedBackdrop;
+
 						expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
 						expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
 
@@ -82,6 +83,7 @@
 							backdropElementSize = dialog.backdropElement.getBoundingClientRect(),
 							expectedDialogElement,
 							expectedBody;
+
 						expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
 						expectedBody = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
 
