@@ -57,7 +57,7 @@ Content of the `<paper-dialog>` must be specified in a `<template>` element.
 			},
 
 			attached: function () {
-				this.fire('iron-signal', { name: 'cosmoz-dialog-attached', data: this});
+				this.fire('cosmoz-dialog-attached', { dialog: this });
 				if (!this._container) {
 					this._container = document.body;
 				}

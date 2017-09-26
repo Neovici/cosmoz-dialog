@@ -1,28 +1,30 @@
 <!doctype html>
 <html>
 <head>
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 	<title>cosmoz-dialog tests</title>
-
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
 	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 	<script src="../../web-component-tester/browser.js"></script>
+	<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+	<link rel="import" href="../../test-fixture/test-fixture.html">
+	<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+
 	<link rel="import" href="../cosmoz-dialog2.html">
+	<link rel="import" href="../cosmoz-dialog-container.html">
 
-	<style is="custom-style">
-		/* This will create a new stacking context above the dialog */
-		#stackingContext {
-			transform: translateX(0);
-		}
-	</style>
-
+	<custom-style>
+		<style is="custom-style">
+			/* This will create a new stacking context above the dialog */
+			#stackingContext {
+				transform: translateX(0);
+			}
+		</style>
+	</custom-style>
 </head>
-
 <body>
-
 	<test-fixture id="withoutStackingContext">
 		<template>
 			<cosmoz-dialog2 with-backdrop>
@@ -32,7 +34,6 @@
 			</cosmoz-dialog2>
 		</template>
 	</test-fixture>
-
 	<test-fixture id="withStackingContext">
 		<template>
 			<div id="stackingContext">
@@ -44,7 +45,20 @@
 			</div>
 		</template>
 	</test-fixture>
-
+	<test-fixture id="basic">
+		<template>
+			<cosmoz-dialog2 with-backdrop>
+				<template>
+					<p>Dialog</p>
+				</template>
+			</cosmoz-dialog2>
+		</template>
+	</test-fixture>
+	<test-fixture id="basicContainer">
+		<template>
+			<cosmoz-dialog-container></cosmoz-dialog-container>
+		</template>
+	</test-fixture>
 	<script>
 		suite('withoutStackingContext', function () {
 
@@ -99,7 +113,27 @@
 			});
 
 		});
-		</script>
 
+		suite('container', function (){
+			var container,
+				dialog;
+
+			setup(function (done){
+				container = fixture('basicContainer');
+				dialog = fixture('basic');
+				flush(done);
+			});
+
+			test('has container', function (done) {
+				assert.equal(dialog._container, container);
+				dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
+					assert.equal(dialog.paperDialog.parentNode, container);
+					done();
+				});
+				dialog.open();
+			});
+
+		});
+		</script>
 	</body>
 </html>

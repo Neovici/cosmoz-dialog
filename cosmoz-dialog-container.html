@@ -1,22 +1,25 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-signals/iron-signals.html">
 
 <dom-module id="cosmoz-dialog-container">
 	<template>
-		<iron-signals on-iron-signal-cosmoz-dialog-attached="_onCosmozDialogAttached"></iron-signals>
 		<slot></slot>
 	</template>
 </dom-module>
 
 <script>
 	(function () {
-
 		Polymer({
 
 			is: 'cosmoz-dialog-container',
 
-			_onCosmozDialogAttached: function (event) {
-				var dialog = event.detail;
+			attached: function () {
+				document.addEventListener('cosmoz-dialog-attached', this._dialogAttached = this._dialogAttached.bind(this));
+			},
+			detached: function (){
+				document.removeEventListener('cosmoz-dialog-attached', this._dialogAttached);
+			},
+			_dialogAttached: function (event){
+				var dialog = event.detail.dialog;
 
 				dialog._container = this;
 				event.preventDefault();
