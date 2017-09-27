@@ -9,6 +9,7 @@ This is an attempt to workaround stacking context issues with dialogs.
 
 Content of the `<paper-dialog>` must be specified in a `<template>` element.
 
+@demo demo/index2.html Dialog2 Demo
 -->
 <dom-module id="cosmoz-dialog2">
 	<template>
@@ -57,7 +58,7 @@ Content of the `<paper-dialog>` must be specified in a `<template>` element.
 			},
 
 			attached: function () {
-				this.fire('iron-signal', { name: 'cosmoz-dialog-attached', data: this});
+				this.fire('cosmoz-dialog-attached', { dialog: this });
 				if (!this._container) {
 					this._container = document.body;
 				}
