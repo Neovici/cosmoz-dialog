@@ -1,0 +1,140 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+
+<!--
+-->
+<dom-module id="cosmoz-form-dialog">
+	<template>
+		<div hidden>
+			<slot></slot>
+		</div>
+	</template>
+</dom-module>
+<script>
+
+	(function () {
+
+		Polymer({
+
+			is: 'cosmoz-form-dialog',
+
+			properties: {
+				modal: {
+					type: Boolean
+				},
+
+				withBackdrop: {
+					type: Boolean
+				},
+			},
+
+			behaviors: [
+				Polymer.Templatizer
+			],
+
+			_form: null,
+
+			_paperDialog: null,
+
+			_dialogTemplateInstance: null,
+
+			_container: null,
+
+			ready: function () {
+				this._instanceProps = {};
+			},
+
+			detached: function () {
+				if (this._form !== null && this._form.parentNode) {
+					Polymer.dom(this._form.parentNode).removeChild(this._form);
+				}
+				this._container = null;
+			},
+
+			attached: function () {
+				this.fire('cosmoz-dialog-attached', { dialog: this });
+				if (!this._container) {
+					this._container = document.body;
+				}
+
+				if (this._form === null) {
+					this._createFormDialog();
+				}
+			},
+
+			get paperDialog() {
+				return this._paperDialog;
+			},
+
+			open: function () {
+				if (this._paperDialog === null) {
+					// Missing template in cosmoz-dialog
+					return;
+				}
+				if (!this._form.parentNode) {
+					Polymer.dom(this._container).appendChild(this._form);
+					Polymer.dom.flush();
+				}
+				this._paperDialog.open();
+			},
+
+			close: function () {
+				if (this._paperDialog !== null) {
+					this._paperDialog.close();
+				}
+			},
+
+			fit: function () {
+				if (this._paperDialog !== null && this._paperDialog.opened) {
+					this._paperDialog.fit();
+				}
+			},
+
+			_createFormDialog: function () {
+				var ironForm = document.createElement('iron-form'),
+					form = document.createElement('form'),
+					dialog = document.createElement('paper-dialog'),
+					template;
+				if (!this.ctor) {
+					template = Polymer.dom(this).querySelector('template');
+					if (!template) {
+						console.warn('cosmoz-dialog without template', this);
+						return null;
+					}
+
+					this.templatize(template);
+				}
+
+
+
+				this._dialogTemplateInstance = this.stamp();
+
+				dialog.modal = this.modal;
+				if (!this.modal) {
+					dialog.withBackdrop = this.withBackdrop;
+				}
+
+				Polymer.dom(ironForm).appendChild(form);
+				Polymer.dom(form).appendChild(dialog);
+				Polymer.dom(dialog).appendChild(this._dialogTemplateInstance.root);
+
+				this._form = ironForm;
+				this._paperDialog = dialog;
+			},
+
+			_forwardParentProp: function (prop, value) {
+				if (this._dialogTemplateInstance) {
+					this._dialogTemplateInstance[prop] = value;
+				}
+			},
+
+			_forwardParentPath: function (path, value) {
+				if (this._dialogTemplateInstance) {
+					this._dialogTemplateInstance.notifyPath(path, value, true);
+				}
+			},
+		});
+
+	})();
+
+</script>
