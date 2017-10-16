@@ -46,9 +46,13 @@
 
 		_dialogEventsHandler: null,
 
+		_pendingProps: null,
+
 		created: function () {
 			this._instanceProps = {};
+			this._parentModel = true;
 			this._dialogEventsHandler = this._handlePaperDialogEvents.bind(this);
+			this._pendingProps = [];
 		},
 
 		detached: function () {
@@ -129,6 +133,11 @@
 			}
 
 			this._dialogTemplateInstance = this.stamp();
+
+			this._pendingProps.forEach(function (propValuePair) {
+				this._dialogTemplateInstance.forwardHostProp(propValuePair.prop, propValuePair.value);
+			}, this);
+			this._pendingProps.splice(0);
 			Polymer.dom(dialog).appendChild(this._dialogTemplateInstance.root);
 
 			dialog.modal = this.modal;
@@ -151,6 +160,14 @@
 		_forwardParentProp: function (prop, value) {
 			if (this._dialogTemplateInstance) {
 				this._dialogTemplateInstance[prop] = value;
+			}
+		},
+
+		_forwardHostPropV2: function (prop, value) {
+			if (!this._dialogTemplateInstance) {
+				this._pendingProps.push({ prop: prop, value: value});
+			} else {
+				this._dialogTemplateInstance.forwardHostProp(prop, value);
 			}
 		},
 
