@@ -22,7 +22,8 @@
 	],
 	"dependencies": {
 		"polymer": "Polymer/polymer#1.9 - 2",
-		"paper-dialog": "PolymerElements/paper-dialog#1 - 2"
+		"paper-dialog": "PolymerElements/paper-dialog#1 - 2",
+		"iron-form": "PolymerElements/iron-form#1 - 2"
 	},
 	"devDependencies": {
 		"paper-button": "PolymerElements/paper-button#1 - 2",

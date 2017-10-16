@@ -13,11 +13,13 @@
 	<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
 
 	<link rel="import" href="../cosmoz-dialog.html">
+	<link rel="import" href="../cosmoz-dialog-container.html">
 
 	<custom-style>
 		<style is="custom-style">
+			/* This will create a new stacking context above the dialog */
 			#stackingContext {
-					transform: translateX(0);
+				transform: translateX(0);
 			}
 		</style>
 	</custom-style>
@@ -26,7 +28,9 @@
 	<test-fixture id="withoutStackingContext">
 		<template>
 			<cosmoz-dialog with-backdrop>
-				<p>Dialog</p>
+				<template>
+					<p>Dialog</p>
+				</template>
 			</cosmoz-dialog>
 		</template>
 	</test-fixture>
@@ -35,9 +39,27 @@
 		<template>
 			<div id="stackingContext">
 				<cosmoz-dialog with-backdrop>
-					<p>Dialog</p>
+					<template>
+						<p>Dialog</p>
+					</template>
 				</cosmoz-dialog>
 			</div>
+		</template>
+	</test-fixture>
+
+	<test-fixture id="basic">
+		<template>
+			<cosmoz-dialog with-backdrop>
+				<template>
+					<p>Dialog</p>
+				</template>
+			</cosmoz-dialog>
+		</template>
+	</test-fixture>
+
+	<test-fixture id="basicContainer">
+		<template>
+			<cosmoz-dialog-container></cosmoz-dialog-container>
 		</template>
 	</test-fixture>
 
@@ -46,56 +68,77 @@
 
 			test('backdrop is behing dialog', function (done) {
 				var dialog = fixture('withoutStackingContext');
-				dialog.addEventListener('iron-overlay-opened', function () {
-								// Need to wait a bit before checking elements, because
-								// backdrop is displayed with animations.
+				dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
+					// Need to wait a bit before checking elements, because
+					// backdrop is displayed with animations.
 					Polymer.Base.async(function () {
 
-						var dialogSize = dialog.getBoundingClientRect(),
-							backdropElementSize = dialog.backdropElement.getBoundingClientRect(),
+						var dialogSize = dialog.paperDialog.getBoundingClientRect(),
+							backdropElementSize = dialog.paperDialog.backdropElement.getBoundingClientRect(),
 							expectedDialogElement,
 							expectedBackdrop;
 
 						expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
 						expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
 
-						assert.equal(dialog, expectedDialogElement);
-						assert.equal(dialog.backdropElement, expectedBackdrop);
+						assert.equal(dialog.paperDialog, expectedDialogElement);
+						assert.equal(dialog.paperDialog.backdropElement, expectedBackdrop);
 
 						done();
 					}, 100);
 				});
 				dialog.open();
-
 			});
+
 		});
 
 		suite('withStackingContext', function () {
 
-			test('no backdrop when stacking context is not root', function (done) {
+			test('backdrop is behing dialog', function (done) {
 				var dialog = fixture('withStackingContext').children[0];
-				dialog.addEventListener('iron-overlay-opened', function () {
-										// Need to wait a bit before checking elements, because
-										// backdrop is displayed with animations.
+				dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
+					// Need to wait a bit before checking elements, because
+					// backdrop is displayed with animations.
 					Polymer.Base.async(function () {
 
-						var dialogSize = dialog.getBoundingClientRect(),
-							backdropElementSize = dialog.backdropElement.getBoundingClientRect(),
+						var dialogSize = dialog.paperDialog.getBoundingClientRect(),
+							backdropElementSize = dialog.paperDialog.backdropElement.getBoundingClientRect(),
 							expectedDialogElement,
-							expectedBody;
+							expectedBackdrop;
 
 						expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
-						expectedBody = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
+						expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
 
-						assert.equal(dialog, expectedDialogElement);
-						assert.equal(document.body, expectedBody);
+						assert.equal(dialog.paperDialog, expectedDialogElement);
+						assert.equal(dialog.paperDialog.backdropElement, expectedBackdrop);
 
 						done();
 					}, 100);
 				});
 				dialog.open();
-
 			});
+
+		});
+
+		suite('container', function (){
+			var container,
+				dialog;
+
+			setup(function (done){
+				container = fixture('basicContainer');
+				dialog = fixture('basic');
+				flush(done);
+			});
+
+			test('has container', function (done) {
+				assert.equal(dialog._container, container);
+				dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
+					assert.equal(dialog.paperDialog.parentNode, container);
+					done();
+				});
+				dialog.open();
+			});
+
 		});
 	</script>
 </body></html>

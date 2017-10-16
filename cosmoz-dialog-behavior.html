@@ -1,0 +1,169 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+
+<script>
+
+/**
+`Cosmoz.DialogBehavior`
+*/
+(function () {
+	'use strict';
+
+	window.Cosmoz = window.Cosmoz || {};
+
+	/**
+	 * @polymerBehavior Cosmoz.DialogBehavior
+	*/
+	Cosmoz.DialogBehaviorImpl = {
+		properties: {
+			modal: {
+				type: Boolean
+			},
+
+			withBackdrop: {
+				type: Boolean
+			},
+
+			/**
+			 * Set to true to disable auto-focusing the overlay or child nodes with
+			 * the `autofocus` attribute` when the overlay is opened.
+			 */
+			noAutoFocus: {
+				type: Boolean,
+				value: false
+			},
+		},
+
+		hostAttributes: {
+			'role': 'dialog',
+			'tabindex': '-1'
+		},
+
+		// The generated paper-dialog element
+		_paperDialog: null,
+
+		_dialogTemplateInstance: null,
+
+		_dialogEventsHandler: null,
+
+		created: function () {
+			this._instanceProps = {};
+			this._dialogEventsHandler = this._handlePaperDialogEvents.bind(this);
+		},
+
+		detached: function () {
+			this._detachDialog();
+		},
+
+		attached: function () {
+			if (this._paperDialog === null) {
+				this._paperDialog = this._createDialog();
+			}
+		},
+
+		/**
+		 * Get the generated paper-dialog element
+		 */
+		get paperDialog() {
+			return this._paperDialog;
+		},
+
+		open: function () {
+			if (this._paperDialog === null) {
+				// Missing template in cosmoz-dialog
+				return;
+			}
+
+			this._attachDialog();
+			this._paperDialog.open();
+		},
+
+		_attachDialog: function () {
+			if (!this._paperDialog.parentNode) {
+				Polymer.dom(document.body).appendChild(this._paperDialog);
+			}
+		},
+
+		_detachDialog: function () {
+			if (this._paperDialog !== null && this._paperDialog.parentNode) {
+				Polymer.dom(this._paperDialog.parentNode).removeChild(this._paperDialog);
+			}
+		},
+
+
+		close: function () {
+			if (this._paperDialog !== null) {
+				this._paperDialog.close();
+			}
+		},
+
+		fit: function () {
+			if (this._paperDialog !== null && this._paperDialog.opened) {
+				this._paperDialog.fit();
+			}
+		},
+
+		refit: function () {
+			if (this._paperDialog !== null && this._paperDialog.opened) {
+				this._paperDialog.refit();
+			}
+		},
+
+		center: function () {
+			if (this._paperDialog !== null && this._paperDialog.opened) {
+				this._paperDialog.center();
+			}
+		},
+
+
+		_createDialog: function () {
+			var dialog = document.createElement('paper-dialog'),
+				template;
+			if (!this.ctor) {
+				template = Polymer.dom(this).querySelector('template');
+				if (!template) {
+					console.warn('cosmoz-dialog without template', this);
+					return null;
+				}
+
+				this.templatize(template);
+			}
+
+			this._dialogTemplateInstance = this.stamp();
+			Polymer.dom(dialog).appendChild(this._dialogTemplateInstance.root);
+
+			dialog.modal = this.modal;
+			if (!this.modal) {
+				dialog.withBackdrop = this.withBackdrop;
+			}
+
+			dialog.noAutoFocus = this.noAutoFocus;
+
+			dialog.addEventListener('iron-overlay-opened', this._dialogEventsHandler);
+			dialog.addEventListener('iron-overlay-closed', this._dialogEventsHandler);
+
+			return dialog;
+		},
+
+		_handlePaperDialogEvents: function (event) {
+			this.fire(event.type);
+		},
+
+		_forwardParentProp: function (prop, value) {
+			if (this._dialogTemplateInstance) {
+				this._dialogTemplateInstance[prop] = value;
+			}
+		},
+
+		_forwardParentPath: function (path, value) {
+			if (this._dialogTemplateInstance) {
+				this._dialogTemplateInstance.notifyPath(path, value, true);
+			}
+		},
+	};
+
+	Cosmoz.DialogBehavior = [Cosmoz.DialogBehaviorImpl, Polymer.Templatizer];
+
+})();
+
+</script>
