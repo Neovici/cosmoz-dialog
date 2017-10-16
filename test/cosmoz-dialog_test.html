@@ -13,7 +13,6 @@
 	<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
 
 	<link rel="import" href="../cosmoz-dialog.html">
-	<link rel="import" href="../cosmoz-dialog-container.html">
 
 	<custom-style>
 		<style is="custom-style">
@@ -57,13 +56,37 @@
 		</template>
 	</test-fixture>
 
-	<test-fixture id="basicContainer">
-		<template>
-			<cosmoz-dialog-container></cosmoz-dialog-container>
-		</template>
-	</test-fixture>
-
 	<script>
+		suite('basic', function () {
+
+			test('paper-dialog is attached to body', function (done) {
+				var dialog = fixture('basic');
+				dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
+					assert.equal(dialog.paperDialog.parentElement, document.body);
+					done();
+				});
+				dialog.open();
+			});
+			test('paper-dialog is opened when cosmoz-dialog open() is called', function (done) {
+				var dialog = fixture('basic');
+				dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
+					assert.isTrue(dialog.paperDialog.opened);
+					done();
+				});
+				dialog.open();
+
+			});
+			test('paper-dialog is not opened when cosmoz-dialog close() is called', function (done) {
+				var dialog = fixture('basic');
+				dialog.paperDialog.addEventListener('iron-overlay-closed', function () {
+					assert.isFalse(dialog.paperDialog.opened);
+					done();
+				});
+				dialog.open();
+				dialog.close();
+			});
+
+		});
 		suite('withoutStackingContext', function () {
 
 			test('backdrop is behing dialog', function (done) {
@@ -120,25 +143,5 @@
 
 		});
 
-		suite('container', function (){
-			var container,
-				dialog;
-
-			setup(function (done){
-				container = fixture('basicContainer');
-				dialog = fixture('basic');
-				flush(done);
-			});
-
-			test('has container', function (done) {
-				assert.equal(dialog._container, container);
-				dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
-					assert.equal(dialog.paperDialog.parentNode, container);
-					done();
-				});
-				dialog.open();
-			});
-
-		});
 	</script>
 </body></html>
