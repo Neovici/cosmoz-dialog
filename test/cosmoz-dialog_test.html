@@ -78,12 +78,15 @@
 			});
 			test('paper-dialog is not opened when cosmoz-dialog close() is called', function (done) {
 				var dialog = fixture('basic');
+				dialog.paperDialog.addEventListener('iron-overlay-opened', function () {
+					dialog.close();
+				});
 				dialog.paperDialog.addEventListener('iron-overlay-closed', function () {
 					assert.isFalse(dialog.paperDialog.opened);
 					done();
 				});
 				dialog.open();
-				dialog.close();
+
 			});
 
 		});
