@@ -10,6 +10,7 @@
 	'use strict';
 
 	window.Cosmoz = window.Cosmoz || {};
+	const _async = window.requestIdleCallback || window.requestAnimationFrame || Polymer.Base.async;
 
 	/**
 	 * @polymerBehavior Cosmoz.DialogBehavior
@@ -42,29 +43,39 @@
 		// The generated paper-dialog element
 		_paperDialog: null,
 
-		_dialogTemplateInstance: null,
+		_templateInstance: null,
 
 		_dialogEventsHandler: null,
 
 		_pendingProps: null,
 
 		created: function () {
-			this._instanceProps = {};
-			this._parentModel = true;
 			this._dialogEventsHandler = this._handlePaperDialogEvents.bind(this);
-			this._pendingProps = [];
-		},
-
-		detached: function () {
-			this._detachDialog();
+			this._pendingProps = {};
+			this._spawn = this._spawn.bind(this);
+			this._spawnSteps = [this._createDialog, this._createInstance];
 		},
 
 		attached: function () {
-			if (this._paperDialog === null) {
-				this._paperDialog = this._createDialog();
-			}
+			this._observer = Polymer.dom(this).observeNodes(this._onNodesChange);
 		},
 
+		detached: function () {
+			if (this._observer) {
+				Polymer.dom(this).unobserveNodes(this._observer);
+				this._observer = null;
+			}
+			this._detachDialog();
+		},
+
+		_spawn() {
+			const step = this._spawnSteps.shift();
+			if (!step) {
+				return;
+			}
+			step.call(this);
+			_async(this._spawn);
+		},
 		/**
 		 * Get the generated paper-dialog element
 		 */
@@ -73,10 +84,11 @@
 		},
 
 		open: function () {
-			if (this._paperDialog === null) {
-				// Missing template in cosmoz-dialog
+			if (!this._userTemplate) {
 				return;
 			}
+
+			this._spawnSteps.splice(0).forEach(step => step.call(this));
 
 			this._attachDialog();
 			this._paperDialog.open();
@@ -89,58 +101,69 @@
 		},
 
 		_detachDialog: function () {
-			if (this._paperDialog !== null && this._paperDialog.parentNode) {
+			if (this._paperDialog != null && this._paperDialog.parentNode) {
 				Polymer.dom(this._paperDialog.parentNode).removeChild(this._paperDialog);
 			}
 		},
 
 
 		close: function () {
-			if (this._paperDialog !== null) {
+			if (this._paperDialog != null) {
 				this._paperDialog.close();
 			}
 		},
 
 		fit: function () {
-			if (this._paperDialog !== null && this._paperDialog.opened) {
+			if (this._paperDialog != null && this._paperDialog.opened) {
 				this._paperDialog.fit();
 			}
 		},
 
 		refit: function () {
-			if (this._paperDialog !== null && this._paperDialog.opened) {
+			if (this._paperDialog != null && this._paperDialog.opened) {
 				this._paperDialog.refit();
 			}
 		},
 
 		center: function () {
-			if (this._paperDialog !== null && this._paperDialog.opened) {
+			if (this._paperDialog != null && this._paperDialog.opened) {
 				this._paperDialog.center();
 			}
 		},
 
-		_createDialog: function () {
-			var dialog = document.createElement('paper-dialog'),
-				template;
-			if (!this.ctor) {
-				template = Polymer.dom(this).querySelector('template');
-				if (!template) {
-					console.warn('cosmoz-dialog without template', this);
-					return null;
-				}
+		_ensureTemplatized: function () {
+			if (this.ctor || !this._userTemplate) {
+				return;
+			}
+			this._instanceProps = {};
+			this._parentModel = true;
+			this.templatize(this._userTemplate);
+		},
 
-				this.templatize(template);
+		_onNodesChange() {
+			if (this._userTemplate) {
+				return;
+			}
+			const template = this.queryEffectiveChildren('template');
+
+			if (!template) {
+				console.warn('cosmoz-dialog-behavior requires a template');
+				this._spawnSteps.splice(0);
+			}
+			this._userTemplate = template;
+			this._ensureTemplatized();
+			_async(this._spawn);
+
+		},
+
+		_createDialog: function () {
+			if (!this._userTemplate) {
+				return;
 			}
 
-			this._dialogTemplateInstance = this.stamp();
-
-			this._pendingProps.forEach(function (propValuePair) {
-				this._dialogTemplateInstance.forwardHostProp(propValuePair.prop, propValuePair.value);
-			}, this);
-			this._pendingProps.splice(0);
-			Polymer.dom(dialog).appendChild(this._dialogTemplateInstance.root);
-
+			var dialog = document.createElement('paper-dialog');
 			dialog.modal = this.modal;
+
 			if (!this.modal) {
 				dialog.withBackdrop = this.withBackdrop;
 			}
@@ -150,7 +173,36 @@
 			dialog.addEventListener('iron-overlay-opened', this._dialogEventsHandler);
 			dialog.addEventListener('iron-overlay-closed', this._dialogEventsHandler);
 
+			this._paperDialog = dialog;
 			return dialog;
+		},
+
+		_createInstance: function () {
+			if (!this._paperDialog) {
+				return;
+			}
+			const instance = this.stamp(),
+				props = this._pendingProps;
+
+			Object.keys(props).forEach(key => {
+				const value = props[key];
+				if (instance.forwardHostProp) {
+					instance.forwardHostProp(key, value);
+					return;
+				}
+				instance[key] = value;
+			});
+
+			this._pendingProps = {};
+
+			this._templateInstance = instance;
+			Polymer.dom(this._paperDialog).appendChild(instance.root);
+
+			if (instance._flushProperties) {
+				instance._flushProperties(true);
+			}
+
+			return instance;
 		},
 
 		_handlePaperDialogEvents: function (event) {
@@ -158,24 +210,29 @@
 		},
 
 		_forwardParentProp: function (prop, value) {
-			if (this._dialogTemplateInstance) {
-				this._dialogTemplateInstance[prop] = value;
+			const instance = this._templateInstance;
+			if (!instance) {
+				this._pendingProps[prop] = value;
+				return;
 			}
+			instance[prop] = value;
 		},
 
 		_forwardHostPropV2: function (prop, value) {
-			if (!this._dialogTemplateInstance) {
-				this._pendingProps.push({ prop: prop, value: value});
-			} else {
-				this._dialogTemplateInstance.forwardHostProp(prop, value);
+			const instance = this._templateInstance;
+			if (!instance) {
+				this._pendingProps[prop] = value;
+				return;
 			}
+			instance.forwardHostProp(prop, value);
 		},
 
 		_forwardParentPath: function (path, value) {
-			if (this._dialogTemplateInstance) {
-				this._dialogTemplateInstance.notifyPath(path, value, true);
+			const instance = this._templateInstance;
+			if (instance) {
+				instance.notifyPath(path, value, true);
 			}
-		},
+		}
 	};
 
 	Cosmoz.DialogBehavior = [Cosmoz.DialogBehaviorImpl, Polymer.Templatizer];

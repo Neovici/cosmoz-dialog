@@ -2,9 +2,7 @@
 engines:
   eslint:
     enabled: true
-    checks:
-      complexity:
-        enabled: false
+    channel: "eslint-4"
     config:
       sanitize_batch: false
       extensions:
@@ -19,6 +17,8 @@ engines:
 
   fixme:
     enabled: true
+    exclude_paths:
+      - "analysis.json"
 
 ratings:
   paths:

@@ -25,6 +25,10 @@
 
 				_form: null,
 
+				created: function () {
+					this._spawnSteps.push(this._createForm);
+				},
+
 				get form() {
 					return this._form;
 				},
@@ -41,16 +45,16 @@
 					}
 				},
 
-				_createDialog: function () {
-					var dialog = Cosmoz.DialogBehaviorImpl._createDialog.apply(this),
-						ironForm = document.createElement('iron-form'),
+				_createForm: function () {
+					if (!this._paperDialog) {
+						return;
+					}
+					const ironForm = document.createElement('iron-form'),
 						form = document.createElement('form');
 
 					Polymer.dom(ironForm).appendChild(form);
-					Polymer.dom(form).appendChild(dialog);
+					Polymer.dom(form).appendChild(this._paperDialog);
 					this._form = ironForm;
-
-					return dialog;
 				}
 			});
 
@@ -58,4 +62,3 @@
 
 	</script>
 </dom-module>
-
