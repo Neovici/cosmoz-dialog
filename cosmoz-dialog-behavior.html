@@ -33,6 +33,14 @@
 				type: Boolean,
 				value: false
 			},
+
+			/**
+			 * True if the dialog should be rendered before first call to `open`.
+			 */
+			prerender: {
+				type: Boolean,
+				value: false
+			}
 		},
 
 		hostAttributes: {
@@ -101,9 +109,17 @@
 		},
 
 		_detachDialog: function () {
-			if (this._paperDialog != null && this._paperDialog.parentNode) {
-				Polymer.dom(this._paperDialog.parentNode).removeChild(this._paperDialog);
+			const dialog = this._paperDialog;
+			if (dialog == null) {
+				return;
 			}
+			dialog.removeEventListener('iron-overlay-opened', this._dialogEventsHandler);
+			dialog.removeEventListener('iron-overlay-closed', this._dialogEventsHandler);
+
+			if (!dialog.parentNode) {
+				return;
+			}
+			Polymer.dom(dialog.parentNode).removeChild(dialog);
 		},
 
 
@@ -152,8 +168,12 @@
 			}
 			this._userTemplate = template;
 			this._ensureTemplatized();
-			_async(this._spawn);
 
+			if (!this.prerender) {
+				return;
+			}
+
+			_async(this._spawn);
 		},
 
 		_createDialog: function () {
