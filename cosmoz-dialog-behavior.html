@@ -109,9 +109,17 @@
 		},
 
 		_detachDialog: function () {
-			if (this._paperDialog != null && this._paperDialog.parentNode) {
-				Polymer.dom(this._paperDialog.parentNode).removeChild(this._paperDialog);
+			const dialog = this._paperDialog;
+			if (dialog == null) {
+				return;
 			}
+			dialog.removeEventListener('iron-overlay-opened', this._dialogEventsHandler);
+			dialog.removeEventListener('iron-overlay-closed', this._dialogEventsHandler);
+
+			if (dialog.parentNode) {
+				return;
+			}
+			Polymer.dom(dialog.parentNode).removeChild(dialog);
 		},
 
 
