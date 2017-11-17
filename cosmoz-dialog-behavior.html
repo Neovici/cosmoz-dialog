@@ -66,6 +66,7 @@
 
 		attached: function () {
 			this._observer = Polymer.dom(this).observeNodes(this._onNodesChange);
+			this.listen(window, 'cosmoz-dialog-closeall', 'close');
 		},
 
 		detached: function () {
@@ -74,6 +75,7 @@
 				this._observer = null;
 			}
 			this._detachDialog();
+			this.unlisten(window, 'cosmoz-dialog-closeall', 'close');
 		},
 
 		_spawn() {
