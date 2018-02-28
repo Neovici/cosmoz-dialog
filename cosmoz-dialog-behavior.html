@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../cosmoz-templatize/cosmoz-templatize.html">
 
 <script>
 
@@ -149,15 +150,6 @@
 			}
 		},
 
-		_ensureTemplatized: function () {
-			if (this.ctor || !this._userTemplate) {
-				return;
-			}
-			this._instanceProps = {};
-			this._parentModel = true;
-			this.templatize(this._userTemplate);
-		},
-
 		_onNodesChange() {
 			if (this._userTemplate) {
 				return;
@@ -168,8 +160,16 @@
 				console.warn('cosmoz-dialog-behavior requires a template');
 				this._spawnSteps.splice(0);
 			}
+
 			this._userTemplate = template;
-			this._ensureTemplatized();
+
+			this._instanceCtor = Cosmoz.Templatize.templatize(template, this, {
+				instanceProps: {},
+				parentModel: true,
+				forwardParentProp: this._forwardHostProp,
+				forwardParentPath: this._forwardParentPath,
+				forwardHostProp: this._forwardHostProp,
+			});
 
 			if (!this.prerender) {
 				return;
@@ -203,50 +203,33 @@
 			if (!this._paperDialog) {
 				return;
 			}
-			const instance = this.stamp(),
-				props = this._pendingProps;
 
-			Object.keys(props).forEach(key => {
-				const value = props[key];
-				if (instance.forwardHostProp) {
-					instance.forwardHostProp(key, value);
-					return;
-				}
-				instance[key] = value;
-			});
-
-			this._pendingProps = {};
-
+			const instance = new this._instanceCtor(this._pendingProps);
 			this._templateInstance = instance;
+
 			Polymer.dom(this._paperDialog).appendChild(instance.root);
 
 			if (instance._flushProperties) {
 				instance._flushProperties(true);
 			}
-
-			return instance;
 		},
 
 		_handlePaperDialogEvents: function (event) {
 			this.fire(event.type);
 		},
 
-		_forwardParentProp: function (prop, value) {
+		_forwardHostProp: function (prop, value) {
 			const instance = this._templateInstance;
 			if (!instance) {
 				this._pendingProps[prop] = value;
+				return;
+			}
+
+			if (instance.forwardHostProp) {
+				instance.forwardHostProp(prop, value);
 				return;
 			}
 			instance[prop] = value;
-		},
-
-		_forwardHostPropV2: function (prop, value) {
-			const instance = this._templateInstance;
-			if (!instance) {
-				this._pendingProps[prop] = value;
-				return;
-			}
-			instance.forwardHostProp(prop, value);
 		},
 
 		_forwardParentPath: function (path, value) {
@@ -257,7 +240,7 @@
 		}
 	};
 
-	Cosmoz.DialogBehavior = [Cosmoz.DialogBehaviorImpl, Polymer.Templatizer];
+	Cosmoz.DialogBehavior = [Cosmoz.DialogBehaviorImpl];
 
 })();
 
