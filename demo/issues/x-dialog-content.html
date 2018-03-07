@@ -1,0 +1,40 @@
+<link rel="import" href="../../../polymer/polymer.html">
+
+<dom-module id="x-dialog-content">
+	<template>
+		<div>
+			<div><span>inProp=</span><span>[[ inProp ]]</span></div>
+			<div><span>outProp=</span><span>[[ outProp ]]</span></div>
+		</div>
+	</template>
+	<script>
+
+(function () {
+	'use strict';
+
+	Polymer({
+
+		is: 'x-dialog-content',
+
+		properties: {
+
+			inProp: {
+				type: String,
+			},
+
+			outProp: {
+				type: String,
+				notify: true,
+				computed: '_computeOutProp(inProp)'
+			}
+		},
+
+		_computeOutProp(inProp) {
+			return '[x-dialog-content(' + inProp + ')]';
+		}
+
+	});
+
+})();
+
+</script>
