@@ -2,6 +2,16 @@
 	"plugins": {
 		"local": {
 			"browsers": ["chrome", "firefox"]
-		}
+		},
+		"istanbul": {
+      "dir": "./coverage",
+      "reporters": ["text-summary", "lcov"],
+      "include": [
+        "cosmoz-dialog-behavior.html",
+				"cosmoz-dialog.html",
+				"cosmoz-form-dialog.html"
+      ],
+      "exclude": []
+    }
 	}
 }
