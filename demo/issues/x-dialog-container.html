@@ -1,0 +1,50 @@
+<link rel="import" href="../../../polymer/polymer.html">
+<link rel="import" href="../../../paper-button/paper-button.html">
+<link rel="import" href="../../cosmoz-dialog.html">
+<link rel="import" href="x-dialog-content.html">
+
+<dom-module id="x-dialog-container">
+	<template>
+		<paper-button raised on-click="openDialog">Open</paper-button>
+		<div>containerProp=<span>[[containerProp]]</span></div>
+		<div>dialogOutProp=<span>[[dialogOutProp]]</span></div>
+		<cosmoz-dialog with-backdrop id="xDialog" prerender>
+			<template>
+				<h2>Dialog Title</h2>
+				<p>
+					<x-dialog-content in-prop="{{ containerProp }}" out-prop="{{dialogOutProp}}"></x-dialog-content>
+				</p>
+				<div class="buttons">
+					<paper-button dialog-dismiss>Cancel</paper-button>
+					<paper-button dialog-confirm>Accept</paper-button>
+				</div>
+			</template>
+		</cosmoz-dialog>
+	</template>
+	<script>
+
+(function () {
+	'use strict';
+
+	Polymer({
+
+		is: 'x-dialog-container',
+
+		properties: {
+			containerProp: {
+				type: String
+			},
+			dialogOutProp: {
+				type: String
+			},
+		},
+
+		openDialog() {
+			this.$.xDialog.open();
+		},
+
+	});
+
+})();
+
+</script>
