@@ -25,7 +25,7 @@
 
 				_form: null,
 
-				created: function () {
+				created() {
 					this._spawnSteps.push(this._createForm);
 				},
 
@@ -33,19 +33,19 @@
 					return this._form;
 				},
 
-				_detachDialog: function () {
+				_detachDialog() {
 					if (this._form !== null && this._form.parentNode) {
 						Polymer.dom(this._form.parentNode).removeChild(this._form);
 					}
 				},
 
-				_attachDialog: function () {
+				_attachDialog() {
 					if (!this._form.parentNode) {
 						Polymer.dom(document.body).appendChild(this._form);
 					}
 				},
 
-				_createForm: function () {
+				_createForm() {
 					if (!this._paperDialog) {
 						return;
 					}

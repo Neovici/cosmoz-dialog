@@ -58,19 +58,19 @@
 
 		_pendingProps: null,
 
-		created: function () {
+		created() {
 			this._dialogEventsHandler = this._handlePaperDialogEvents.bind(this);
 			this._pendingProps = {};
 			this._spawn = this._spawn.bind(this);
 			this._spawnSteps = [this._createDialog, this._createInstance];
 		},
 
-		attached: function () {
+		attached() {
 			this._observer = Polymer.dom(this).observeNodes(this._onNodesChange);
 			this.listen(window, 'cosmoz-dialog-closeall', 'close');
 		},
 
-		detached: function () {
+		detached() {
 			if (this._observer) {
 				Polymer.dom(this).unobserveNodes(this._observer);
 				this._observer = null;
@@ -94,7 +94,7 @@
 			return this._paperDialog;
 		},
 
-		open: function () {
+		open() {
 			if (!this._userTemplate) {
 				return;
 			}
@@ -105,13 +105,13 @@
 			this._paperDialog.open();
 		},
 
-		_attachDialog: function () {
+		_attachDialog() {
 			if (!this._paperDialog.parentNode) {
 				Polymer.dom(document.body).appendChild(this._paperDialog);
 			}
 		},
 
-		_detachDialog: function () {
+		_detachDialog() {
 			const dialog = this._paperDialog;
 			if (dialog == null) {
 				return;
@@ -126,25 +126,25 @@
 		},
 
 
-		close: function () {
+		close() {
 			if (this._paperDialog != null) {
 				this._paperDialog.close();
 			}
 		},
 
-		fit: function () {
+		fit() {
 			if (this._paperDialog != null && this._paperDialog.opened) {
 				this._paperDialog.fit();
 			}
 		},
 
-		refit: function () {
+		refit() {
 			if (this._paperDialog != null && this._paperDialog.opened) {
 				this._paperDialog.refit();
 			}
 		},
 
-		center: function () {
+		center() {
 			if (this._paperDialog != null && this._paperDialog.opened) {
 				this._paperDialog.center();
 			}
@@ -178,7 +178,7 @@
 			_async(this._spawn);
 		},
 
-		_createDialog: function () {
+		_createDialog() {
 			if (!this._userTemplate) {
 				return;
 			}
@@ -199,7 +199,7 @@
 			return dialog;
 		},
 
-		_createInstance: function () {
+		_createInstance() {
 			if (!this._paperDialog) {
 				return;
 			}
@@ -214,11 +214,11 @@
 			}
 		},
 
-		_handlePaperDialogEvents: function (event) {
+		_handlePaperDialogEvents(event) {
 			this.fire(event.type);
 		},
 
-		_forwardHostProp: function (prop, value) {
+		_forwardHostProp(prop, value) {
 			const instance = this._templateInstance;
 			if (!instance) {
 				this._pendingProps[prop] = value;
@@ -232,7 +232,7 @@
 			instance[prop] = value;
 		},
 
-		_forwardParentPath: function (path, value) {
+		_forwardParentPath(path, value) {
 			const instance = this._templateInstance;
 			if (instance) {
 				instance.notifyPath(path, value, true);
