@@ -4,7 +4,7 @@ dist: trusty
 sudo: required
 env:
   global:
-    - CC_TEST_REPORTER_ID=
+    - CC_TEST_REPORTER_ID=ee7700d6670416f453c04be8c8ea32b756b7309ce33bf965402136f5d4fb91bc
 addons:
   firefox: latest
   apt:
