@@ -24,7 +24,7 @@
 		"polymer": "Polymer/polymer#1.9 - 2",
 		"paper-dialog": "PolymerElements/paper-dialog#1 - 2",
 		"iron-form": "PolymerElements/iron-form#1 - 2",
-		"cosmoz-templatize": "Neovici/cosmoz-templatize#master"
+		"cosmoz-templatize": "Neovici/cosmoz-templatize#^1.0.0"
 	},
 	"devDependencies": {
 		"paper-button": "PolymerElements/paper-button#1 - 2",
@@ -40,7 +40,7 @@
 				"polymer": "Polymer/polymer#^1.9",
 				"paper-dialog": "PolymerElements/paper-dialog#^1.1.0",
 				"iron-form": "PolymerElements/iron-form#1 - 2",
-				"cosmoz-templatize": "Neovici/cosmoz-templatize#master"
+				"cosmoz-templatize": "Neovici/cosmoz-templatize#^1.0.0"
 			},
 			"devDependencies": {
 				"paper-button": "PolymerElements/paper-button#^1.0.15",
