@@ -18,12 +18,12 @@
 	*/
 	Cosmoz.DialogBehaviorImpl = {
 		properties: {
-			modal: {
-				type: Boolean
-			},
-
+			/**
+			 *  Set to true to display a backdrop behind the overlay
+			 */
 			withBackdrop: {
-				type: Boolean
+				type: Boolean,
+				value: true
 			},
 
 			/**
@@ -41,6 +41,22 @@
 			prerender: {
 				type: Boolean,
 				value: false
+			},
+
+			/**
+			 * Set to true to disable closing dialog with the ESC key
+			 */
+			noCancelOnEscKey: {
+				type: Boolean,
+				value: false
+			},
+
+			/**
+			 * Set to true to diable closing dialog when clicking outside of dialog
+			 */
+			noCancelOnOutsideClick: {
+				type: Boolean,
+				value: true
 			}
 		},
 
@@ -184,14 +200,12 @@
 				return;
 			}
 
-			var dialog = document.createElement('paper-dialog');
-			dialog.modal = this.modal;
-
-			if (!this.modal) {
-				dialog.withBackdrop = this.withBackdrop;
-			}
+			const dialog = document.createElement('paper-dialog');
 
 			dialog.noAutoFocus = this.noAutoFocus;
+			dialog.noCancelOnEscKey = this.noCancelOnEscKey;
+			dialog.noCancelOnOutsideClick = this.noCancelOnOutsideClick;
+			dialog.withBackdrop = this.withBackdrop;
 
 			dialog.addEventListener('iron-overlay-opened', this._dialogEventsHandler);
 			dialog.addEventListener('iron-overlay-closed', this._dialogEventsHandler);
