@@ -76,10 +76,10 @@ we have to override the defaults using `SELENIUM_OVERRIDES_CONFIG` environment v
 
 On windows, uses:
 ```
-set SELENIUM_OVERRIDES_CONFIG=../../../selenium-overrides-win64.json
+set SELENIUM_OVERRIDES_CONFIG=../../../selenium-overrides-win.json
 ```
 
 On *nix like environements, uses
 ```
-export SELENIUM_OVERRIDES_CONFIG=../../../selenium-overrides.json
+export SELENIUM_OVERRIDES_CONFIG=../../../selenium-overrides-linux.json
 ```
