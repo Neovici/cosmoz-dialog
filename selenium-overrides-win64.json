@@ -1,0 +1,18 @@
+{
+	"selenium-overrides": {
+		"baseURL": "https://selenium-release.storage.googleapis.com",
+		"version": "3.12.0",
+		"drivers": {
+			"chrome": {
+				"version": "2.43",
+				"arch": "win64",
+				"baseURL": "https://chromedriver.storage.googleapis.com"
+			},
+			"firefox": {
+				"version": "0.22.0",
+				"arch": "win64",
+				"baseURL": "https://github.com/mozilla/geckodriver/releases/download"
+			}
+		}
+	}
+}

@@ -65,3 +65,21 @@ Example:
 ## Documentation
 
 See http://neovici.github.io/cosmoz-dialog.
+
+## Contributing
+
+### Running tests
+
+`cosmoz-dialog` uses `web-component-tester` to run tests.
+`web-component-tester` uses `selenium-standalone` to execute the tests, and since `selenium-standalone` is not always up to date with WebDrivers versions, 
+we have to override the defaults using `SELENIUM_OVERRIDES_CONFIG` environment variable.
+
+On windows, uses:
+```
+set SELENIUM_OVERRIDES_CONFIG=../../../selenium-overrides-win64.json
+```
+
+On *nix like environements, uses
+```
+export SELENIUM_OVERRIDES_CONFIG=../../../selenium-overrides.json
+```
