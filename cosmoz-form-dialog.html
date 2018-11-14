@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../iron-form/iron-form.html">
 <link rel="import" href="cosmoz-dialog-behavior.html">
 
@@ -7,58 +7,58 @@
 @demo demo/form-dialog.html Dialog Demo
 -->
 <dom-module id="cosmoz-form-dialog">
-	<template>
-		<div hidden>
-			<slot></slot>
-		</div>
-	</template>
 	<script>
-		(function () {
 
-			Polymer({
+		class CosmozFormDialog extends Polymer.mixinBehaviors(Cosmoz.DialogBehavior, Polymer.Element) {
+			static get is() {
+				return 'cosmoz-form-dialog';
+			}
 
-				is: 'cosmoz-form-dialog',
+			constructor() {
+				super();
+				this._form = null;
+				this._spawnSteps.push(this._createForm);
+			}
 
-				behaviors: [
-					Cosmoz.DialogBehavior
-				],
+			static get template() {
+				return Polymer.html`
+					<template>
+						<div hidden>
+							<slot></slot>
+						</div>
+					</template>
+				`;
+			}
 
-				_form: null,
+			get form() {
+				return this._form;
+			}
 
-				created() {
-					this._spawnSteps.push(this._createForm);
-				},
-
-				get form() {
-					return this._form;
-				},
-
-				_detachDialog() {
-					if (this._form !== null && this._form.parentNode) {
-						Polymer.dom(this._form.parentNode).removeChild(this._form);
-					}
-				},
-
-				_attachDialog() {
-					if (!this._form.parentNode) {
-						Polymer.dom(document.body).appendChild(this._form);
-					}
-				},
-
-				_createForm() {
-					if (!this._paperDialog) {
-						return;
-					}
-					const ironForm = document.createElement('iron-form'),
-						form = document.createElement('form');
-
-					Polymer.dom(ironForm).appendChild(form);
-					Polymer.dom(form).appendChild(this._paperDialog);
-					this._form = ironForm;
+			_detachDialog() {
+				if (this._form !== null && this._form.parentNode) {
+					this._form.parentNode.removeChild(this._form);
 				}
-			});
+			}
 
-		})();
+			_attachDialog() {
+				if (!this._form.parentNode) {
+					document.body.appendChild(this._form);
+				}
+			}
+
+			_createForm() {
+				if (!this._paperDialog) {
+					return;
+				}
+				const ironForm = document.createElement('iron-form'),
+					form = document.createElement('form');
+
+				ironForm.appendChild(form);
+				form.appendChild(this._paperDialog);
+				this._form = ironForm;
+			}
+		}
+		customElements.define(CosmozFormDialog.is, CosmozFormDialog);
 
 	</script>
 </dom-module>

@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="cosmoz-dialog-behavior.html">
 
 <!--
@@ -14,18 +14,11 @@ Content of the `<paper-dialog>` must be specified in a `<template>` element.
 -->
 <script>
 
-(function () {
-	'use strict';
-
-	Polymer({
-
-		is: 'cosmoz-dialog',
-
-		behaviors: [
-			Cosmoz.DialogBehavior
-		]
-	});
-
-})();
+class CosmozDialog extends Polymer.mixinBehaviors(Cosmoz.DialogBehavior, Polymer.Element) {
+	static get is() {
+		return 'cosmoz-dialog'
+	}
+}
+customElements.define(CosmozDialog.is, CosmozDialog);
 
 </script>

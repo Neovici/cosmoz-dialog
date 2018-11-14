@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
 <link rel="import" href="../cosmoz-templatize/cosmoz-templatize.html">
 
@@ -11,7 +11,6 @@
 	'use strict';
 
 	window.Cosmoz = window.Cosmoz || {};
-	const _async = window.requestIdleCallback || window.requestAnimationFrame || Polymer.Base.async;
 
 	/**
 	 * @polymerBehavior Cosmoz.DialogBehavior
@@ -74,25 +73,28 @@
 
 		_pendingProps: null,
 
+		_dialogCloseEventHandler: null,
+
 		created() {
 			this._dialogEventsHandler = this._handlePaperDialogEvents.bind(this);
+			this._dialogCloseEventHandler = this.close.bind(this);
 			this._pendingProps = {};
 			this._spawn = this._spawn.bind(this);
 			this._spawnSteps = [this._createDialog, this._createInstance];
 		},
 
 		attached() {
-			this._observer = Polymer.dom(this).observeNodes(this._onNodesChange);
-			this.listen(window, 'cosmoz-dialog-closeall', 'close');
+			this._observer = new Polymer.FlattenedNodesObserver(this, this._onNodesChange);
+			window.addEventListener('cosmoz-dialog-closeall', this._dialogCloseEventHandler);
 		},
 
 		detached() {
 			if (this._observer) {
-				Polymer.dom(this).unobserveNodes(this._observer);
+				this._observer.disconnect();
 				this._observer = null;
 			}
 			this._detachDialog();
-			this.unlisten(window, 'cosmoz-dialog-closeall', 'close');
+			window.removeEventListener('cosmoz-dialog-closeall', this._dialogCloseEventHandler)
 			this._templateInstance = null;
 		},
 
@@ -102,7 +104,7 @@
 				return;
 			}
 			step.call(this);
-			_async(this._spawn);
+			Polymer.Async.microTask.run(() => this._spawn);
 		},
 		/**
 		 * Get the generated paper-dialog element
@@ -124,7 +126,7 @@
 
 		_attachDialog() {
 			if (!this._paperDialog.parentNode) {
-				Polymer.dom(document.body).appendChild(this._paperDialog);
+				document.body.appendChild(this._paperDialog);
 			}
 		},
 
@@ -139,7 +141,7 @@
 			if (!dialog.parentNode) {
 				return;
 			}
-			Polymer.dom(dialog.parentNode).removeChild(dialog);
+			dialog.parentNode.removeChild(dialog);
 		},
 
 
@@ -192,7 +194,7 @@
 				return;
 			}
 
-			_async(this._spawn);
+			Polymer.Async.microTask.run(() => this._spawn);
 		},
 
 		_createDialog() {
@@ -222,7 +224,7 @@
 			const instance = new this._instanceCtor(this._pendingProps);
 			this._templateInstance = instance;
 
-			Polymer.dom(this._paperDialog).appendChild(instance.root);
+			this._paperDialog.appendChild(instance.root);
 
 			if (instance._flushProperties) {
 				instance._flushProperties(true);
@@ -230,7 +232,7 @@
 		},
 
 		_handlePaperDialogEvents(event) {
-			this.fire(event.type);
+			this.dispatchEvent(new CustomEvent(event.type, { bubbles: true, composed: true }));
 		},
 
 		_forwardHostProp(prop, value) {
