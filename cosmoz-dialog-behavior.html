@@ -233,7 +233,13 @@
 		},
 
 		_handlePaperDialogEvents(event) {
-			this.dispatchEvent(new CustomEvent(event.type, { bubbles: true, composed: true }));
+			this.dispatchEvent(new CustomEvent(event.type, {
+				bubbles: true,
+				composed: true,
+				detail: {
+					originalTarget: event.target
+				}
+			}));
 		},
 
 		_forwardHostProp(prop, value) {
