@@ -23,8 +23,7 @@
 	"dependencies": {
 		"polymer": "Polymer/polymer#^2.6.1",
 		"paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
-		"iron-form": "PolymerElements/iron-form#^2.0.0",
-		"cosmoz-templatize": "Neovici/cosmoz-templatize#^1.0.0"
+		"iron-form": "PolymerElements/iron-form#^2.0.0"
 	},
 	"devDependencies": {
 		"paper-button": "PolymerElements/paper-button#^2.0.0",
