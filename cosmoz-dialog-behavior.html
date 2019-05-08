@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../polymer/lib/utils/async.html">
+<link rel="import" href="../polymer/lib/utils/templatize.html">
 <link rel="import" href="../paper-dialog/paper-dialog.html">
-<link rel="import" href="../cosmoz-templatize/cosmoz-templatize.html">
 
 <script>
 
@@ -183,11 +183,9 @@
 
 			this._userTemplate = template;
 
-			this._instanceCtor = Cosmoz.Templatize.templatize(template, this, {
+			this._instanceCtor = Polymer.Templatize.templatize(template, this, {
 				instanceProps: {},
 				parentModel: true,
-				forwardParentProp: this._forwardHostProp,
-				forwardParentPath: this._forwardParentPath,
 				forwardHostProp: this._forwardHostProp,
 			});
 
@@ -254,13 +252,6 @@
 				return;
 			}
 			instance[prop] = value;
-		},
-
-		_forwardParentPath(path, value) {
-			const instance = this._templateInstance;
-			if (instance) {
-				instance.notifyPath(path, value, true);
-			}
 		}
 	};
 
