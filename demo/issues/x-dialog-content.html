@@ -8,33 +8,30 @@
 		</div>
 	</template>
 	<script>
-
-(function () {
-	'use strict';
-
-	Polymer({
-
-		is: 'x-dialog-content',
-
-		properties: {
-
-			inProp: {
-				type: String,
-			},
-
-			outProp: {
-				type: String,
-				notify: true,
-				computed: '_computeOutProp(inProp)'
+		/*global Polymer*/
+		class XDialogContent extends Polymer.Element {
+			static get is() {
+				return 'x-dialog-content';
 			}
-		},
 
-		_computeOutProp(inProp) {
-			return '[x-dialog-content(' + inProp + ')]';
+			static get properties() {
+				return {
+
+					inProp: {
+						type: String,
+					},
+
+					outProp: {
+						type: String,
+						notify: true,
+						computed: '_computeOutProp(inProp)'
+					}
+				};
+			}
+			_computeOutProp(inProp) {
+				return '[x-dialog-content(' + inProp + ')]';
+			}
 		}
-
-	});
-
-})();
-
-</script>
+		customElements.define(XDialogContent.is, XDialogContent);
+	</script>
+</dom-module>

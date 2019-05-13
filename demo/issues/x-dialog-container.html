@@ -22,29 +22,25 @@
 		</cosmoz-dialog>
 	</template>
 	<script>
-
-(function () {
-	'use strict';
-
-	Polymer({
-
-		is: 'x-dialog-container',
-
-		properties: {
-			containerProp: {
-				type: String
-			},
-			dialogOutProp: {
-				type: String
-			},
-		},
-
-		openDialog() {
-			this.$.xDialog.open();
-		},
-
-	});
-
-})();
-
-</script>
+		/*global Polymer*/
+		class XDialogContainer extends Polymer.Element {
+			static get is() {
+				return 'x-dialog-container';
+			}
+			static get properties() {
+				return {
+					containerProp: {
+						type: String
+					},
+					dialogOutProp: {
+						type: String
+					}
+				};
+			}
+			openDialog() {
+				this.$.xDialog.open();
+			}
+		}
+		customElements.define(XDialogContent.is, XDialogContent);
+	</script>
+</dom-module>
