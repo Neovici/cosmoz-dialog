@@ -6,25 +6,31 @@
 
 	<title>cosmoz-dialog demo</title>
 
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+	<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+	<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
 
-	<link rel="import" href="../../paper-button/paper-button.html">
-	<link rel="import" href="../cosmoz-form-dialog.html">
+	<script type="module" src="/components/@polymer/paper-button/paper-button.js"></script>
 
-	<custom-style>
-		<style is="custom-style" include="demo-pages-shared-styles">
-			/* This will create a new stacking context above the dialog */
-			#stackingContext {
-				transform: translateX(0);
-			}
-		</style>
-	</custom-style>
+	<script type="module" src="../cosmoz-form-dialog.js"></script>
+
+	<script type="module">
+		const $documentContainer = document.createElement('template');
+
+		$documentContainer.innerHTML = `<custom-style>
+				<style is="custom-style" include="demo-pages-shared-styles">
+					/* This will create a new stacking context above the dialog */
+					#stackingContext {
+						transform: translateX(0);
+					}
+				</style>
+			</custom-style>`;
+
+		document.body.appendChild($documentContainer.content);
+	</script>
 </head>
 <body unresolved>
-
 	<h3>cosmoz-dialog in root stacking context</h3>
 	<demo-snippet>
 		<template>

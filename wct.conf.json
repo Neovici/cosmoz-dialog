@@ -17,9 +17,7 @@
       "dir": "./coverage",
       "reporters": ["text-summary", "lcov"],
       "include": [
-        "cosmoz-dialog-behavior.html",
-				"cosmoz-dialog.html",
-				"cosmoz-form-dialog.html"
+        "**/cosmoz-*.js"
       ],
       "exclude": []
     },
@@ -31,7 +29,7 @@
 			}, {
 				"browserName": "chrome",
 				"platform": "Windows 10",
-				"version": "dev"
+				"version": "stable"
 			}, {
 				"browserName": "chrome",
 				"platform": "Windows 10",
