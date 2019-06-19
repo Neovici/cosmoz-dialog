@@ -2,325 +2,19 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`<cosmoz-dialog>` is a wrapper element for `<paper-dialog>`, but that will append a paper-dialog to a `<cosmoz-dialog-container>`\ncontainer element or to the `<body>` element if no container is available.\nThis is an attempt to workaround stacking context issues with dialogs.\nInspired by https://github.com/PolymerLabs/iron-overlay.\n\nContent of the `<paper-dialog>` must be specified in a `<template>` element.",
+      "description": "`<cosmoz-dialog>` is a wrapper element for `<paper-dialog>`, but that will append a paper-dialog to a `<cosmoz-dialog-container>`\ncontainer element or to the `<body>` element if no container is available.\n\nThis is an attempt to workaround stacking context issues with dialogs.\nInspired by https://github.com/PolymerLabs/iron-overlay.\n\nContent of the `<paper-dialog>` must be specified in a `<template>` element.",
       "summary": "",
-      "path": "cosmoz-dialog.html",
+      "path": "cosmoz-dialog.js",
       "properties": [
         {
-          "name": "modal",
-          "type": "boolean",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 19,
-              "column": 3
-            },
-            "end": {
-              "line": 21,
-              "column": 4
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "withBackdrop",
-          "type": "boolean",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 23,
-              "column": 3
-            },
-            "end": {
-              "line": 25,
-              "column": 4
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "noAutoFocus",
-          "type": "boolean",
-          "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 31,
-              "column": 3
-            },
-            "end": {
-              "line": 34,
-              "column": 4
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "prerender",
-          "type": "boolean",
-          "description": "True if the dialog should be rendered before first call to `open`.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 39,
-              "column": 3
-            },
-            "end": {
-              "line": 42,
-              "column": 4
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "hostAttributes",
-          "type": "Object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 45,
-              "column": 2
-            },
-            "end": {
-              "line": 48,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_paperDialog",
-          "type": "object",
-          "description": "The generated paper-dialog element",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 51,
-              "column": 2
-            },
-            "end": {
-              "line": 51,
-              "column": 20
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_templateInstance",
-          "type": "object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 53,
-              "column": 2
-            },
-            "end": {
-              "line": 53,
-              "column": 25
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_dialogEventsHandler",
-          "type": "object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 55,
-              "column": 2
-            },
-            "end": {
-              "line": 55,
-              "column": 28
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_pendingProps",
-          "type": "object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 57,
-              "column": 2
-            },
-            "end": {
-              "line": 57,
-              "column": 21
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        }
-      ],
-      "methods": [
-        {
-          "name": "created",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 59,
-              "column": 2
-            },
-            "end": {
-              "line": 64,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "attached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 66,
-              "column": 2
-            },
-            "end": {
-              "line": 69,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "detached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 71,
-              "column": 2
-            },
-            "end": {
-              "line": 78,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_spawn",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 80,
-              "column": 2
-            },
-            "end": {
-              "line": 87,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
           "name": "paperDialog",
-          "description": "Get the generated paper-dialog element",
+          "type": "?",
+          "description": "Get the generated paper-dialog element\n\t ",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 91,
-              "column": 2
-            },
-            "end": {
-              "line": 93,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "open",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 95,
-              "column": 2
-            },
-            "end": {
-              "line": 104,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_attachDialog",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 106,
+              "line": 108,
               "column": 2
             },
             "end": {
@@ -328,170 +22,408 @@
               "column": 3
             }
           },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "withBackdrop",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to display a backdrop behind the overlay",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 19,
+              "column": 4
+            },
+            "end": {
+              "line": 22,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "true",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "noAutoFocus",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 28,
+              "column": 4
+            },
+            "end": {
+              "line": 31,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "prerender",
+          "type": "boolean | null | undefined",
+          "description": "True if the dialog should be rendered before first call to `open`.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 36,
+              "column": 4
+            },
+            "end": {
+              "line": 39,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "noCancelOnEscKey",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to disable closing dialog with the ESC key",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 44,
+              "column": 4
+            },
+            "end": {
+              "line": 47,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "noCancelOnOutsideClick",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to diable closing dialog when clicking outside of dialog",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 52,
+              "column": 4
+            },
+            "end": {
+              "line": 55,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "true",
+          "inheritedFrom": "dialogOpener"
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 79,
+              "column": 2
+            },
+            "end": {
+              "line": 83,
+              "column": 3
+            }
+          },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 85,
+              "column": 2
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "_spawn",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 96,
+              "column": 2
+            },
+            "end": {
+              "line": 103,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "open",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 112,
+              "column": 2
+            },
+            "end": {
+              "line": 121,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "_attachDialog",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 123,
+              "column": 2
+            },
+            "end": {
+              "line": 127,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_detachDialog",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 112,
+              "line": 129,
               "column": 2
             },
             "end": {
-              "line": 124,
+              "line": 141,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "close",
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 127,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 131,
+              "line": 147,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "fit",
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 133,
+              "line": 149,
               "column": 2
             },
             "end": {
-              "line": 137,
+              "line": 153,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "refit",
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 139,
+              "line": 155,
               "column": 2
             },
             "end": {
-              "line": 143,
+              "line": 159,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "center",
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 145,
+              "line": 161,
               "column": 2
             },
             "end": {
-              "line": 149,
+              "line": 165,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_ensureTemplatized",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 151,
-              "column": 2
-            },
-            "end": {
-              "line": 158,
-              "column": 3
-            }
+          "return": {
+            "type": "void"
           },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_onNodesChange",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 160,
+              "line": 167,
               "column": 2
             },
             "end": {
-              "line": 178,
+              "line": 193,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "params": [
+            {
+              "name": "{\n  addedNodes\n}"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_createDialog",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 180,
+              "line": 195,
               "column": 2
             },
             "end": {
-              "line": 199,
+              "line": 212,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_createInstance",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 201,
+              "line": 214,
               "column": 2
             },
             "end": {
@@ -501,20 +433,23 @@
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_handlePaperDialogEvents",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
               "line": 229,
               "column": 2
             },
             "end": {
-              "line": 231,
+              "line": 237,
               "column": 3
             }
           },
@@ -524,85 +459,39 @@
               "name": "event"
             }
           ],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
-          "name": "_forwardParentProp",
+          "name": "_forwardHostProp",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 233,
+              "line": 239,
               "column": 2
             },
             "end": {
-              "line": 240,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "prop"
-            },
-            {
-              "name": "value"
-            }
-          ],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_forwardHostPropV2",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 242,
-              "column": 2
-            },
-            "end": {
-              "line": 249,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "prop"
-            },
-            {
-              "name": "value"
-            }
-          ],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_forwardParentPath",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
               "line": 251,
-              "column": 2
-            },
-            "end": {
-              "line": 256,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "path"
+              "name": "prop"
             },
             {
               "name": "value"
             }
           ],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         }
       ],
       "staticMethods": [],
@@ -615,88 +504,107 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 19,
-          "column": 9
+          "line": 18,
+          "column": 0
         },
         "end": {
-          "line": 26,
-          "column": 2
+          "line": 22,
+          "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "CosmozDialog",
       "attributes": [
         {
-          "name": "modal",
-          "description": "",
+          "name": "with-backdrop",
+          "description": "Set to true to display a backdrop behind the overlay",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
               "line": 19,
-              "column": 3
+              "column": 4
             },
             "end": {
-              "line": 21,
-              "column": 4
+              "line": 22,
+              "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "with-backdrop",
-          "description": "",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 23,
-              "column": 3
-            },
-            "end": {
-              "line": 25,
-              "column": 4
-            }
-          },
-          "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "no-auto-focus",
           "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 31,
-              "column": 3
+              "line": 28,
+              "column": 4
             },
             "end": {
-              "line": 34,
-              "column": 4
+              "line": 31,
+              "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "prerender",
           "description": "True if the dialog should be rendered before first call to `open`.",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 39,
-              "column": 3
+              "line": 36,
+              "column": 4
             },
             "end": {
-              "line": 42,
-              "column": 4
+              "line": 39,
+              "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "no-cancel-on-esc-key",
+          "description": "Set to true to disable closing dialog with the ESC key",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 44,
+              "column": 4
+            },
+            "end": {
+              "line": 47,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "no-cancel-on-outside-click",
+          "description": "Set to true to diable closing dialog when clicking outside of dialog",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 52,
+              "column": 4
+            },
+            "end": {
+              "line": 55,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "dialogOpener"
         }
       ],
       "events": [],
@@ -705,357 +613,269 @@
         "selectors": []
       },
       "slots": [],
-      "tagname": "cosmoz-dialog"
+      "tagname": "cosmoz-dialog",
+      "mixins": [
+        "dialogOpener"
+      ]
     },
     {
       "description": "`<cosmoz-form-dialog>`",
       "summary": "",
-      "path": "cosmoz-form-dialog.html",
+      "path": "cosmoz-form-dialog.js",
       "properties": [
         {
-          "name": "modal",
-          "type": "boolean",
-          "description": "",
+          "name": "paperDialog",
+          "type": "?",
+          "description": "Get the generated paper-dialog element\n\t ",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 19,
-              "column": 3
+              "line": 108,
+              "column": 2
             },
             "end": {
-              "line": 21,
-              "column": 4
+              "line": 110,
+              "column": 3
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "readOnly": true
+            }
           },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "withBackdrop",
-          "type": "boolean",
-          "description": "",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to display a backdrop behind the overlay",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 23,
-              "column": 3
-            },
-            "end": {
-              "line": 25,
-              "column": 4
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "noAutoFocus",
-          "type": "boolean",
-          "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 31,
-              "column": 3
-            },
-            "end": {
-              "line": 34,
-              "column": 4
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "prerender",
-          "type": "boolean",
-          "description": "True if the dialog should be rendered before first call to `open`.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 39,
-              "column": 3
-            },
-            "end": {
-              "line": 42,
-              "column": 4
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "hostAttributes",
-          "type": "Object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 45,
-              "column": 2
-            },
-            "end": {
-              "line": 48,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_paperDialog",
-          "type": "object",
-          "description": "The generated paper-dialog element",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 51,
-              "column": 2
-            },
-            "end": {
-              "line": 51,
-              "column": 20
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_templateInstance",
-          "type": "object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 53,
-              "column": 2
-            },
-            "end": {
-              "line": 53,
-              "column": 25
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_dialogEventsHandler",
-          "type": "object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 55,
-              "column": 2
-            },
-            "end": {
-              "line": 55,
-              "column": 28
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_pendingProps",
-          "type": "object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 57,
-              "column": 2
-            },
-            "end": {
-              "line": 57,
-              "column": 21
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_form",
-          "type": "object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 25,
+              "line": 19,
               "column": 4
             },
             "end": {
-              "line": 25,
-              "column": 15
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "form",
-          "type": "Function",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 31,
-              "column": 4
-            },
-            "end": {
-              "line": 33,
+              "line": 22,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "readOnly": false
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "true",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "noAutoFocus",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 28,
+              "column": 4
+            },
+            "end": {
+              "line": 31,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "prerender",
+          "type": "boolean | null | undefined",
+          "description": "True if the dialog should be rendered before first call to `open`.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 36,
+              "column": 4
+            },
+            "end": {
+              "line": 39,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "noCancelOnEscKey",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to disable closing dialog with the ESC key",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 44,
+              "column": 4
+            },
+            "end": {
+              "line": 47,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "noCancelOnOutsideClick",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to diable closing dialog when clicking outside of dialog",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 52,
+              "column": 4
+            },
+            "end": {
+              "line": 55,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "true",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "form",
+          "type": "?",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 33,
+              "column": 1
+            },
+            "end": {
+              "line": 35,
+              "column": 2
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
             }
           }
         }
       ],
       "methods": [
         {
-          "name": "created",
+          "name": "connectedCallback",
           "description": "",
-          "privacy": "protected",
+          "privacy": "public",
           "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 27,
-              "column": 4
-            },
-            "end": {
-              "line": 29,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "params": []
-        },
-        {
-          "name": "attached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 66,
+              "line": 79,
               "column": 2
             },
             "end": {
-              "line": 69,
+              "line": 83,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
-          "name": "detached",
+          "name": "disconnectedCallback",
           "description": "",
-          "privacy": "protected",
+          "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 71,
+              "line": 85,
               "column": 2
             },
             "end": {
-              "line": 78,
+              "line": 94,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_spawn",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 80,
+              "line": 96,
               "column": 2
             },
             "end": {
-              "line": 87,
+              "line": 103,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "paperDialog",
-          "description": "Get the generated paper-dialog element",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 91,
-              "column": 2
-            },
-            "end": {
-              "line": 93,
-              "column": 3
-            }
+          "return": {
+            "type": "void"
           },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "open",
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 95,
+              "line": 112,
               "column": 2
             },
             "end": {
-              "line": 104,
+              "line": 121,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_attachDialog",
@@ -1063,16 +883,19 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 41,
-              "column": 4
+              "line": 43,
+              "column": 1
             },
             "end": {
-              "line": 45,
-              "column": 5
+              "line": 47,
+              "column": 2
             }
           },
           "metadata": {},
-          "params": []
+          "params": [],
+          "return": {
+            "type": "void"
+          }
         },
         {
           "name": "_detachDialog",
@@ -1080,158 +903,161 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 35,
-              "column": 4
+              "line": 37,
+              "column": 1
             },
             "end": {
-              "line": 39,
-              "column": 5
+              "line": 41,
+              "column": 2
             }
           },
           "metadata": {},
-          "params": []
+          "params": [],
+          "return": {
+            "type": "void"
+          }
         },
         {
           "name": "close",
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 127,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 131,
+              "line": 147,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "fit",
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 133,
+              "line": 149,
               "column": 2
             },
             "end": {
-              "line": 137,
+              "line": 153,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "refit",
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 139,
+              "line": 155,
               "column": 2
             },
             "end": {
-              "line": 143,
+              "line": 159,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "center",
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 145,
+              "line": 161,
               "column": 2
             },
             "end": {
-              "line": 149,
+              "line": 165,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_ensureTemplatized",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 151,
-              "column": 2
-            },
-            "end": {
-              "line": 158,
-              "column": 3
-            }
+          "return": {
+            "type": "void"
           },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_onNodesChange",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 160,
+              "line": 167,
               "column": 2
             },
             "end": {
-              "line": 178,
+              "line": 193,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "params": [
+            {
+              "name": "{\n  addedNodes\n}"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_createDialog",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 180,
+              "line": 195,
               "column": 2
             },
             "end": {
-              "line": 199,
+              "line": 212,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_createInstance",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 201,
+              "line": 214,
               "column": 2
             },
             "end": {
@@ -1241,20 +1067,23 @@
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_handlePaperDialogEvents",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
               "line": 229,
               "column": 2
             },
             "end": {
-              "line": 231,
+              "line": 237,
               "column": 3
             }
           },
@@ -1264,85 +1093,39 @@
               "name": "event"
             }
           ],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
-          "name": "_forwardParentProp",
+          "name": "_forwardHostProp",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 233,
+              "line": 239,
               "column": 2
             },
             "end": {
-              "line": 240,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "prop"
-            },
-            {
-              "name": "value"
-            }
-          ],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_forwardHostPropV2",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 242,
-              "column": 2
-            },
-            "end": {
-              "line": 249,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "prop"
-            },
-            {
-              "name": "value"
-            }
-          ],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "_forwardParentPath",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
               "line": 251,
-              "column": 2
-            },
-            "end": {
-              "line": 256,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "path"
+              "name": "prop"
             },
             {
               "name": "value"
             }
           ],
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_createForm",
@@ -1350,16 +1133,19 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 47,
-              "column": 4
+              "line": 49,
+              "column": 1
             },
             "end": {
-              "line": 57,
-              "column": 5
+              "line": 59,
+              "column": 2
             }
           },
           "metadata": {},
-          "params": []
+          "params": [],
+          "return": {
+            "type": "void"
+          }
         }
       ],
       "staticMethods": [],
@@ -1372,88 +1158,107 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 17,
-          "column": 11
+          "line": 12,
+          "column": 0
         },
         "end": {
-          "line": 58,
-          "column": 4
+          "line": 60,
+          "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "CosmozFormDialog",
       "attributes": [
         {
-          "name": "modal",
-          "description": "",
+          "name": "with-backdrop",
+          "description": "Set to true to display a backdrop behind the overlay",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
               "line": 19,
-              "column": 3
+              "column": 4
             },
             "end": {
-              "line": 21,
-              "column": 4
+              "line": 22,
+              "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
-        },
-        {
-          "name": "with-backdrop",
-          "description": "",
-          "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
-            "start": {
-              "line": 23,
-              "column": 3
-            },
-            "end": {
-              "line": 25,
-              "column": 4
-            }
-          },
-          "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "no-auto-focus",
           "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 31,
-              "column": 3
+              "line": 28,
+              "column": 4
             },
             "end": {
-              "line": 34,
-              "column": 4
+              "line": 31,
+              "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "prerender",
           "description": "True if the dialog should be rendered before first call to `open`.",
           "sourceRange": {
-            "file": "cosmoz-dialog-behavior.html",
+            "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 39,
-              "column": 3
+              "line": 36,
+              "column": 4
             },
             "end": {
-              "line": 42,
-              "column": 4
+              "line": 39,
+              "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean",
-          "inheritedFrom": "Cosmoz.DialogBehavior"
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "no-cancel-on-esc-key",
+          "description": "Set to true to disable closing dialog with the ESC key",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 44,
+              "column": 4
+            },
+            "end": {
+              "line": 47,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "dialogOpener"
+        },
+        {
+          "name": "no-cancel-on-outside-click",
+          "description": "Set to true to diable closing dialog when clicking outside of dialog",
+          "sourceRange": {
+            "file": "cosmoz-dialog-mixin.js",
+            "start": {
+              "line": 52,
+              "column": 4
+            },
+            "end": {
+              "line": 55,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "dialogOpener"
         }
       ],
       "events": [],
@@ -1461,664 +1266,568 @@
         "cssVariables": [],
         "selectors": []
       },
-      "slots": [
+      "slots": [],
+      "tagname": "cosmoz-form-dialog",
+      "mixins": [
+        "dialogOpener"
+      ]
+    }
+  ],
+  "mixins": [
+    {
+      "description": "",
+      "summary": "",
+      "path": "cosmoz-dialog-mixin.js",
+      "properties": [
         {
-          "description": "",
-          "name": "",
-          "range": {
-            "file": "cosmoz-form-dialog.html",
+          "name": "paperDialog",
+          "type": "?",
+          "description": "Get the generated paper-dialog element\n\t ",
+          "privacy": "public",
+          "sourceRange": {
             "start": {
-              "line": 11,
-              "column": 3
+              "line": 108,
+              "column": 2
             },
             "end": {
-              "line": 11,
-              "column": 16
+              "line": 110,
+              "column": 3
             }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          }
+        },
+        {
+          "name": "withBackdrop",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to display a backdrop behind the overlay",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 19,
+              "column": 4
+            },
+            "end": {
+              "line": 22,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "true"
+        },
+        {
+          "name": "noAutoFocus",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 28,
+              "column": 4
+            },
+            "end": {
+              "line": 31,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "prerender",
+          "type": "boolean | null | undefined",
+          "description": "True if the dialog should be rendered before first call to `open`.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 36,
+              "column": 4
+            },
+            "end": {
+              "line": 39,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "noCancelOnEscKey",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to disable closing dialog with the ESC key",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 44,
+              "column": 4
+            },
+            "end": {
+              "line": 47,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "noCancelOnOutsideClick",
+          "type": "boolean | null | undefined",
+          "description": "Set to true to diable closing dialog when clicking outside of dialog",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 52,
+              "column": 4
+            },
+            "end": {
+              "line": 55,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "true"
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 79,
+              "column": 2
+            },
+            "end": {
+              "line": 83,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 2
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_spawn",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 2
+            },
+            "end": {
+              "line": 103,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "open",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 112,
+              "column": 2
+            },
+            "end": {
+              "line": 121,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_attachDialog",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 2
+            },
+            "end": {
+              "line": 127,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_detachDialog",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 129,
+              "column": 2
+            },
+            "end": {
+              "line": 141,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "close",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 2
+            },
+            "end": {
+              "line": 147,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "fit",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 149,
+              "column": 2
+            },
+            "end": {
+              "line": 153,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "refit",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 155,
+              "column": 2
+            },
+            "end": {
+              "line": 159,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "center",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 161,
+              "column": 2
+            },
+            "end": {
+              "line": 165,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onNodesChange",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 167,
+              "column": 2
+            },
+            "end": {
+              "line": 193,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "{\n  addedNodes\n}"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_createDialog",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 195,
+              "column": 2
+            },
+            "end": {
+              "line": 212,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_createInstance",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 214,
+              "column": 2
+            },
+            "end": {
+              "line": 227,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_handlePaperDialogEvents",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 229,
+              "column": 2
+            },
+            "end": {
+              "line": 237,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_forwardHostProp",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 239,
+              "column": 2
+            },
+            "end": {
+              "line": 251,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "prop"
+            },
+            {
+              "name": "value"
+            }
+          ],
+          "return": {
+            "type": "void"
           }
         }
       ],
-      "tagname": "cosmoz-form-dialog"
-    }
-  ],
-  "metadata": {
-    "polymer": {
-      "behaviors": [
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 12,
+          "column": 7
+        },
+        "end": {
+          "line": 253,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "name": "dialogOpener",
+      "attributes": [
         {
-          "description": "",
-          "summary": "",
-          "path": "cosmoz-dialog-behavior.html",
-          "properties": [
-            {
-              "name": "modal",
-              "type": "boolean",
-              "description": "",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 19,
-                  "column": 3
-                },
-                "end": {
-                  "line": 21,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              }
-            },
-            {
-              "name": "withBackdrop",
-              "type": "boolean",
-              "description": "",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 23,
-                  "column": 3
-                },
-                "end": {
-                  "line": 25,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              }
-            },
-            {
-              "name": "noAutoFocus",
-              "type": "boolean",
-              "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 31,
-                  "column": 3
-                },
-                "end": {
-                  "line": 34,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              },
-              "defaultValue": "false"
-            },
-            {
-              "name": "prerender",
-              "type": "boolean",
-              "description": "True if the dialog should be rendered before first call to `open`.",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 39,
-                  "column": 3
-                },
-                "end": {
-                  "line": 42,
-                  "column": 4
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              },
-              "defaultValue": "false"
-            },
-            {
-              "name": "hostAttributes",
-              "type": "Object",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 45,
-                  "column": 2
-                },
-                "end": {
-                  "line": 48,
-                  "column": 3
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              }
-            },
-            {
-              "name": "_paperDialog",
-              "type": "object",
-              "description": "The generated paper-dialog element",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 51,
-                  "column": 2
-                },
-                "end": {
-                  "line": 51,
-                  "column": 20
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              }
-            },
-            {
-              "name": "_templateInstance",
-              "type": "object",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 53,
-                  "column": 2
-                },
-                "end": {
-                  "line": 53,
-                  "column": 25
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              }
-            },
-            {
-              "name": "_dialogEventsHandler",
-              "type": "object",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 55,
-                  "column": 2
-                },
-                "end": {
-                  "line": 55,
-                  "column": 28
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              }
-            },
-            {
-              "name": "_pendingProps",
-              "type": "object",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 57,
-                  "column": 2
-                },
-                "end": {
-                  "line": 57,
-                  "column": 21
-                }
-              },
-              "metadata": {
-                "polymer": {}
-              }
-            }
-          ],
-          "methods": [
-            {
-              "name": "created",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 59,
-                  "column": 2
-                },
-                "end": {
-                  "line": 64,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "attached",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 66,
-                  "column": 2
-                },
-                "end": {
-                  "line": 69,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "detached",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 71,
-                  "column": 2
-                },
-                "end": {
-                  "line": 78,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "_spawn",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 80,
-                  "column": 2
-                },
-                "end": {
-                  "line": 87,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "paperDialog",
-              "description": "Get the generated paper-dialog element",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 91,
-                  "column": 2
-                },
-                "end": {
-                  "line": 93,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "open",
-              "description": "",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 95,
-                  "column": 2
-                },
-                "end": {
-                  "line": 104,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "_attachDialog",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 106,
-                  "column": 2
-                },
-                "end": {
-                  "line": 110,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "_detachDialog",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 112,
-                  "column": 2
-                },
-                "end": {
-                  "line": 124,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "close",
-              "description": "",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 127,
-                  "column": 2
-                },
-                "end": {
-                  "line": 131,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "fit",
-              "description": "",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 133,
-                  "column": 2
-                },
-                "end": {
-                  "line": 137,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "refit",
-              "description": "",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 139,
-                  "column": 2
-                },
-                "end": {
-                  "line": 143,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "center",
-              "description": "",
-              "privacy": "public",
-              "sourceRange": {
-                "start": {
-                  "line": 145,
-                  "column": 2
-                },
-                "end": {
-                  "line": 149,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "_ensureTemplatized",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 151,
-                  "column": 2
-                },
-                "end": {
-                  "line": 158,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "_onNodesChange",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 160,
-                  "column": 2
-                },
-                "end": {
-                  "line": 178,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "_createDialog",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 180,
-                  "column": 2
-                },
-                "end": {
-                  "line": 199,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "_createInstance",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 201,
-                  "column": 2
-                },
-                "end": {
-                  "line": 227,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": []
-            },
-            {
-              "name": "_handlePaperDialogEvents",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 229,
-                  "column": 2
-                },
-                "end": {
-                  "line": 231,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "event"
-                }
-              ]
-            },
-            {
-              "name": "_forwardParentProp",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 233,
-                  "column": 2
-                },
-                "end": {
-                  "line": 240,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "prop"
-                },
-                {
-                  "name": "value"
-                }
-              ]
-            },
-            {
-              "name": "_forwardHostPropV2",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 242,
-                  "column": 2
-                },
-                "end": {
-                  "line": 249,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "prop"
-                },
-                {
-                  "name": "value"
-                }
-              ]
-            },
-            {
-              "name": "_forwardParentPath",
-              "description": "",
-              "privacy": "protected",
-              "sourceRange": {
-                "start": {
-                  "line": 251,
-                  "column": 2
-                },
-                "end": {
-                  "line": 256,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "path"
-                },
-                {
-                  "name": "value"
-                }
-              ]
-            }
-          ],
-          "staticMethods": [],
-          "demos": [],
-          "metadata": {},
+          "name": "with-backdrop",
+          "description": "Set to true to display a backdrop behind the overlay",
           "sourceRange": {
             "start": {
-              "line": 17,
-              "column": 1
+              "line": 19,
+              "column": 4
             },
             "end": {
-              "line": 257,
-              "column": 3
+              "line": 22,
+              "column": 5
             }
           },
-          "privacy": "public",
-          "name": "Cosmoz.DialogBehavior",
-          "attributes": [
-            {
-              "name": "modal",
-              "description": "",
-              "sourceRange": {
-                "start": {
-                  "line": 19,
-                  "column": 3
-                },
-                "end": {
-                  "line": 21,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "boolean"
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "no-auto-focus",
+          "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
+          "sourceRange": {
+            "start": {
+              "line": 28,
+              "column": 4
             },
-            {
-              "name": "with-backdrop",
-              "description": "",
-              "sourceRange": {
-                "start": {
-                  "line": 23,
-                  "column": 3
-                },
-                "end": {
-                  "line": 25,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "boolean"
-            },
-            {
-              "name": "no-auto-focus",
-              "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
-              "sourceRange": {
-                "start": {
-                  "line": 31,
-                  "column": 3
-                },
-                "end": {
-                  "line": 34,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "boolean"
-            },
-            {
-              "name": "prerender",
-              "description": "True if the dialog should be rendered before first call to `open`.",
-              "sourceRange": {
-                "start": {
-                  "line": 39,
-                  "column": 3
-                },
-                "end": {
-                  "line": 42,
-                  "column": 4
-                }
-              },
-              "metadata": {},
-              "type": "boolean"
+            "end": {
+              "line": 31,
+              "column": 5
             }
-          ],
-          "events": [],
-          "styling": {
-            "cssVariables": [],
-            "selectors": []
           },
-          "slots": []
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "prerender",
+          "description": "True if the dialog should be rendered before first call to `open`.",
+          "sourceRange": {
+            "start": {
+              "line": 36,
+              "column": 4
+            },
+            "end": {
+              "line": 39,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "no-cancel-on-esc-key",
+          "description": "Set to true to disable closing dialog with the ESC key",
+          "sourceRange": {
+            "start": {
+              "line": 44,
+              "column": 4
+            },
+            "end": {
+              "line": 47,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "no-cancel-on-outside-click",
+          "description": "Set to true to diable closing dialog when clicking outside of dialog",
+          "sourceRange": {
+            "start": {
+              "line": 52,
+              "column": 4
+            },
+            "end": {
+              "line": 55,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
         }
-      ]
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
     }
-  }
+  ]
 }

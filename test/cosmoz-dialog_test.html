@@ -5,16 +5,18 @@
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 	<title>cosmoz-dialog tests</title>
 
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-	<script src="../../web-component-tester/browser.js"></script>
-	<script src="../../test-fixture/test-fixture-mocha.js"></script>
+	<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+	<script src="/components/mocha/mocha.js"></script>
+	<script src="/components/wct-mocha/wct-mocha.js"></script>
+	<script src="/components/chai/chai.js"></script>
+	<script src="/components/@polymer/test-fixture/test-fixture-mocha.js"></script>
 
-	<link rel="import" href="../../test-fixture/test-fixture.html">
-	<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
-	<link rel="import" href="../../polymer/lib/elements/custom-style.html">
-	<link rel="import" href="../../shadycss/apply-shim.html">">
+	<script type="module" src="/components/@polymer/test-fixture/test-fixture.js"></script>
+	<script type="module" src="/components/@polymer/iron-test-helpers/iron-test-helpers.js"></script>
+	<script type="module" src="/components/@polymer/polymer/lib/elements/custom-style.js"></script>
+	<script type="module" src="/components/@webcomponents/shadycss/entrypoints/apply-shim.js"></script>">
 
-	<link rel="import" href="../cosmoz-dialog.html">
+	<script type="module" src="../cosmoz-dialog.js"></script>
 
 	<custom-style>
 		<style>
@@ -58,44 +60,47 @@
 		</template>
 	</test-fixture>
 
-	<script>
+	<script type="module">
+		import { flush } from '@polymer/polymer/lib/legacy/polymer.dom';
+		import { Base } from '@polymer/polymer/polymer-legacy';
+
 		const flushDialog = dialog => {
 			if (dialog._observer.flush) {
 				dialog._observer.flush();
 			} else {
-				Polymer.dom.flush();
+				flush();
 			}
 		};
 
-		suite('basic', function () {
-			var dialog;
-			setup(function (done) {
+		suite('basic', () => {
+			let dialog;
+			setup(done => {
 				dialog = fixture('basic');
 				flushDialog(dialog);
 				done();
 			});
 
-			test('paper-dialog is attached to body', function (done) {
-				dialog.addEventListener('iron-overlay-opened', function () {
+			test('paper-dialog is attached to body', done => {
+				dialog.addEventListener('iron-overlay-opened', () => {
 					assert.equal(dialog.paperDialog.parentElement, document.body);
 					done();
 				});
 				dialog.open();
 			});
 
-			test('paper-dialog is opened when cosmoz-dialog open() is called', function (done) {
-				dialog.addEventListener('iron-overlay-opened', function () {
+			test('paper-dialog is opened when cosmoz-dialog open() is called', done => {
+				dialog.addEventListener('iron-overlay-opened', () => {
 					assert.isTrue(dialog.paperDialog.opened);
 					done();
 				});
 				dialog.open();
 			});
 
-			test('paper-dialog is not opened when cosmoz-dialog close() is called', function (done) {
-				dialog.addEventListener('iron-overlay-opened', function () {
+			test('paper-dialog is not opened when cosmoz-dialog close() is called', done => {
+				dialog.addEventListener('iron-overlay-opened', () => {
 					dialog.close();
 				});
-				dialog.addEventListener('iron-overlay-closed', function () {
+				dialog.addEventListener('iron-overlay-closed', () => {
 					assert.isFalse(dialog.paperDialog.opened);
 					done();
 				});
@@ -105,27 +110,23 @@
 
 		});
 
-		suite('withoutStackingContext', function () {
-			var dialog;
-			setup(function (done) {
+		suite('withoutStackingContext', () => {
+			let dialog;
+			setup(done => {
 				dialog = fixture('withoutStackingContext');
 				flushDialog(dialog);
 				done();
 			});
 
-			test('backdrop is behing dialog', function (done) {
-				dialog.addEventListener('iron-overlay-opened', function () {
+			test('backdrop is behing dialog', done => {
+				dialog.addEventListener('iron-overlay-opened', () => {
 					// Need to wait a bit before checking elements, because
 					// backdrop is displayed with animations.
-					Polymer.Base.async(function () {
+					Base.async(() => {
 
-						var dialogSize = dialog.paperDialog.getBoundingClientRect(),
-							//backdropElementSize = dialog.paperDialog.backdropElement.getBoundingClientRect(),
-							expectedDialogElement,
-							expectedBackdrop;
-
-						expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
-						expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
+						const dialogSize = dialog.paperDialog.getBoundingClientRect(),
+							expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1),
+							expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
 
 						assert.equal(dialog.paperDialog, expectedDialogElement);
 						assert.equal(dialog.paperDialog.backdropElement, expectedBackdrop);
@@ -138,26 +139,22 @@
 
 		});
 
-		suite('withStackingContext', function () {
-			var dialog;
-			setup(function (done) {
+		suite('withStackingContext', () => {
+			let dialog;
+			setup(done => {
 				dialog = fixture('withStackingContext').children[0];
 				flushDialog(dialog);
 				done();
 			});
-			test('backdrop is behing dialog', function (done) {
-				dialog.addEventListener('iron-overlay-opened', function () {
+			test('backdrop is behing dialog', done => {
+				dialog.addEventListener('iron-overlay-opened', () => {
 					// Need to wait a bit before checking elements, because
 					// backdrop is displayed with animations.
-					Polymer.Base.async(function () {
+					Base.async(() => {
 
-						var dialogSize = dialog.paperDialog.getBoundingClientRect(),
-							//backdropElementSize = dialog.paperDialog.backdropElement.getBoundingClientRect(),
-							expectedDialogElement,
-							expectedBackdrop;
-
-						expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
-						expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
+						const dialogSize = dialog.paperDialog.getBoundingClientRect(),
+							expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1),
+							expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
 
 						assert.equal(dialog.paperDialog, expectedDialogElement);
 						assert.equal(dialog.paperDialog.backdropElement, expectedBackdrop);
@@ -168,7 +165,6 @@
 				dialog.open();
 			});
 
-		});
-
+});
 	</script>
 </body></html>

@@ -1,95 +1,90 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../polymer/lib/utils/async.html">
-<link rel="import" href="../polymer/lib/utils/templatize.html">
-<link rel="import" href="../paper-dialog/paper-dialog.html">
+import '@polymer/paper-dialog';
 
-<script>
+import { microTask } from '@polymer/polymer/lib/utils/async';
+import { templatize } from '@polymer/polymer/lib/utils/templatize';
+import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer';
+
+import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin';
 
 /**
-`Cosmoz.DialogBehavior`
-*/
-(function () {
-	'use strict';
+ * @polymer
+ * @mixinFunction
+ */
+export const dialogOpener = dedupingMixin(base => // eslint-disable-line max-lines-per-function
+	class extends base {
+		static get properties() {
+			return {
+				/**
+				 *	Set to true to display a backdrop behind the overlay
+				 */
+				withBackdrop: {
+					type: Boolean,
+					value: true
+				},
 
-	window.Cosmoz = window.Cosmoz || {};
+				/**
+				 * Set to true to disable auto-focusing the overlay or child nodes with
+				 * the `autofocus` attribute` when the overlay is opened.
+				 */
+				noAutoFocus: {
+					type: Boolean,
+					value: false
+				},
 
-	/**
-	 * @polymerBehavior Cosmoz.DialogBehavior
-	*/
-	Cosmoz.DialogBehaviorImpl = {
-		properties: {
-			/**
-			 *  Set to true to display a backdrop behind the overlay
-			 */
-			withBackdrop: {
-				type: Boolean,
-				value: true
-			},
+				/**
+				 * True if the dialog should be rendered before first call to `open`.
+				 */
+				prerender: {
+					type: Boolean,
+					value: false
+				},
 
-			/**
-			 * Set to true to disable auto-focusing the overlay or child nodes with
-			 * the `autofocus` attribute` when the overlay is opened.
-			 */
-			noAutoFocus: {
-				type: Boolean,
-				value: false
-			},
+				/**
+				 * Set to true to disable closing dialog with the ESC key
+				 */
+				noCancelOnEscKey: {
+					type: Boolean,
+					value: false
+				},
 
-			/**
-			 * True if the dialog should be rendered before first call to `open`.
-			 */
-			prerender: {
-				type: Boolean,
-				value: false
-			},
+				/**
+				 * Set to true to diable closing dialog when clicking outside of dialog
+				 */
+				noCancelOnOutsideClick: {
+					type: Boolean,
+					value: true
+				}
+			};
+		}
 
-			/**
-			 * Set to true to disable closing dialog with the ESC key
-			 */
-			noCancelOnEscKey: {
-				type: Boolean,
-				value: false
-			},
+		static get hostAttributes() {
+			return {
+				'role': 'dialog',
+				'tabindex': '-1'
+			};
+		}
 
-			/**
-			 * Set to true to diable closing dialog when clicking outside of dialog
-			 */
-			noCancelOnOutsideClick: {
-				type: Boolean,
-				value: true
-			}
-		},
+		constructor() {
+			super();
+			// The generated paper-dialog element
+			this._paperDialog = null;
+			this._templateInstance = null;
 
-		hostAttributes: {
-			'role': 'dialog',
-			'tabindex': '-1'
-		},
-
-		// The generated paper-dialog element
-		_paperDialog: null,
-
-		_templateInstance: null,
-
-		_dialogEventsHandler: null,
-
-		_pendingProps: null,
-
-		_dialogCloseEventHandler: null,
-
-		created() {
 			this._dialogEventsHandler = this._handlePaperDialogEvents.bind(this);
 			this._dialogCloseEventHandler = this.close.bind(this);
 			this._pendingProps = {};
 			this._spawn = this._spawn.bind(this);
 			this._spawnSteps = [this._createDialog, this._createInstance];
-		},
+		}
 
-		attached() {
-			this._observer = new Polymer.FlattenedNodesObserver(this, this._onNodesChange);
+		connectedCallback() {
+			super.connectedCallback();
+			this._observer = new FlattenedNodesObserver(this, this._onNodesChange);
 			window.addEventListener('cosmoz-dialog-closeall', this._dialogCloseEventHandler);
-		},
+		}
 
-		detached() {
+		disconnectedCallback() {
+			super.disconnectedCallback();
 			if (this._observer) {
 				this._observer.disconnect();
 				this._observer = null;
@@ -97,7 +92,7 @@
 			this._detachDialog();
 			window.removeEventListener('cosmoz-dialog-closeall', this._dialogCloseEventHandler);
 			this._templateInstance = null;
-		},
+		}
 
 		_spawn() {
 			const step = this._spawnSteps.shift();
@@ -105,14 +100,15 @@
 				return;
 			}
 			step.call(this);
-			Polymer.Async.microTask.run(() => this._spawn());
-		},
+			microTask.run(() => this._spawn());
+		}
+
 		/**
-		 * Get the generated paper-dialog element
-		 */
+	 * Get the generated paper-dialog element
+	 */
 		get paperDialog() {
 			return this._paperDialog;
-		},
+		}
 
 		open() {
 			if (!this._userTemplate) {
@@ -123,13 +119,13 @@
 
 			this._attachDialog();
 			this._paperDialog.open();
-		},
+		}
 
 		_attachDialog() {
 			if (!this._paperDialog.parentNode) {
 				document.body.appendChild(this._paperDialog);
 			}
-		},
+		}
 
 		_detachDialog() {
 			const dialog = this._paperDialog;
@@ -143,38 +139,39 @@
 				return;
 			}
 			dialog.parentNode.removeChild(dialog);
-		},
-
+		}
 
 		close() {
 			if (this._paperDialog != null) {
 				this._paperDialog.close();
 			}
-		},
+		}
 
 		fit() {
 			if (this._paperDialog != null && this._paperDialog.opened) {
 				this._paperDialog.fit();
 			}
-		},
+		}
 
 		refit() {
 			if (this._paperDialog != null && this._paperDialog.opened) {
 				this._paperDialog.refit();
 			}
-		},
+		}
 
 		center() {
 			if (this._paperDialog != null && this._paperDialog.opened) {
 				this._paperDialog.center();
 			}
-		},
+		}
 
-		_onNodesChange() {
+		_onNodesChange({addedNodes}) {
 			if (this._userTemplate) {
 				return;
 			}
-			const template = this.queryEffectiveChildren('template');
+			const template = Array.from(addedNodes)
+				.filter(n => n.nodeName === 'TEMPLATE')
+				.pop();
 
 			if (!template) {
 				console.warn('cosmoz-dialog-behavior requires a template');
@@ -183,18 +180,18 @@
 
 			this._userTemplate = template;
 
-			this._instanceCtor = Polymer.Templatize.templatize(template, this, {
+			this._instanceCtor = templatize(template, this, {
 				instanceProps: {},
 				parentModel: true,
-				forwardHostProp: this._forwardHostProp,
+				forwardHostProp: this._forwardHostProp
 			});
 
 			if (!this.prerender) {
 				return;
 			}
 
-			Polymer.Async.microTask.run(() => this._spawn());
-		},
+			microTask.run(() => this._spawn());
+		}
 
 		_createDialog() {
 			if (!this._userTemplate) {
@@ -213,7 +210,7 @@
 
 			this._paperDialog = dialog;
 			return dialog;
-		},
+		}
 
 		_createInstance() {
 			if (!this._paperDialog) {
@@ -228,7 +225,7 @@
 			if (instance._flushProperties) {
 				instance._flushProperties(true);
 			}
-		},
+		}
 
 		_handlePaperDialogEvents(event) {
 			this.dispatchEvent(new CustomEvent(event.type, {
@@ -238,7 +235,7 @@
 					originalTarget: event.target
 				}
 			}));
-		},
+		}
 
 		_forwardHostProp(prop, value) {
 			const instance = this._templateInstance;
@@ -253,10 +250,5 @@
 			}
 			instance[prop] = value;
 		}
-	};
-
-	Cosmoz.DialogBehavior = [Cosmoz.DialogBehaviorImpl];
-
-})();
-
-</script>
+	}
+);
