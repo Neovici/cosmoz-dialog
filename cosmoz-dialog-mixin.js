@@ -183,7 +183,7 @@ export const CosmozDialogMixin = dedupingMixin(base =>
 			this._instanceCtor = templatize(template, this, {
 				instanceProps: {},
 				parentModel: true,
-				forwardHostProp: this._forwardHostProp,
+				forwardHostProp: this._forwardHostProp
 			});
 
 			if (!this.prerender) {

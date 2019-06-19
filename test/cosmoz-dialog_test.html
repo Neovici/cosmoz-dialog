@@ -61,8 +61,8 @@
 	</test-fixture>
 
 	<script type="module">
-		import { flush } from '/components/@polymer/polymer/lib/legacy/polymer.dom.js';
-		import { Base } from '/components/@polymer/polymer/polymer-legacy.js';
+		import { flush } from '@polymer/polymer/lib/legacy/polymer.dom';
+		import { Base } from '@polymer/polymer/polymer-legacy';
 
 		const flushDialog = dialog => {
 			if (dialog._observer.flush) {
@@ -72,35 +72,35 @@
 			}
 		};
 
-		suite('basic', function () {
-			var dialog;
-			setup(function (done) {
+		suite('basic', () => {
+			let dialog;
+			setup(done => {
 				dialog = fixture('basic');
 				flushDialog(dialog);
 				done();
 			});
 
-			test('paper-dialog is attached to body', function (done) {
-				dialog.addEventListener('iron-overlay-opened', function () {
+			test('paper-dialog is attached to body', done => {
+				dialog.addEventListener('iron-overlay-opened', () => {
 					assert.equal(dialog.paperDialog.parentElement, document.body);
 					done();
 				});
 				dialog.open();
 			});
 
-			test('paper-dialog is opened when cosmoz-dialog open() is called', function (done) {
-				dialog.addEventListener('iron-overlay-opened', function () {
+			test('paper-dialog is opened when cosmoz-dialog open() is called', done => {
+				dialog.addEventListener('iron-overlay-opened', () => {
 					assert.isTrue(dialog.paperDialog.opened);
 					done();
 				});
 				dialog.open();
 			});
 
-			test('paper-dialog is not opened when cosmoz-dialog close() is called', function (done) {
-				dialog.addEventListener('iron-overlay-opened', function () {
+			test('paper-dialog is not opened when cosmoz-dialog close() is called', done => {
+				dialog.addEventListener('iron-overlay-opened', () => {
 					dialog.close();
 				});
-				dialog.addEventListener('iron-overlay-closed', function () {
+				dialog.addEventListener('iron-overlay-closed', () => {
 					assert.isFalse(dialog.paperDialog.opened);
 					done();
 				});
@@ -110,27 +110,23 @@
 
 		});
 
-		suite('withoutStackingContext', function () {
-			var dialog;
-			setup(function (done) {
+		suite('withoutStackingContext', () => {
+			let dialog;
+			setup(done => {
 				dialog = fixture('withoutStackingContext');
 				flushDialog(dialog);
 				done();
 			});
 
-			test('backdrop is behing dialog', function (done) {
-				dialog.addEventListener('iron-overlay-opened', function () {
+			test('backdrop is behing dialog', done => {
+				dialog.addEventListener('iron-overlay-opened', () => {
 					// Need to wait a bit before checking elements, because
 					// backdrop is displayed with animations.
-					Base.async(function () {
+					Base.async(() => {
 
-						var dialogSize = dialog.paperDialog.getBoundingClientRect(),
-							//backdropElementSize = dialog.paperDialog.backdropElement.getBoundingClientRect(),
-							expectedDialogElement,
-							expectedBackdrop;
-
-						expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
-						expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
+						const dialogSize = dialog.paperDialog.getBoundingClientRect(),
+							expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1),
+							expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
 
 						assert.equal(dialog.paperDialog, expectedDialogElement);
 						assert.equal(dialog.paperDialog.backdropElement, expectedBackdrop);
@@ -143,26 +139,22 @@
 
 		});
 
-		suite('withStackingContext', function () {
-			var dialog;
-			setup(function (done) {
+		suite('withStackingContext', () => {
+			let dialog;
+			setup(done => {
 				dialog = fixture('withStackingContext').children[0];
 				flushDialog(dialog);
 				done();
 			});
-			test('backdrop is behing dialog', function (done) {
-				dialog.addEventListener('iron-overlay-opened', function () {
+			test('backdrop is behing dialog', done => {
+				dialog.addEventListener('iron-overlay-opened', () => {
 					// Need to wait a bit before checking elements, because
 					// backdrop is displayed with animations.
-					Base.async(function () {
+					Base.async(() => {
 
-						var dialogSize = dialog.paperDialog.getBoundingClientRect(),
-							//backdropElementSize = dialog.paperDialog.backdropElement.getBoundingClientRect(),
-							expectedDialogElement,
-							expectedBackdrop;
-
-						expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1);
-						expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
+						const dialogSize = dialog.paperDialog.getBoundingClientRect(),
+							expectedDialogElement = document.elementFromPoint(dialogSize.left + 1, dialogSize.top + 1),
+							expectedBackdrop = document.elementFromPoint(dialogSize.left - 1, dialogSize.top - 1);
 
 						assert.equal(dialog.paperDialog, expectedDialogElement);
 						assert.equal(dialog.paperDialog.backdropElement, expectedBackdrop);
@@ -173,6 +165,6 @@
 				dialog.open();
 			});
 
-		});
+});
 	</script>
 </body></html>

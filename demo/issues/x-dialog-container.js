@@ -9,18 +9,18 @@ import '../../cosmoz-dialog.js';
 class XDialogContainer extends PolymerElement {
 	static get template() {
 		return html`
-			<paper-button raised="" on-click="openDialog">Open</paper-button>
+			<paper-button raised on-click="openDialog">Open</paper-button>
 			<div>containerProp=<span>[[containerProp]]</span></div>
 			<div>dialogOutProp=<span>[[dialogOutProp]]</span></div>
-			<cosmoz-dialog with-backdrop="" id="xDialog" prerender="">
+			<cosmoz-dialog with-backdrop id="xDialog" prerender>
 				<template>
 					<h2>Dialog Title</h2>
 					<p>
 						<x-dialog-content in-prop="{{ containerProp }}" out-prop="{{dialogOutProp}}"></x-dialog-content>
 					</p>
 					<div class="buttons">
-						<paper-button dialog-dismiss="">Cancel</paper-button>
-						<paper-button dialog-confirm="">Accept</paper-button>
+						<paper-button dialog-dismiss>Cancel</paper-button>
+						<paper-button dialog-confirm>Accept</paper-button>
 					</div>
 				</template>
 			</cosmoz-dialog>

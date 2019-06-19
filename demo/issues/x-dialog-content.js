@@ -18,7 +18,7 @@ class XDialogContent extends PolymerElement {
 	static get properties() {
 		return {
 			inProp: {
-				type: String,
+				type: String
 			},
 
 			outProp: {
