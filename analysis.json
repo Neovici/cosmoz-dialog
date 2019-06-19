@@ -14,11 +14,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 112,
+              "line": 108,
               "column": 2
             },
             "end": {
-              "line": 114,
+              "line": 110,
               "column": 3
             }
           },
@@ -27,7 +27,7 @@
               "readOnly": true
             }
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "withBackdrop",
@@ -51,7 +51,7 @@
             }
           },
           "defaultValue": "true",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "noAutoFocus",
@@ -75,7 +75,7 @@
             }
           },
           "defaultValue": "false",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "prerender",
@@ -99,7 +99,7 @@
             }
           },
           "defaultValue": "false",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "noCancelOnEscKey",
@@ -123,7 +123,7 @@
             }
           },
           "defaultValue": "false",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "noCancelOnOutsideClick",
@@ -147,18 +147,18 @@
             }
           },
           "defaultValue": "true",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         }
       ],
       "methods": [
         {
-          "name": "created",
+          "name": "connectedCallback",
           "description": "",
-          "privacy": "protected",
+          "privacy": "public",
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 77,
+              "line": 79,
               "column": 2
             },
             "end": {
@@ -171,12 +171,12 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
-          "name": "attached",
+          "name": "disconnectedCallback",
           "description": "",
-          "privacy": "protected",
+          "privacy": "public",
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
@@ -184,7 +184,7 @@
               "column": 2
             },
             "end": {
-              "line": 88,
+              "line": 94,
               "column": 3
             }
           },
@@ -193,29 +193,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
-        },
-        {
-          "name": "detached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-mixin.js",
-            "start": {
-              "line": 90,
-              "column": 2
-            },
-            "end": {
-              "line": 98,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_spawn",
@@ -224,11 +202,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 100,
+              "line": 96,
               "column": 2
             },
             "end": {
-              "line": 107,
+              "line": 103,
               "column": 3
             }
           },
@@ -237,7 +215,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "open",
@@ -246,11 +224,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 116,
+              "line": 112,
               "column": 2
             },
             "end": {
-              "line": 125,
+              "line": 121,
               "column": 3
             }
           },
@@ -259,7 +237,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_attachDialog",
@@ -268,11 +246,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 127,
+              "line": 123,
               "column": 2
             },
             "end": {
-              "line": 131,
+              "line": 127,
               "column": 3
             }
           },
@@ -281,7 +259,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_detachDialog",
@@ -290,11 +268,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 133,
+              "line": 129,
               "column": 2
             },
             "end": {
-              "line": 145,
+              "line": 141,
               "column": 3
             }
           },
@@ -303,7 +281,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "close",
@@ -312,11 +290,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 147,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 151,
+              "line": 147,
               "column": 3
             }
           },
@@ -325,7 +303,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "fit",
@@ -334,11 +312,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 153,
+              "line": 149,
               "column": 2
             },
             "end": {
-              "line": 157,
+              "line": 153,
               "column": 3
             }
           },
@@ -347,7 +325,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "refit",
@@ -356,11 +334,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 159,
+              "line": 155,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 159,
               "column": 3
             }
           },
@@ -369,7 +347,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "center",
@@ -378,11 +356,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 165,
+              "line": 161,
               "column": 2
             },
             "end": {
-              "line": 169,
+              "line": 165,
               "column": 3
             }
           },
@@ -391,7 +369,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_onNodesChange",
@@ -400,20 +378,24 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 171,
+              "line": 167,
               "column": 2
             },
             "end": {
-              "line": 195,
+              "line": 193,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
+          "params": [
+            {
+              "name": "{\n  addedNodes\n}"
+            }
+          ],
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_createDialog",
@@ -422,17 +404,17 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 197,
+              "line": 195,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 212,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_createInstance",
@@ -441,11 +423,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 216,
+              "line": 214,
               "column": 2
             },
             "end": {
-              "line": 229,
+              "line": 227,
               "column": 3
             }
           },
@@ -454,7 +436,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_handlePaperDialogEvents",
@@ -463,11 +445,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 231,
+              "line": 229,
               "column": 2
             },
             "end": {
-              "line": 239,
+              "line": 237,
               "column": 3
             }
           },
@@ -480,7 +462,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_forwardHostProp",
@@ -489,11 +471,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 241,
+              "line": 239,
               "column": 2
             },
             "end": {
-              "line": 253,
+              "line": 251,
               "column": 3
             }
           },
@@ -509,7 +491,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         }
       ],
       "staticMethods": [],
@@ -522,11 +504,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 16,
+          "line": 18,
           "column": 0
         },
         "end": {
-          "line": 20,
+          "line": 22,
           "column": 1
         }
       },
@@ -550,7 +532,7 @@
           },
           "metadata": {},
           "type": "boolean | null | undefined",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "no-auto-focus",
@@ -568,7 +550,7 @@
           },
           "metadata": {},
           "type": "boolean | null | undefined",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "prerender",
@@ -586,7 +568,7 @@
           },
           "metadata": {},
           "type": "boolean | null | undefined",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "no-cancel-on-esc-key",
@@ -604,7 +586,7 @@
           },
           "metadata": {},
           "type": "boolean | null | undefined",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "no-cancel-on-outside-click",
@@ -622,7 +604,7 @@
           },
           "metadata": {},
           "type": "boolean | null | undefined",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         }
       ],
       "events": [],
@@ -633,7 +615,7 @@
       "slots": [],
       "tagname": "cosmoz-dialog",
       "mixins": [
-        "CosmozDialogMixin"
+        "dialogOpener"
       ]
     },
     {
@@ -649,11 +631,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 112,
+              "line": 108,
               "column": 2
             },
             "end": {
-              "line": 114,
+              "line": 110,
               "column": 3
             }
           },
@@ -662,7 +644,7 @@
               "readOnly": true
             }
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "withBackdrop",
@@ -686,7 +668,7 @@
             }
           },
           "defaultValue": "true",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "noAutoFocus",
@@ -710,7 +692,7 @@
             }
           },
           "defaultValue": "false",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "prerender",
@@ -734,7 +716,7 @@
             }
           },
           "defaultValue": "false",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "noCancelOnEscKey",
@@ -758,7 +740,7 @@
             }
           },
           "defaultValue": "false",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "noCancelOnOutsideClick",
@@ -782,7 +764,7 @@
             }
           },
           "defaultValue": "true",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "form",
@@ -808,13 +790,13 @@
       ],
       "methods": [
         {
-          "name": "created",
+          "name": "connectedCallback",
           "description": "",
-          "privacy": "protected",
+          "privacy": "public",
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 77,
+              "line": 79,
               "column": 2
             },
             "end": {
@@ -827,12 +809,12 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
-          "name": "attached",
+          "name": "disconnectedCallback",
           "description": "",
-          "privacy": "protected",
+          "privacy": "public",
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
@@ -840,7 +822,7 @@
               "column": 2
             },
             "end": {
-              "line": 88,
+              "line": 94,
               "column": 3
             }
           },
@@ -849,29 +831,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
-        },
-        {
-          "name": "detached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "cosmoz-dialog-mixin.js",
-            "start": {
-              "line": 90,
-              "column": 2
-            },
-            "end": {
-              "line": 98,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_spawn",
@@ -880,11 +840,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 100,
+              "line": 96,
               "column": 2
             },
             "end": {
-              "line": 107,
+              "line": 103,
               "column": 3
             }
           },
@@ -893,7 +853,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "open",
@@ -902,11 +862,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 116,
+              "line": 112,
               "column": 2
             },
             "end": {
-              "line": 125,
+              "line": 121,
               "column": 3
             }
           },
@@ -915,7 +875,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_attachDialog",
@@ -964,11 +924,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 147,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 151,
+              "line": 147,
               "column": 3
             }
           },
@@ -977,7 +937,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "fit",
@@ -986,11 +946,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 153,
+              "line": 149,
               "column": 2
             },
             "end": {
-              "line": 157,
+              "line": 153,
               "column": 3
             }
           },
@@ -999,7 +959,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "refit",
@@ -1008,11 +968,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 159,
+              "line": 155,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 159,
               "column": 3
             }
           },
@@ -1021,7 +981,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "center",
@@ -1030,11 +990,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 165,
+              "line": 161,
               "column": 2
             },
             "end": {
-              "line": 169,
+              "line": 165,
               "column": 3
             }
           },
@@ -1043,7 +1003,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_onNodesChange",
@@ -1052,20 +1012,24 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 171,
+              "line": 167,
               "column": 2
             },
             "end": {
-              "line": 195,
+              "line": 193,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
+          "params": [
+            {
+              "name": "{\n  addedNodes\n}"
+            }
+          ],
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_createDialog",
@@ -1074,17 +1038,17 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 197,
+              "line": 195,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 212,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_createInstance",
@@ -1093,11 +1057,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 216,
+              "line": 214,
               "column": 2
             },
             "end": {
-              "line": 229,
+              "line": 227,
               "column": 3
             }
           },
@@ -1106,7 +1070,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_handlePaperDialogEvents",
@@ -1115,11 +1079,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 231,
+              "line": 229,
               "column": 2
             },
             "end": {
-              "line": 239,
+              "line": 237,
               "column": 3
             }
           },
@@ -1132,7 +1096,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_forwardHostProp",
@@ -1141,11 +1105,11 @@
           "sourceRange": {
             "file": "cosmoz-dialog-mixin.js",
             "start": {
-              "line": 241,
+              "line": 239,
               "column": 2
             },
             "end": {
-              "line": 253,
+              "line": 251,
               "column": 3
             }
           },
@@ -1161,7 +1125,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "_createForm",
@@ -1222,7 +1186,7 @@
           },
           "metadata": {},
           "type": "boolean | null | undefined",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "no-auto-focus",
@@ -1240,7 +1204,7 @@
           },
           "metadata": {},
           "type": "boolean | null | undefined",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "prerender",
@@ -1258,7 +1222,7 @@
           },
           "metadata": {},
           "type": "boolean | null | undefined",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "no-cancel-on-esc-key",
@@ -1276,7 +1240,7 @@
           },
           "metadata": {},
           "type": "boolean | null | undefined",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         },
         {
           "name": "no-cancel-on-outside-click",
@@ -1294,7 +1258,7 @@
           },
           "metadata": {},
           "type": "boolean | null | undefined",
-          "inheritedFrom": "CosmozDialogMixin"
+          "inheritedFrom": "dialogOpener"
         }
       ],
       "events": [],
@@ -1305,7 +1269,7 @@
       "slots": [],
       "tagname": "cosmoz-form-dialog",
       "mixins": [
-        "CosmozDialogMixin"
+        "dialogOpener"
       ]
     }
   ],
@@ -1322,11 +1286,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 108,
               "column": 2
             },
             "end": {
-              "line": 114,
+              "line": 110,
               "column": 3
             }
           },
@@ -1449,12 +1413,12 @@
       ],
       "methods": [
         {
-          "name": "created",
+          "name": "connectedCallback",
           "description": "",
-          "privacy": "protected",
+          "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 79,
               "column": 2
             },
             "end": {
@@ -1469,36 +1433,16 @@
           }
         },
         {
-          "name": "attached",
+          "name": "disconnectedCallback",
           "description": "",
-          "privacy": "protected",
+          "privacy": "public",
           "sourceRange": {
             "start": {
               "line": 85,
               "column": 2
             },
             "end": {
-              "line": 88,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "detached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 90,
-              "column": 2
-            },
-            "end": {
-              "line": 98,
+              "line": 94,
               "column": 3
             }
           },
@@ -1514,11 +1458,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 96,
               "column": 2
             },
             "end": {
-              "line": 107,
+              "line": 103,
               "column": 3
             }
           },
@@ -1534,11 +1478,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 112,
               "column": 2
             },
             "end": {
-              "line": 125,
+              "line": 121,
               "column": 3
             }
           },
@@ -1554,11 +1498,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 123,
               "column": 2
             },
             "end": {
-              "line": 131,
+              "line": 127,
               "column": 3
             }
           },
@@ -1574,11 +1518,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 129,
               "column": 2
             },
             "end": {
-              "line": 145,
+              "line": 141,
               "column": 3
             }
           },
@@ -1594,11 +1538,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 151,
+              "line": 147,
               "column": 3
             }
           },
@@ -1614,11 +1558,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 153,
+              "line": 149,
               "column": 2
             },
             "end": {
-              "line": 157,
+              "line": 153,
               "column": 3
             }
           },
@@ -1634,11 +1578,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 155,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 159,
               "column": 3
             }
           },
@@ -1654,11 +1598,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 161,
               "column": 2
             },
             "end": {
-              "line": 169,
+              "line": 165,
               "column": 3
             }
           },
@@ -1674,16 +1618,20 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 171,
+              "line": 167,
               "column": 2
             },
             "end": {
-              "line": 195,
+              "line": 193,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
+          "params": [
+            {
+              "name": "{\n  addedNodes\n}"
+            }
+          ],
           "return": {
             "type": "void"
           }
@@ -1694,11 +1642,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 197,
+              "line": 195,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 212,
               "column": 3
             }
           },
@@ -1711,11 +1659,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 216,
+              "line": 214,
               "column": 2
             },
             "end": {
-              "line": 229,
+              "line": 227,
               "column": 3
             }
           },
@@ -1731,11 +1679,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 229,
               "column": 2
             },
             "end": {
-              "line": 239,
+              "line": 237,
               "column": 3
             }
           },
@@ -1755,11 +1703,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 241,
+              "line": 239,
               "column": 2
             },
             "end": {
-              "line": 253,
+              "line": 251,
               "column": 3
             }
           },
@@ -1786,12 +1734,12 @@
           "column": 7
         },
         "end": {
-          "line": 255,
+          "line": 253,
           "column": 2
         }
       },
       "privacy": "public",
-      "name": "CosmozDialogMixin",
+      "name": "dialogOpener",
       "attributes": [
         {
           "name": "with-backdrop",
