@@ -3,14 +3,14 @@ import '@polymer/iron-form';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { html } from '@polymer/polymer/lib/utils/html-tag';
 
-import { CosmozDialogMixin } from './cosmoz-dialog-mixin';
+import { dialogOpener } from './cosmoz-dialog-mixin';
 
 /**
  * `<cosmoz-form-dialog>`
  * @demo demo/form-dialog.html Dialog Demo
- * @appliesMixin CosmozDialogMixin
+ * @appliesMixin dialogOpener
  */
-class CosmozFormDialog extends CosmozDialogMixin(PolymerElement) {
+class CosmozFormDialog extends dialogOpener(PolymerElement) {
 	static get is() {
 		return 'cosmoz-form-dialog';
 	}

@@ -10,7 +10,7 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin';
  * @polymer
  * @mixinFunction
  */
-export const CosmozDialogMixin = dedupingMixin(base =>
+export const dialogOpener = dedupingMixin(base => // eslint-disable-line max-lines-per-function
 	class extends base {
 		static get properties() {
 			return {

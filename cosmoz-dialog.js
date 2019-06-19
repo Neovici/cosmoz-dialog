@@ -1,6 +1,8 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 
-import { CosmozDialogMixin } from './cosmoz-dialog-mixin';
+import { dialogOpener } from './cosmoz-dialog-mixin';
+
+export { dialogOpener };
 
 /**
  * `<cosmoz-dialog>` is a wrapper element for `<paper-dialog>`, but that will append a paper-dialog to a `<cosmoz-dialog-container>`
@@ -12,9 +14,9 @@ import { CosmozDialogMixin } from './cosmoz-dialog-mixin';
  * Content of the `<paper-dialog>` must be specified in a `<template>` element.
  *
  * @demo demo/index.html Dialog Demo
- * @appliesMixin CosmozDialogMixin
+ * @appliesMixin dialogOpener
  */
-class CosmozDialog extends CosmozDialogMixin(PolymerElement) {
+class CosmozDialog extends dialogOpener(PolymerElement) {
 	static get is() {
 		return 'cosmoz-dialog';
 	}
