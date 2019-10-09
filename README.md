@@ -1,8 +1,9 @@
 cosmoz-dialog
 =============
 
-[![Build Status](https://travis-ci.org/Neovici/cosmoz-dialog.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-dialog)
+[![Build Status](https://github.com/Neovici/cosmoz-dialog/workflows/Github%20CI/badge.svg)](https://github.com/Neovici/cosmoz-dialog/actions?workflow=Github+CI)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Neovici/cosmoz-dialog)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 cosmoz-dialog is a Polymer component workaround for paper-dialog that fit the
 backdrop to the element specified by the `fitInto` property.
