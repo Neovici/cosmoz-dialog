@@ -59,8 +59,8 @@ export const dialogOpener = dedupingMixin(base => // eslint-disable-line max-lin
 
 		static get hostAttributes() {
 			return {
-				'role': 'dialog',
-				'tabindex': '-1'
+				role: 'dialog',
+				tabindex: '-1'
 			};
 		}
 
@@ -174,6 +174,7 @@ export const dialogOpener = dedupingMixin(base => // eslint-disable-line max-lin
 				.pop();
 
 			if (!template) {
+				// eslint-disable-next-line no-console
 				console.warn('cosmoz-dialog-behavior requires a template');
 				this._spawnSteps.splice(0);
 			}
