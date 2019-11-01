@@ -22,6 +22,7 @@
       "exclude": []
     },
 		"sauce": {
+			"jobName": "cosmoz-dialog",
 			"browsers": [{
 				"browserName": "microsoftedge",
 				"platform": "Windows 10",
