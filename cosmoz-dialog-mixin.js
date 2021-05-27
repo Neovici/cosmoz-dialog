@@ -165,7 +165,7 @@ export const dialogOpener = dedupingMixin(base => // eslint-disable-line max-lin
 			}
 		}
 
-		_onNodesChange({addedNodes}) {
+		_onNodesChange({ addedNodes }) {
 			if (this._userTemplate) {
 				return;
 			}
