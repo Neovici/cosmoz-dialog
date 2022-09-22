@@ -1,6 +1,6 @@
 {
 	"name": "@neovici/cosmoz-dialog",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"description": "A Polymer component workaround for paper-dialog that fits the backdrop to the element specified by the `fitInto` property.",
 	"keywords": [
 		"polymer",
