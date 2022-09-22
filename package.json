@@ -59,6 +59,7 @@
 		"@polymer/paper-button": "^3.0.0",
 		"@semantic-release/changelog": "^6.0.0",
 		"@semantic-release/git": "^10.0.0",
+		"@web/test-runner-selenium": "^0.5.4",
 		"@webcomponents/webcomponentsjs": "^2.0.0",
 		"husky": "^8.0.0",
 		"semantic-release": "^19.0.0",
