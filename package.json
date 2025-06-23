@@ -1,31 +1,99 @@
 {
-	"name": "@neovici/cosmoz-dialog",
+	"name": "@neovici/cosmoz-dialog-next",
 	"version": "3.0.3",
-	"description": "A Polymer component workaround for paper-dialog that fits the backdrop to the element specified by the `fitInto` property.",
+	"type": "module",
+	"description": "A Pion component for displaying modal dialogs with React-like hooks",
 	"keywords": [
-		"polymer",
-		"web-components"
+		"pion",
+		"pionjs",
+		"lit-html",
+		"web-components",
+		"dialog",
+		"modal"
 	],
-	"homepage": "https://github.com/neovici/cosmoz-dialog#readme",
-	"bugs": {
-		"url": "https://github.com/neovici/cosmoz-dialog/issues"
-	},
+	"license": "Apache-2.0",
+	"author": "",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/neovici/cosmoz-dialog.git"
+		"url": "git+https://github.com/Neovici/cosmoz-dialog.git"
 	},
-	"license": "Apache-2.0",
-	"author": "Neovici Development",
-	"main": "cosmoz-dialog.js",
+	"bugs": {
+		"url": "https://github.com/Neovici/cosmoz-dialog/issues"
+	},
+	"homepage": "https://github.com/Neovici/cosmoz-dialog#readme",
 	"directories": {
 		"test": "test"
 	},
+	"files": [
+		"dist"
+	],
 	"scripts": {
-		"lint": "eslint --cache --ext .js .",
-		"start": "wds",
+		"lint": "eslint --cache --ext .js,.ts .",
+		"start": "npm run storybook:start",
 		"test": "wtr --coverage",
 		"test:watch": "wtr --watch",
-		"prepare": "husky install"
+		"prepare": "npm run build",
+		"prettier": "prettier --write \"**/*.{js,ts,json,css,md}\"",
+		"prettier:check": "prettier --check \"**/*.{js,ts,json,css,md}\"",
+		"build": "tsc",
+		"storybook:start": "storybook dev -p 8000",
+		"storybook:build": "storybook build",
+		"storybook:preview": "npm run storybook:build && web-dev-server --root-dir ./storybook-static/ --open"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		}
+	},
+	"dependencies": {
+		"@neovici/cosmoz-utils": "^6.13.3",
+		"@pionjs/pion": "^2.7.1",
+		"lit-html": "^3.3.0"
+	},
+	"publishConfig": {
+		"access": "restricted",
+		"registry": "https://npm.pkg.github.com"
+	},
+	"devDependencies": {
+		"@commitlint/config-conventional": "^19.8.1",
+		"@eslint/eslintrc": "^3.3.0",
+		"@eslint/js": "^9.21.0",
+		"@neovici/cfg": "^2.2.1",
+		"@open-wc/testing": "^4.0.0",
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/commit-analyzer": "^13.0.0",
+		"@semantic-release/git": "^10.0.1",
+		"@semantic-release/github": "^11.0.0",
+		"@semantic-release/npm": "^12.0.1",
+		"@semantic-release/release-notes-generator": "^14.0.1",
+		"@storybook/addon-essentials": "^8.6.4",
+		"@storybook/addon-links": "^8.6.4",
+		"@storybook/blocks": "^8.6.4",
+		"@storybook/builder-vite": "^8.6.4",
+		"@storybook/web-components": "^8.6.4",
+		"@storybook/web-components-vite": "^8.6.4",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^22.13.10",
+		"@typescript-eslint/eslint-plugin": "^8.26.0",
+		"@typescript-eslint/parser": "^8.26.1",
+		"@web/dev-server-esbuild": "^1.0.4",
+		"@web/test-runner": "^0.18.0",
+		"@web/test-runner-mocha": "^0.9.0",
+		"@web/test-runner-playwright": "^0.11.1",
+		"@webcomponents/webcomponentsjs": "^2.0.0",
+		"commitlint": "^19.8.1",
+		"eslint-config-prettier": "^10.1.1",
+		"eslint-plugin-html": "^8.1.2",
+		"eslint-plugin-import": "^2.31.0",
+		"globals": "^16.0.0",
+		"husky": "^9.0.0",
+		"lit": "^3.2.1",
+		"semantic-release": "^24.2.5",
+		"sinon": "^18.0.0",
+		"typescript": "^5.8.2"
 	},
 	"release": {
 		"plugins": [
@@ -36,33 +104,12 @@
 			"@semantic-release/npm",
 			"@semantic-release/git"
 		],
-		"branch": "master"
-	},
-	"publishConfig": {
-		"access": "public"
+		"branch": "master",
+		"preset": "conventionalcommits"
 	},
 	"commitlint": {
 		"extends": [
 			"@commitlint/config-conventional"
 		]
-	},
-	"dependencies": {
-		"@polymer/iron-form": "^3.0.0",
-		"@polymer/paper-dialog": "^3.0.0",
-		"@polymer/polymer": "^3.0.0"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "^17.0.0",
-		"@commitlint/config-conventional": "^17.0.0",
-		"@neovici/cfg": "^1.17.1",
-		"@open-wc/testing": "^3.1.6",
-		"@polymer/paper-button": "^3.0.0",
-		"@semantic-release/changelog": "^6.0.0",
-		"@semantic-release/git": "^10.0.0",
-		"@web/test-runner-selenium": "^0.5.4",
-		"@webcomponents/webcomponentsjs": "^2.0.0",
-		"husky": "^8.0.0",
-		"semantic-release": "^21.0.1",
-		"sinon": "^14.0.0"
 	}
 }

@@ -12,18 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v2
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
       with:
-        node-version: 14.x
+        node-version: 20.x
 
     - name: Restore npm cache
       id: node-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: node_modules
         key: ${{ runner.os }}-node-0-${{ hashFiles('**/package-lock.json') }}
@@ -32,27 +32,22 @@ jobs:
       if: steps.node-cache.outputs.cache-hit != 'true'
       run: npm ci
 
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps
+
     - name: Lint commit messages
-      uses: wagoid/commitlint-github-action@v3
+      uses: wagoid/commitlint-github-action@v6
 
     - name: ESLint
       run: npm run lint
 
-    - name: Test and report
+    - name: Test
       env:
-        CC_TEST_REPORTER_ID: 098284714166307324feebd995209e046a8ca11a87c1495f60c450556977f528
-        GIT_BRANCH: ${{ github.ref == 'refs/heads/master' && 'master' || github.ref }}
-        GIT_COMMIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-        NEO_CC_URL: https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
-        NEO_CC: ./cc-test-reporter
         SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
         SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
       run: |
-        ([[ -e $NEO_CC ]] || curl -L $NEO_CC_URL > $NEO_CC) && chmod +x $NEO_CC
-        $NEO_CC before-build
         echo "::add-matcher::.github/problem-matcher.json"
         npm test
-        $NEO_CC after-build --exit-code $?
 
     - name: Semantic release
       run: npx semantic-release
@@ -60,4 +55,4 @@ jobs:
       env:
         HUSKY: 0
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }} 

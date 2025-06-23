@@ -1,0 +1,18 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"target": "ES2022",
+		"lib": ["ES2022", "DOM", "DOM.Iterable"],
+		"noEmit": true,
+		"skipLibCheck": true,
+		"types": ["mocha", "node"],
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": false,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"jsx": "preserve",
+		"rootDir": "."
+	},
+	"include": ["src/**/*.ts", "test/**/*.ts"],
+	"exclude": ["node_modules", "dist", "**/*.stories.ts"]
+}
