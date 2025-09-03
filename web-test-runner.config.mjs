@@ -1,29 +1,29 @@
-import {
-	chromeLauncher, defaultReporter
-} from '@web/test-runner';
-import { seleniumLauncher } from '@web/test-runner-selenium';
-import webdriver from 'selenium-webdriver';
-import firefox from 'selenium-webdriver/firefox.js';
+import { esbuildPlugin } from '@web/dev-server-esbuild';
+import { playwrightLauncher } from '@web/test-runner-playwright';
 
 export default {
+	files: 'test/**/*.test.{ts,js}',
 	nodeResolve: true,
-	coverageConfig: {
-		reportDir: 'coverage',
-		threshold: {
-			statements: 70,
-			branches: 70,
-			functions: 50,
-			lines: 70
-		}
-	},
-	files: [
-		'**!(node_modules)/*.test.js'
-	],
+	preserveSymlinks: true,
 	browsers: [
-		chromeLauncher(),
-		seleniumLauncher({
-			driverBuilder: new webdriver.Builder().forBrowser('firefox').setFirefoxOptions(new firefox.Options().headless())
-		})
-	]
-
+		playwrightLauncher({ product: 'chromium' }),
+		playwrightLauncher({ product: 'firefox' }),
+	],
+	plugins: [
+		esbuildPlugin({
+			ts: true,
+			target: 'auto',
+		}),
+	],
+	coverage: true,
+	coverageConfig: {
+		include: ['src/**/*.ts'],
+		exclude: ['src/**/*.test.ts', 'src/**/*.stories.ts'],
+	},
+	testFramework: {
+		config: {
+			timeout: 5000,
+			ui: 'tdd', // Use TDD interface which provides suite() and test()
+		},
+	},
 };
