@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+ 
 import { expect, html, fixture, oneEvent, aTimeout } from '@open-wc/testing';
 import '../cosmoz-dialog';
 

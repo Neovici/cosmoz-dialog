@@ -64,12 +64,12 @@
 		"@commitlint/config-conventional": "^20.0.0",
 		"@neovici/cfg": "^2.0.0",
 		"@open-wc/testing": "^4.0.0",
+		"@polymer/iron-demo-helpers": "^3.1.0",
 		"@polymer/paper-button": "^3.0.0",
 		"@semantic-release/changelog": "^6.0.0",
 		"@semantic-release/git": "^10.0.0",
 		"@webcomponents/webcomponentsjs": "^2.0.0",
 		"husky": "^9.1.7",
-		"semantic-release": "^25.0.2",
-		"sinon": "^21.0.0"
+		"semantic-release": "^25.0.2"
 	}
 }
