@@ -21,11 +21,11 @@
 		"test": "test"
 	},
 	"scripts": {
-		"lint": "eslint --cache --ext .js .",
+		"lint": "eslint --cache .",
 		"start": "wds",
 		"test": "wtr --coverage",
 		"test:watch": "wtr --watch",
-		"prepare": "husky install"
+		"prepare": "husky"
 	},
 	"release": {
 		"plugins": [
@@ -36,7 +36,8 @@
 			"@semantic-release/npm",
 			"@semantic-release/git"
 		],
-		"branch": "master"
+		"branch": "master",
+		"preset": "conventionalcommits"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -44,7 +45,14 @@
 	"commitlint": {
 		"extends": [
 			"@commitlint/config-conventional"
-		]
+		],
+		"rules": {
+			"body-max-line-length": [
+				1,
+				"always",
+				600
+			]
+		}
 	},
 	"dependencies": {
 		"@polymer/iron-form": "^3.0.0",
@@ -52,17 +60,16 @@
 		"@polymer/polymer": "^3.0.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.0.0",
-		"@commitlint/config-conventional": "^17.0.0",
-		"@neovici/cfg": "^1.17.1",
-		"@open-wc/testing": "^3.1.6",
+		"@commitlint/cli": "^20.0.0",
+		"@commitlint/config-conventional": "^20.0.0",
+		"@neovici/cfg": "^2.0.0",
+		"@open-wc/testing": "^4.0.0",
 		"@polymer/paper-button": "^3.0.0",
 		"@semantic-release/changelog": "^6.0.0",
 		"@semantic-release/git": "^10.0.0",
-		"@web/test-runner-selenium": "^0.5.4",
 		"@webcomponents/webcomponentsjs": "^2.0.0",
-		"husky": "^8.0.0",
-		"semantic-release": "^21.0.1",
-		"sinon": "^14.0.0"
+		"husky": "^9.1.7",
+		"semantic-release": "^25.0.2",
+		"sinon": "^21.0.0"
 	}
 }

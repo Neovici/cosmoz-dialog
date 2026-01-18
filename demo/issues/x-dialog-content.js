@@ -1,5 +1,5 @@
-import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { html } from '@polymer/polymer/lib/utils/html-tag';
+import { PolymerElement } from '@polymer/polymer/polymer-element';
 
 class XDialogContent extends PolymerElement {
 	static get template() {
@@ -18,14 +18,14 @@ class XDialogContent extends PolymerElement {
 	static get properties() {
 		return {
 			inProp: {
-				type: String
+				type: String,
 			},
 
 			outProp: {
 				type: String,
 				notify: true,
-				computed: '_computeOutProp(inProp)'
-			}
+				computed: '_computeOutProp(inProp)',
+			},
 		};
 	}
 
