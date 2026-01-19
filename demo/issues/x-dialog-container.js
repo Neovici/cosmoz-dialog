@@ -1,10 +1,10 @@
 import '@polymer/paper-button';
 
-import { PolymerElement } from '@polymer/polymer/polymer-element';
 import { html } from '@polymer/polymer/lib/utils/html-tag';
+import { PolymerElement } from '@polymer/polymer/polymer-element';
 
-import './x-dialog-content.js';
 import '../../cosmoz-dialog.js';
+import './x-dialog-content.js';
 
 class XDialogContainer extends PolymerElement {
 	static get template() {
@@ -16,7 +16,10 @@ class XDialogContainer extends PolymerElement {
 				<template>
 					<h2>Dialog Title</h2>
 					<p>
-						<x-dialog-content in-prop="{{ containerProp }}" out-prop="{{dialogOutProp}}"></x-dialog-content>
+						<x-dialog-content
+							in-prop="{{ containerProp }}"
+							out-prop="{{dialogOutProp}}"
+						></x-dialog-content>
 					</p>
 					<div class="buttons">
 						<paper-button dialog-dismiss>Cancel</paper-button>
@@ -34,11 +37,11 @@ class XDialogContainer extends PolymerElement {
 	static get properties() {
 		return {
 			containerProp: {
-				type: String
+				type: String,
 			},
 			dialogOutProp: {
-				type: String
-			}
+				type: String,
+			},
 		};
 	}
 
