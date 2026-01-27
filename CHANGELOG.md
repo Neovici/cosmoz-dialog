@@ -1,3 +1,7 @@
+## <small>3.1.1 (2026-01-27)</small>
+
+* fix: repository URL case sensitivity ([cdf2e12](https://github.com/Neovici/cosmoz-dialog/commit/cdf2e12))
+
 ## 3.1.0 (2026-01-19)
 
 * Bump braces from 3.0.2 to 3.0.3 ([8ff48a7](https://github.com/neovici/cosmoz-dialog/commit/8ff48a7))
