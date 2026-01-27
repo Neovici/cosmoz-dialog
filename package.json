@@ -6,13 +6,13 @@
 		"polymer",
 		"web-components"
 	],
-	"homepage": "https://github.com/neovici/cosmoz-dialog#readme",
+	"homepage": "https://github.com/Neovici/cosmoz-dialog#readme",
 	"bugs": {
-		"url": "https://github.com/neovici/cosmoz-dialog/issues"
+		"url": "https://github.com/Neovici/cosmoz-dialog/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/neovici/cosmoz-dialog.git"
+		"url": "git+https://github.com/Neovici/cosmoz-dialog.git"
 	},
 	"license": "Apache-2.0",
 	"author": "Neovici Development",
