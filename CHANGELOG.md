@@ -1,3 +1,17 @@
+## [2.0.0](https://github.com/Neovici/cosmoz-dialog/compare/v1.3.0...v2.0.0) (2026-02-23)
+
+### ⚠ BREAKING CHANGES
+
+* Package renamed from @neovici/cosmoz-dialog-next to @neovici/cosmoz-dialog.
+This replaces the old Polymer-based cosmoz-dialog (v3.x) with the pionjs-based implementation.
+Consumers should update their imports from @neovici/cosmoz-dialog-next to @neovici/cosmoz-dialog.
+
+Ref: NEO-1130
+
+### Features
+
+* rename package from @neovici/cosmoz-dialog-next to @neovici/cosmoz-dialog ([95b0414](https://github.com/Neovici/cosmoz-dialog/commit/95b0414159d9879e7bbe15c1ce999e33d3485767))
+
 ## [1.3.0](https://github.com/Neovici/cosmoz-dialog-next/compare/v1.2.0...v1.3.0) (2026-01-20)
 
 ### Features
