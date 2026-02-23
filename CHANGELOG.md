@@ -1,3 +1,16 @@
+## [4.0.0](https://github.com/Neovici/cosmoz-dialog/compare/v3.0.0...v4.0.0) (2026-02-23)
+
+### ⚠ BREAKING CHANGES
+
+* v4.0.0 supersedes the old Polymer-based @neovici/cosmoz-dialog (v3.x).
+Consumers of the old package should migrate to v4+.
+
+Ref: NEO-1130
+
+### Features
+
+* finalize v4 as the canonical cosmoz-dialog release ([7be0bb9](https://github.com/Neovici/cosmoz-dialog/commit/7be0bb92914940787dbf8f9c65521e9432319724))
+
 ## [2.0.0](https://github.com/Neovici/cosmoz-dialog/compare/v1.3.0...v2.0.0) (2026-02-23)
 
 ### ⚠ BREAKING CHANGES
