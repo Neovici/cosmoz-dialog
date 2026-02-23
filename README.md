@@ -1,2 +1,5 @@
-# cosmoz-dialog-next
-Next version of cosmoz-dialog with pionjs
+# cosmoz-dialog
+Cosmoz dialog component built with pionjs
+
+> **Note:** This package was previously published as `@neovici/cosmoz-dialog-next`.
+> Starting from v4.0.0, it replaces the old Polymer-based `@neovici/cosmoz-dialog`.

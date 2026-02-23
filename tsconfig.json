@@ -10,7 +10,7 @@
 		"types": ["node", "mocha"],
 		"baseUrl": ".",
 		"paths": {
-			"@neovici/cosmoz-dialog-next/*": ["./src/*"]
+			"@neovici/cosmoz-dialog/*": ["./src/*"]
 		}
 	},
 	"include": ["src/**/*", "test/**/*", "stories/**/*"]
