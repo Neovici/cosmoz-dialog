@@ -4,9 +4,9 @@ import {
 	ComponentOptions,
 	html,
 	useEffect,
-	useMemo,
+	useRef,
 } from '@pionjs/pion';
-import { createRef, ref } from 'lit-html/directives/ref.js';
+import { ref } from 'lit-html/directives/ref.js';
 import { when } from 'lit-html/directives/when.js';
 import styles from './style.css';
 import { Props } from './types';
@@ -55,10 +55,10 @@ export const dialog = <T extends Props = Props>(
 		(host) => {
 			const { close } = useClose();
 			useMove();
-			const dialogRef = useMemo(() => createRef<HTMLDialogElement>(), []);
+			const dialogRef = useRef<HTMLDialogElement>();
 
 			useEffect(() => {
-				const dlg = dialogRef.value;
+				const dlg = dialogRef.current;
 				if (dlg && !dlg.open && dlg.isConnected) {
 					dlg.showModal();
 				}
