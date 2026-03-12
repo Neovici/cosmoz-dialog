@@ -1,5 +1,11 @@
 import { clearIcon } from '@neovici/cosmoz-icons';
-import { component, ComponentOptions, html, useEffect } from '@pionjs/pion';
+import {
+	component,
+	ComponentOptions,
+	html,
+	useEffect,
+	useMemo,
+} from '@pionjs/pion';
 import { createRef, ref } from 'lit-html/directives/ref.js';
 import { when } from 'lit-html/directives/when.js';
 import styles from './style.css';
@@ -49,7 +55,7 @@ export const dialog = <T extends Props = Props>(
 		(host) => {
 			const { close } = useClose();
 			useMove();
-			const dialogRef = createRef<HTMLDialogElement>();
+			const dialogRef = useMemo(() => createRef<HTMLDialogElement>(), []);
 
 			useEffect(() => {
 				const dlg = dialogRef.value;
