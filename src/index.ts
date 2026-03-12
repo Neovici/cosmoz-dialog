@@ -1,6 +1,6 @@
 import { clearIcon } from '@neovici/cosmoz-icons';
-import { component, ComponentOptions, html, useCallback } from '@pionjs/pion';
-import { ref } from 'lit-html/directives/ref.js';
+import { component, ComponentOptions, html, useEffect } from '@pionjs/pion';
+import { createRef, ref } from 'lit-html/directives/ref.js';
 import { when } from 'lit-html/directives/when.js';
 import styles from './style.css';
 import { Props } from './types';
@@ -49,20 +49,20 @@ export const dialog = <T extends Props = Props>(
 		(host) => {
 			const { close } = useClose();
 			useMove();
+			const dialogRef = createRef<HTMLDialogElement>();
 
-			const open = useCallback(
-				(el: Element | undefined) =>
-					el &&
-					!(el as HTMLDialogElement).open &&
-					(el as HTMLDialogElement).showModal(),
-				[],
-			);
+			useEffect(() => {
+				const dlg = dialogRef.value;
+				if (dlg && !dlg.open && dlg.isConnected) {
+					dlg.showModal();
+				}
+			}, []);
 
 			return html`
 				<style>
 					${styles}${extraStyles}
 				</style>
-				<dialog ${ref(open)} @close=${close}>
+				<dialog ${ref(dialogRef)} @close=${close}>
 					${renderDialog({
 						title: host.heading || host.title,
 						content: renderer(host),

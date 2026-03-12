@@ -9,9 +9,10 @@ export default () => {
 		host.onClose?.();
 	}, []);
 	useEffect(() => {
-		const root = host.shadowRoot!,
-			onClick = (e: MouseEvent) =>
-				(e.target as HTMLButtonElement).value === 'cancel' && close();
+		const root = host.shadowRoot;
+		if (!root) return;
+		const onClick = (e: MouseEvent) =>
+			(e.target as HTMLButtonElement).value === 'cancel' && close();
 		root.addEventListener('click', onClick as EventListener);
 		return () => {
 			root.removeEventListener('click', onClick as EventListener);
