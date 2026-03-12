@@ -65,10 +65,14 @@ export const dialog = <T extends Props = Props>(
 			}, []);
 
 			return html`
-				<style>
-					${styles}${extraStyles}
-				</style>
-				<dialog ${ref(dialogRef)} @close=${close}>
+				${when(
+					extraStyles,
+					() =>
+						html`<style>
+							${extraStyles}
+						</style>`,
+				)}
+				<dialog ${ref(dialogRef)} @close=${close} part="dialog">
 					${renderDialog({
 						title: host.heading || host.title,
 						content: renderer(host),
@@ -86,6 +90,7 @@ export const dialog = <T extends Props = Props>(
 				'closeable',
 				...(observedAttributes ?? []),
 			] as ComponentOptions<T>['observedAttributes'],
+			styleSheets: [styles],
 			...opts,
 		},
 	);

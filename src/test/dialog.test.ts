@@ -14,12 +14,7 @@ describe('dialog', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-      <style>
-        :host {
-          display: block;
-        }
-      </style>
-      <dialog open="">
+      <dialog open="" part="dialog">
         <div class="title" part="title">
           Test Dialog
           <button class="close">
@@ -43,12 +38,7 @@ describe('dialog', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-      <style>
-        :host {
-          display: block;
-        }
-      </style>
-      <dialog open="">
+      <dialog open="" part="dialog">
         <div class="title" part="title">
           Dialog Without Close Button
         </div>

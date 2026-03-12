@@ -11,7 +11,7 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="">
+			<dialog open="" part="dialog">
 				<div class="title" part="title">
 					Loading...
 				</div>
@@ -47,7 +47,7 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="">
+			<dialog open="" part="dialog">
 				<div class="title" part="title">
 					Please wait
 				</div>
@@ -84,7 +84,7 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="">
+			<dialog open="" part="dialog">
 				<div class="title" part="title">
 					Loading...
 					<button class="close">
@@ -122,7 +122,7 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="">
+			<dialog open="" part="dialog">
 				<div class="title" part="title">
 					Loading...
 				</div>
@@ -159,7 +159,7 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="">
+			<dialog open="" part="dialog">
 				<div class="title" part="title">
 					Loading...
 				</div>
@@ -208,7 +208,7 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="">
+			<dialog open="" part="dialog">
 				<div class="title" part="title">
 					Processing
 				</div>
