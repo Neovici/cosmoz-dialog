@@ -1,5 +1,5 @@
-import { useEffect, useCallback } from '@pionjs/pion';
 import { useHost } from '@neovici/cosmoz-utils/hooks/use-host';
+import { useCallback, useEffect } from '@pionjs/pion';
 import type { DialogElement } from './types';
 
 export default () => {
@@ -9,20 +9,12 @@ export default () => {
 		host.onClose?.();
 	}, []);
 	useEffect(() => {
-		const onClose = (e: Event) => {
-				e.preventDefault();
-				close();
-			},
-			root = host.shadowRoot!,
+		const root = host.shadowRoot!,
 			onClick = (e: MouseEvent) =>
-				(e.target as HTMLButtonElement).value === 'cancel' && onClose(e),
-			onEscape = (e: KeyboardEvent) =>
-				!e.defaultPrevented && e.key === 'Escape' && onClose(e);
+				(e.target as HTMLButtonElement).value === 'cancel' && close();
 		root.addEventListener('click', onClick as EventListener);
-		document.addEventListener('keydown', onEscape, true);
 		return () => {
 			root.removeEventListener('click', onClick as EventListener);
-			document.removeEventListener('keydown', onEscape, true);
 		};
 	}, []);
 	return { close };

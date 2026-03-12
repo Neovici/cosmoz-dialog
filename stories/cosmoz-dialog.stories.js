@@ -11,7 +11,6 @@ const Dialog = ({ heading, closeable, unmovable }) => html`
 		.heading=${heading}
 		?closeable=${closeable}
 		?unmovable=${unmovable}
-		backdrop
 	></demo-dialog>
 `;
 

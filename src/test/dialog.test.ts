@@ -2,7 +2,6 @@ import { assert, fixture } from '@open-wc/testing';
 import { html } from 'lit-html';
 import { dialog } from '../index';
 
-// Define a test dialog component
 const TestDialog = dialog(() => html`<p>Test dialog content</p>`);
 customElements.define('test-dialog', TestDialog);
 
@@ -12,7 +11,6 @@ describe('dialog', () => {
 			<test-dialog heading="Test Dialog" closeable></test-dialog>
 		`);
 
-		// Test the shadow DOM structure
 		assert.shadowDom.equal(
 			el,
 			`
@@ -21,16 +19,18 @@ describe('dialog', () => {
           display: block;
         }
       </style>
-      <div class="title" part="title">
-        Test Dialog
-        <button class="close">
-          <svg aria-hidden="true" focusable="false" height="16" viewBox="0 0 16 16" width="16">
-          </svg>
-        </button>
-      </div>
-      <div class="content" part="content">
-        <p>Test dialog content</p>
-      </div>
+      <dialog>
+        <div class="title" part="title">
+          Test Dialog
+          <button class="close">
+            <svg aria-hidden="true" focusable="false" height="16" viewBox="0 0 16 16" width="16">
+            </svg>
+          </button>
+        </div>
+        <div class="content" part="content">
+          <p>Test dialog content</p>
+        </div>
+      </dialog>
       `,
 		);
 	});
@@ -40,7 +40,6 @@ describe('dialog', () => {
 			<test-dialog heading="Dialog Without Close Button"></test-dialog>
 		`);
 
-		// Test the shadow DOM structure without closeable button
 		assert.shadowDom.equal(
 			el,
 			`
@@ -49,12 +48,14 @@ describe('dialog', () => {
           display: block;
         }
       </style>
-      <div class="title" part="title">
-        Dialog Without Close Button
-      </div>
-      <div class="content" part="content">
-        <p>Test dialog content</p>
-      </div>
+      <dialog>
+        <div class="title" part="title">
+          Dialog Without Close Button
+        </div>
+        <div class="content" part="content">
+          <p>Test dialog content</p>
+        </div>
+      </dialog>
       `,
 		);
 	});

@@ -19,13 +19,4 @@ describe('use-close', () => {
 		result.current.close();
 		sinonAssert.calledOnce(onCloseSpy);
 	});
-
-	it('cleanup unmounts properly', async () => {
-		const { host, unmount } = await renderHook(useClose);
-		const closeSpy = spy();
-		host.addEventListener('close', closeSpy);
-		unmount();
-		document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-		sinonAssert.notCalled(closeSpy);
-	});
 });
