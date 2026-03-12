@@ -19,7 +19,7 @@ describe('dialog', () => {
           display: block;
         }
       </style>
-      <dialog>
+      <dialog open="">
         <div class="title" part="title">
           Test Dialog
           <button class="close">
@@ -48,7 +48,7 @@ describe('dialog', () => {
           display: block;
         }
       </style>
-      <dialog>
+      <dialog open="">
         <div class="title" part="title">
           Dialog Without Close Button
         </div>
