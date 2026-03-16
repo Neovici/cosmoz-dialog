@@ -11,28 +11,30 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="" part="dialog">
-				<div class="title" part="title">
-					Loading...
-				</div>
-				<div class="content" part="content">
-					<style>
-						.content {
-							flex-direction: row;
-							align-items: center;
-							justify-content: center;
-							padding: 30px;
-						}
-						cosmoz-spinner {
-							width: 32px;
-							height: 32px;
-							margin-right: 12px;
-						}
-					</style>
-					<cosmoz-spinner></cosmoz-spinner>
-					<slot></slot>
-				</div>
-			</dialog>
+			<cosmoz-dialog-connectable>
+				<dialog open="" part="dialog">
+					<div class="title" part="title">
+						Loading...
+					</div>
+					<div class="content" part="content">
+						<style>
+							.content {
+								flex-direction: row;
+								align-items: center;
+								justify-content: center;
+								padding: 30px;
+							}
+							cosmoz-spinner {
+								width: 32px;
+								height: 32px;
+								margin-right: 12px;
+							}
+						</style>
+						<cosmoz-spinner></cosmoz-spinner>
+						<slot></slot>
+					</div>
+				</dialog>
+			</cosmoz-dialog-connectable>
 			`,
 		);
 	});
@@ -47,28 +49,30 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="" part="dialog">
-				<div class="title" part="title">
-					Please wait
-				</div>
-				<div class="content" part="content">
-					<style>
-						.content {
-							flex-direction: row;
-							align-items: center;
-							justify-content: center;
-							padding: 30px;
-						}
-						cosmoz-spinner {
-							width: 32px;
-							height: 32px;
-							margin-right: 12px;
-						}
-					</style>
-					<cosmoz-spinner></cosmoz-spinner>
-					<slot></slot>
-				</div>
-			</dialog>
+			<cosmoz-dialog-connectable>
+				<dialog open="" part="dialog">
+					<div class="title" part="title">
+						Please wait
+					</div>
+					<div class="content" part="content">
+						<style>
+							.content {
+								flex-direction: row;
+								align-items: center;
+								justify-content: center;
+								padding: 30px;
+							}
+							cosmoz-spinner {
+								width: 32px;
+								height: 32px;
+								margin-right: 12px;
+							}
+						</style>
+						<cosmoz-spinner></cosmoz-spinner>
+						<slot></slot>
+					</div>
+				</dialog>
+			</cosmoz-dialog-connectable>
 			`,
 		);
 	});
@@ -84,32 +88,34 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="" part="dialog">
-				<div class="title" part="title">
-					Loading...
-					<button class="close">
-						<svg aria-hidden="true" focusable="false" height="16" viewBox="0 0 16 16" width="16">
-						</svg>
-					</button>
-				</div>
-				<div class="content" part="content">
-					<style>
-						.content {
-							flex-direction: row;
-							align-items: center;
-							justify-content: center;
-							padding: 30px;
-						}
-						cosmoz-spinner {
-							width: 32px;
-							height: 32px;
-							margin-right: 12px;
-						}
-					</style>
-					<cosmoz-spinner></cosmoz-spinner>
-					<slot></slot>
-				</div>
-			</dialog>
+			<cosmoz-dialog-connectable>
+				<dialog open="" part="dialog">
+					<div class="title" part="title">
+						Loading...
+						<button class="close">
+							<svg aria-hidden="true" focusable="false" height="16" viewBox="0 0 16 16" width="16">
+							</svg>
+						</button>
+					</div>
+					<div class="content" part="content">
+						<style>
+							.content {
+								flex-direction: row;
+								align-items: center;
+								justify-content: center;
+								padding: 30px;
+							}
+							cosmoz-spinner {
+								width: 32px;
+								height: 32px;
+								margin-right: 12px;
+							}
+						</style>
+						<cosmoz-spinner></cosmoz-spinner>
+						<slot></slot>
+					</div>
+				</dialog>
+			</cosmoz-dialog-connectable>
 			`,
 		);
 	});
@@ -122,28 +128,30 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="" part="dialog">
-				<div class="title" part="title">
-					Loading...
-				</div>
-				<div class="content" part="content">
-					<style>
-						.content {
-							flex-direction: row;
-							align-items: center;
-							justify-content: center;
-							padding: 30px;
-						}
-						cosmoz-spinner {
-							width: 32px;
-							height: 32px;
-							margin-right: 12px;
-						}
-					</style>
-					<cosmoz-spinner></cosmoz-spinner>
-					<slot></slot>
-				</div>
-			</dialog>
+			<cosmoz-dialog-connectable>
+				<dialog open="" part="dialog">
+					<div class="title" part="title">
+						Loading...
+					</div>
+					<div class="content" part="content">
+						<style>
+							.content {
+								flex-direction: row;
+								align-items: center;
+								justify-content: center;
+								padding: 30px;
+							}
+							cosmoz-spinner {
+								width: 32px;
+								height: 32px;
+								margin-right: 12px;
+							}
+						</style>
+						<cosmoz-spinner></cosmoz-spinner>
+						<slot></slot>
+					</div>
+				</dialog>
+			</cosmoz-dialog-connectable>
 			`,
 		);
 	});
@@ -159,28 +167,30 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="" part="dialog">
-				<div class="title" part="title">
-					Loading...
-				</div>
-				<div class="content" part="content">
-					<style>
-						.content {
-							flex-direction: row;
-							align-items: center;
-							justify-content: center;
-							padding: 30px;
-						}
-						cosmoz-spinner {
-							width: 32px;
-							height: 32px;
-							margin-right: 12px;
-						}
-					</style>
-					<cosmoz-spinner></cosmoz-spinner>
-					<slot></slot>
-				</div>
-			</dialog>
+			<cosmoz-dialog-connectable>
+				<dialog open="" part="dialog">
+					<div class="title" part="title">
+						Loading...
+					</div>
+					<div class="content" part="content">
+						<style>
+							.content {
+								flex-direction: row;
+								align-items: center;
+								justify-content: center;
+								padding: 30px;
+							}
+							cosmoz-spinner {
+								width: 32px;
+								height: 32px;
+								margin-right: 12px;
+							}
+						</style>
+						<cosmoz-spinner></cosmoz-spinner>
+						<slot></slot>
+					</div>
+				</dialog>
+			</cosmoz-dialog-connectable>
 			`,
 		);
 	});
@@ -208,28 +218,30 @@ describe('cosmoz-dialog-loading', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-			<dialog open="" part="dialog">
-				<div class="title" part="title">
-					Processing
-				</div>
-				<div class="content" part="content">
-					<style>
-						.content {
-							flex-direction: row;
-							align-items: center;
-							justify-content: center;
-							padding: 30px;
-						}
-						cosmoz-spinner {
-							width: 32px;
-							height: 32px;
-							margin-right: 12px;
-						}
-					</style>
-					<cosmoz-spinner></cosmoz-spinner>
-					<slot></slot>
-				</div>
-			</dialog>
+			<cosmoz-dialog-connectable>
+				<dialog open="" part="dialog">
+					<div class="title" part="title">
+						Processing
+					</div>
+					<div class="content" part="content">
+						<style>
+							.content {
+								flex-direction: row;
+								align-items: center;
+								justify-content: center;
+								padding: 30px;
+							}
+							cosmoz-spinner {
+								width: 32px;
+								height: 32px;
+								margin-right: 12px;
+							}
+						</style>
+						<cosmoz-spinner></cosmoz-spinner>
+						<slot></slot>
+					</div>
+				</dialog>
+			</cosmoz-dialog-connectable>
 			`,
 		);
 	});

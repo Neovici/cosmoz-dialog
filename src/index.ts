@@ -1,13 +1,8 @@
 import { clearIcon } from '@neovici/cosmoz-icons';
-import {
-	component,
-	ComponentOptions,
-	html,
-	useEffect,
-	useRef,
-} from '@pionjs/pion';
+import { component, ComponentOptions, html, useRef } from '@pionjs/pion';
 import { ref } from 'lit-html/directives/ref.js';
 import { when } from 'lit-html/directives/when.js';
+import './connectable.js';
 import styles from './style.css';
 import { Props } from './types';
 import useClose from './use-close';
@@ -57,13 +52,6 @@ export const dialog = <T extends Props = Props>(
 			useMove();
 			const dialogRef = useRef<HTMLDialogElement>();
 
-			useEffect(() => {
-				const dlg = dialogRef.current;
-				if (dlg && !dlg.open && dlg.isConnected) {
-					dlg.showModal();
-				}
-			}, []);
-
 			return html`
 				${when(
 					extraStyles,
@@ -72,14 +60,21 @@ export const dialog = <T extends Props = Props>(
 							${extraStyles}
 						</style>`,
 				)}
-				<dialog ${ref(dialogRef)} @close=${close} part="dialog">
-					${renderDialog({
-						title: host.heading || host.title,
-						content: renderer(host),
-						closeable: host.closeable,
-						onClose: close,
-					})}
-				</dialog>
+				<cosmoz-dialog-connectable
+					@connected=${() => {
+						const dlg = dialogRef.current;
+						if (dlg && !dlg.open) dlg.showModal();
+					}}
+				>
+					<dialog ${ref(dialogRef)} @close=${close} part="dialog">
+						${renderDialog({
+							title: host.heading || host.title,
+							content: renderer(host),
+							closeable: host.closeable,
+							onClose: close,
+						})}
+					</dialog>
+				</cosmoz-dialog-connectable>
 			`;
 		},
 		{

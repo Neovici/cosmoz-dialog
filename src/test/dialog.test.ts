@@ -14,18 +14,20 @@ describe('dialog', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-      <dialog open="" part="dialog">
-        <div class="title" part="title">
-          Test Dialog
-          <button class="close">
-            <svg aria-hidden="true" focusable="false" height="16" viewBox="0 0 16 16" width="16">
-            </svg>
-          </button>
-        </div>
-        <div class="content" part="content">
-          <p>Test dialog content</p>
-        </div>
-      </dialog>
+      <cosmoz-dialog-connectable>
+        <dialog open="" part="dialog">
+          <div class="title" part="title">
+            Test Dialog
+            <button class="close">
+              <svg aria-hidden="true" focusable="false" height="16" viewBox="0 0 16 16" width="16">
+              </svg>
+            </button>
+          </div>
+          <div class="content" part="content">
+            <p>Test dialog content</p>
+          </div>
+        </dialog>
+      </cosmoz-dialog-connectable>
       `,
 		);
 	});
@@ -38,14 +40,16 @@ describe('dialog', () => {
 		assert.shadowDom.equal(
 			el,
 			`
-      <dialog open="" part="dialog">
-        <div class="title" part="title">
-          Dialog Without Close Button
-        </div>
-        <div class="content" part="content">
-          <p>Test dialog content</p>
-        </div>
-      </dialog>
+      <cosmoz-dialog-connectable>
+        <dialog open="" part="dialog">
+          <div class="title" part="title">
+            Dialog Without Close Button
+          </div>
+          <div class="content" part="content">
+            <p>Test dialog content</p>
+          </div>
+        </dialog>
+      </cosmoz-dialog-connectable>
       `,
 		);
 	});
