@@ -12,5 +12,3 @@ class DialogConnectable extends connectable(HTMLElement) {
 }
 
 customElements.define(DialogConnectable.is, DialogConnectable);
-
-export { DialogConnectable };

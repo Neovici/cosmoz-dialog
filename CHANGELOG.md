@@ -1,36 +1,3 @@
-## [5.0.0](https://github.com/Neovici/cosmoz-dialog/compare/v4.0.0...v5.0.0) (2026-03-12)
-
-### ⚠ BREAKING CHANGES
-
-- Migrate to native `<dialog>` element with breaking changes
-
-* `backdrop` attribute removed - native `::backdrop` is now always styled
-* `manualFocus` prop removed from TypeScript types - native dialog handles focus
-* `use-focus` hook removed from exports
-* Dialog now rendered in shadow DOM instead of portal
-* Focus management handled by native dialog (no manual tabindex)
-* ESC key handler removed (native dialog emits `close` event)
-
-Migration:
-
-1. Remove `backdrop` and `manual-focus` attributes from templates
-2. Use CSS shadow parts for theming: `part="dialog"`, `part="title"`, `part="content"`
-3. Remove `manualFocus` from TypeScript type definitions
-4. Update any code importing from `cosmoz-dialog/use-focus`
-
-Refs: #9, FE-359
-
-### Features
-
-- migrate to native `<dialog>` element ([da9882e](https://github.com/Neovici/cosmoz-dialog/commit/da9882e))
-- update to pionjs 2.13.0 and use `useRef` ([6a07b8e](https://github.com/Neovici/cosmoz-dialog/commit/6a07b8e))
-- move styles to `styleSheets` and add CSS parts ([da9882e](https://github.com/Neovici/cosmoz-dialog/commit/da9882e))
-
-### Bug Fixes
-
-- clear browser centering styles before applying drag position ([3724481](https://github.com/Neovici/cosmoz-dialog/commit/3724481))
-- use `createRef` and `useEffect` for `showModal` ([a753743](https://github.com/Neovici/cosmoz-dialog/commit/a753743))
-
 ## [4.0.0](https://github.com/Neovici/cosmoz-dialog/compare/v3.0.0...v4.0.0) (2026-02-23)
 
 ### ⚠ BREAKING CHANGES
