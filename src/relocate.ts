@@ -27,9 +27,11 @@ export default (
 				const limited = limitBounds(bounds, x, y);
 
 				Object.assign(el.style, {
+					inset: 'auto',
+					margin: '0',
 					left: limited.x + 'px',
 					top: limited.y + 'px',
-					transform: 'initial',
+					transform: 'none',
 				});
 			},
 			onMove = (e: MouseEvent) => move(e.clientX, e.clientY),
