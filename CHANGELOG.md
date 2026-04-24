@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/Neovici/cosmoz-dialog/compare/v5.0.0...v5.0.1) (2026-04-24)
+
+### Bug Fixes
+
+* add types to [@connected](https://github.com/connected) handler parameter ([951c106](https://github.com/Neovici/cosmoz-dialog/commit/951c106f463899ba4f29617b372be3a9cde038ed))
+* use DOM lookup in [@connected](https://github.com/connected) handler to avoid race condition ([9ea9eda](https://github.com/Neovici/cosmoz-dialog/commit/9ea9eda7516cef0ed7677984dccef0e9c552ff26))
+
 ## [5.0.0](https://github.com/Neovici/cosmoz-dialog/compare/v4.0.0...v5.0.0) (2026-03-21)
 
 ### ⚠ BREAKING CHANGES
