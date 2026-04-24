@@ -61,8 +61,8 @@ export const dialog = <T extends Props = Props>(
 						</style>`,
 				)}
 				<cosmoz-dialog-connectable
-					@connected=${(e) => {
-						const dlg = e.target.querySelector('dialog');
+					@connected=${(e: Event) => {
+						const dlg = (e.target as HTMLElement).querySelector('dialog');
 						if (dlg && !dlg.open) dlg.showModal();
 					}}
 				>
