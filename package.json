@@ -34,19 +34,8 @@
     "storybook:build": "storybook build",
     "storybook:deploy": "storybook-to-ghpages",
     "storybook:preview": "npm run storybook:build && http-server -d ./storybook-static/",
+    "changeset": "changeset",
     "prepare": "husky"
-  },
-  "release": {
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
-      "@semantic-release/github",
-      "@semantic-release/npm",
-      "@semantic-release/git"
-    ],
-    "branch": "main",
-    "preset": "conventionalcommits"
   },
   "publishConfig": {
     "access": "public"
@@ -88,8 +77,7 @@
     "@neovici/testing": "^2.1.1",
     "@open-wc/testing": "^4.0.0",
     "@open-wc/testing-helpers": "^3.0.1",
-    "@semantic-release/changelog": "^6.0.0",
-    "@semantic-release/git": "^10.0.0",
+    "@changesets/cli": "^2.27.0",
     "@storybook/addon-links": "^10.0.0",
     "@storybook/web-components": "^10.0.0",
     "@storybook/web-components-vite": "^10.0.0",
@@ -100,7 +88,6 @@
     "esbuild": "^0.27.0",
     "http-server": "^14.1.1",
     "husky": "^9.0.11",
-    "semantic-release": "^25.0.0",
     "sinon": "^19.0.0",
     "storybook": "^10.0.0",
     "typescript": "^5.4.3"
