@@ -1,36 +1,43 @@
 ## [5.0.1](https://github.com/Neovici/cosmoz-dialog/compare/v5.0.0...v5.0.1) (2026-04-24)
 
+## 5.0.2
+
+### Patch Changes
+
+- 29b6e93: Migrate release automation from semantic-release to changesets.
+- e29b73d: chore(deps-dev): bump @playwright/test to 1.60.0
+
 ### Bug Fixes
 
-* add types to [@connected](https://github.com/connected) handler parameter ([951c106](https://github.com/Neovici/cosmoz-dialog/commit/951c106f463899ba4f29617b372be3a9cde038ed))
-* use DOM lookup in [@connected](https://github.com/connected) handler to avoid race condition ([9ea9eda](https://github.com/Neovici/cosmoz-dialog/commit/9ea9eda7516cef0ed7677984dccef0e9c552ff26))
+- add types to [@connected](https://github.com/connected) handler parameter ([951c106](https://github.com/Neovici/cosmoz-dialog/commit/951c106f463899ba4f29617b372be3a9cde038ed))
+- use DOM lookup in [@connected](https://github.com/connected) handler to avoid race condition ([9ea9eda](https://github.com/Neovici/cosmoz-dialog/commit/9ea9eda7516cef0ed7677984dccef0e9c552ff26))
 
 ## [5.0.0](https://github.com/Neovici/cosmoz-dialog/compare/v4.0.0...v5.0.0) (2026-03-21)
 
 ### ⚠ BREAKING CHANGES
 
-* renderDialog no longer accepts styles parameter and now requires onClose callback
-* This release contains breaking changes.
+- renderDialog no longer accepts styles parameter and now requires onClose callback
+- This release contains breaking changes.
 
-- backdrop attribute removed
-- manualFocus prop removed
-- use-focus hook removed
-- Dialog rendered in shadow DOM instead of portal
+* backdrop attribute removed
+* manualFocus prop removed
+* use-focus hook removed
+* Dialog rendered in shadow DOM instead of portal
 
 ### Features
 
-* migrate to native dialog element ([a4659c5](https://github.com/Neovici/cosmoz-dialog/commit/a4659c5a48c87184f1e0a5f934ebc6b2c4119c64))
-* migrate to native dialog element ([e1a80a6](https://github.com/Neovici/cosmoz-dialog/commit/e1a80a681ba1ae561bc76d464cab6dff13211820))
-* move styles to styleSheets and add CSS parts ([da9882e](https://github.com/Neovici/cosmoz-dialog/commit/da9882e98710918f8109bfb061e34745003ef880))
-* update renderDialog signature and clean up ([75d2548](https://github.com/Neovici/cosmoz-dialog/commit/75d2548cf25b61a7adb85e753f43e3c9e63f619e))
-* update to pionjs 2.13.0 and use useRef ([6a07b8e](https://github.com/Neovici/cosmoz-dialog/commit/6a07b8eecb998ada7b1ffd6f28a73c09a6babf62))
-* use connectable wrapper for dialog lifecycle ([ce1dc24](https://github.com/Neovici/cosmoz-dialog/commit/ce1dc24bef3a9403eab3437552d67b73d67e8d5d))
+- migrate to native dialog element ([a4659c5](https://github.com/Neovici/cosmoz-dialog/commit/a4659c5a48c87184f1e0a5f934ebc6b2c4119c64))
+- migrate to native dialog element ([e1a80a6](https://github.com/Neovici/cosmoz-dialog/commit/e1a80a681ba1ae561bc76d464cab6dff13211820))
+- move styles to styleSheets and add CSS parts ([da9882e](https://github.com/Neovici/cosmoz-dialog/commit/da9882e98710918f8109bfb061e34745003ef880))
+- update renderDialog signature and clean up ([75d2548](https://github.com/Neovici/cosmoz-dialog/commit/75d2548cf25b61a7adb85e753f43e3c9e63f619e))
+- update to pionjs 2.13.0 and use useRef ([6a07b8e](https://github.com/Neovici/cosmoz-dialog/commit/6a07b8eecb998ada7b1ffd6f28a73c09a6babf62))
+- use connectable wrapper for dialog lifecycle ([ce1dc24](https://github.com/Neovici/cosmoz-dialog/commit/ce1dc24bef3a9403eab3437552d67b73d67e8d5d))
 
 ### Bug Fixes
 
-* clear browser centering styles before applying drag position ([3724481](https://github.com/Neovici/cosmoz-dialog/commit/3724481d0c1173f416f76eed07aac20522773149))
-* update tests for open dialog attribute ([7981bd8](https://github.com/Neovici/cosmoz-dialog/commit/7981bd8f12df100b0e28da165a205c1131a3b510))
-* use createRef and useEffect for showModal ([a753743](https://github.com/Neovici/cosmoz-dialog/commit/a753743605fbab148c123570614c9db17695fe04))
+- clear browser centering styles before applying drag position ([3724481](https://github.com/Neovici/cosmoz-dialog/commit/3724481d0c1173f416f76eed07aac20522773149))
+- update tests for open dialog attribute ([7981bd8](https://github.com/Neovici/cosmoz-dialog/commit/7981bd8f12df100b0e28da165a205c1131a3b510))
+- use createRef and useEffect for showModal ([a753743](https://github.com/Neovici/cosmoz-dialog/commit/a753743605fbab148c123570614c9db17695fe04))
 
 ## [4.0.0](https://github.com/Neovici/cosmoz-dialog/compare/v3.0.0...v4.0.0) (2026-02-23)
 
