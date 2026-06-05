@@ -70,6 +70,7 @@
     "lit-html": "^3.3.1"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.0",
     "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@eslint/eslintrc": "^2.0.0",
@@ -77,7 +78,7 @@
     "@neovici/testing": "^2.1.1",
     "@open-wc/testing": "^4.0.0",
     "@open-wc/testing-helpers": "^3.0.1",
-    "@changesets/cli": "^2.27.0",
+    "@playwright/test": "^1.60.0",
     "@storybook/addon-links": "^10.0.0",
     "@storybook/web-components": "^10.0.0",
     "@storybook/web-components-vite": "^10.0.0",
