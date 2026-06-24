@@ -11,12 +11,12 @@ customElements.define(
 					flex-direction: row;
 					align-items: center;
 					justify-content: center;
-					padding: 30px;
+					padding: calc(var(--cz-spacing) * 8) calc(var(--cz-spacing) * 6);
 				}
 				cosmoz-spinner {
 					width: 32px;
 					height: 32px;
-					margin-right: 12px;
+					margin-right: calc(var(--cz-spacing) * 3);
 				}
 			</style>
 			<cosmoz-spinner></cosmoz-spinner>
