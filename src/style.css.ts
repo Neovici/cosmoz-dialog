@@ -7,6 +7,16 @@ export default css`
 		display: none;
 	}
 
+	:host {
+		--cz-scrollbar-width: calc(var(--cz-spacing) * 2);
+		--cz-padding-block: ${sp(4)};
+		--cz-padding-inline: ${sp(4)};
+		@media screen and (min-width: 640px) {
+			--cz-padding-block: ${sp(10)};
+			--cz-padding-inline: ${sp(10)};
+		}
+	}
+
 	dialog {
 		position: relative;
 		margin: auto;
@@ -31,7 +41,8 @@ export default css`
 		display: flex;
 		align-items: center;
 		gap: ${sp(4)};
-		padding: ${sp(6)} ${sp(6)};
+		padding: var(--cz-padding-block)
+			calc(var(--cz-padding-inline) + var(--cz-scrollbar-width));
 
 		& h2 {
 			color: var(--cz-color-text-primary);
@@ -62,11 +73,17 @@ export default css`
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
-		padding: ${sp(6)};
 		color: var(--cz-color-text-primary);
 		font-size: var(--cz-text-base);
 		font-weight: var(--cz-font-weight-regular);
 		line-height: var(--cz-text-base-line-height);
+	}
+
+	.body {
+		overflow-y: auto;
+		scrollbar-gutter: stable both-edges;
+		padding: var(--cz-padding-block);
+		flex: 1;
 	}
 
 	.icon {
@@ -91,5 +108,26 @@ export default css`
 		position: absolute;
 		top: ${sp(4)};
 		right: ${sp(4)};
+	}
+
+	/* Width of the entire scroll bar */
+	::-webkit-scrollbar {
+		width: var(--cz-scrollbar-width);
+	}
+
+	/* Background/track of the scroll bar */
+	::-webkit-scrollbar-track {
+		background: var(--cz-color-gray-300);
+	}
+
+	/* The draggable scroll handle/thumb */
+	::-webkit-scrollbar-thumb {
+		background: var(--cz-color-gray-500);
+		border-radius: var(--cz-radius-2xl);
+	}
+
+	/* The handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--cz-color-gray-400);
 	}
 `;
