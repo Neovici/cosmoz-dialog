@@ -35,7 +35,7 @@ export const renderDialog = ({
 }) => {
 	return html`
 		<div class="title" part="title">
-			${when(icon, () => html`<div class="settings">${icon}</div>`)}
+			${when(icon, () => html`<div class="icon">${icon}</div>`)}
 
 			<div>
 				<h2>${title}</h2>

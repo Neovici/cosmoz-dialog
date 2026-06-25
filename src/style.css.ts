@@ -69,7 +69,7 @@ export default css`
 		line-height: var(--cz-text-base-line-height);
 	}
 
-	.settings {
+	.icon {
 		display: flex;
 		align-items: center;
 		justify-content: center;
