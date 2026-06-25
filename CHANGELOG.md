@@ -1,5 +1,11 @@
 ## [5.0.1](https://github.com/Neovici/cosmoz-dialog/compare/v5.0.0...v5.0.1) (2026-04-24)
 
+## 5.1.0-beta.0
+
+### Minor Changes
+
+- 5a59717: Update to latest cosmoz-tokens
+
 ## 5.0.2
 
 ### Patch Changes
