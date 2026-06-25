@@ -17,18 +17,19 @@ describe('dialog', () => {
       <cosmoz-dialog-connectable>
         <dialog open="" part="dialog">
           <div class="title" part="title">
-            Test Dialog
-            <button class="close">
-              <svg aria-hidden="true" focusable="false" height="16" viewBox="0 0 16 16" width="16">
-              </svg>
-            </button>
+            <div>
+              <h2>Test Dialog</h2>
+            </div>
+            <cosmoz-button class="close" part="close" size="sm" variant="tertiary">
+            </cosmoz-button>
           </div>
+          <div class="divider"></div>
           <div class="content" part="content">
             <p>Test dialog content</p>
           </div>
         </dialog>
       </cosmoz-dialog-connectable>
-      `,
+      `
 		);
 	});
 
@@ -43,14 +44,17 @@ describe('dialog', () => {
       <cosmoz-dialog-connectable>
         <dialog open="" part="dialog">
           <div class="title" part="title">
-            Dialog Without Close Button
+            <div>
+              <h2>Dialog Without Close Button</h2>
+            </div>
           </div>
+          <div class="divider"></div>
           <div class="content" part="content">
             <p>Test dialog content</p>
           </div>
         </dialog>
       </cosmoz-dialog-connectable>
-      `,
+      `
 		);
 	});
 });
