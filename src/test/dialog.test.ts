@@ -25,7 +25,9 @@ describe('dialog', () => {
           </div>
           <div class="divider"></div>
           <div class="content" part="content">
-            <p>Test dialog content</p>
+            <div class="body">
+              <p>Test dialog content</p>
+            </div>
           </div>
         </dialog>
       </cosmoz-dialog-connectable>
@@ -50,7 +52,9 @@ describe('dialog', () => {
           </div>
           <div class="divider"></div>
           <div class="content" part="content">
-            <p>Test dialog content</p>
+            <div class="body">
+              <p>Test dialog content</p>
+            </div>
           </div>
         </dialog>
       </cosmoz-dialog-connectable>

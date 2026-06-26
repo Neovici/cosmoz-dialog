@@ -54,12 +54,14 @@ export const renderDialog = ({
 					>
 						${xCloseIcon({ width: '20', height: '20' })}
 					</cosmoz-button>
-				`,
+				`
 			)}
 		</div>
 
 		<div class="divider"></div>
-		<div class="content" part="content">${content}</div>
+		<div class="content" part="content">
+			<div class="body">${content}</div>
+		</div>
 	`;
 };
 
@@ -67,7 +69,7 @@ type Opts<P extends object> = ComponentOptions<P> & { styles?: unknown };
 
 export const dialog = <T extends Props = Props>(
 	renderer: (host: HTMLElement & T) => unknown,
-	{ observedAttributes, styles: extraStyles, ...opts }: Opts<T> = {},
+	{ observedAttributes, styles: extraStyles, ...opts }: Opts<T> = {}
 ) =>
 	component<T>(
 		(host) => {
@@ -81,7 +83,7 @@ export const dialog = <T extends Props = Props>(
 					() =>
 						html`<style>
 							${extraStyles}
-						</style>`,
+						</style>`
 				)}
 				<cosmoz-dialog-connectable
 					@connected=${(e: Event) => {
@@ -114,5 +116,5 @@ export const dialog = <T extends Props = Props>(
 			] as ComponentOptions<T>['observedAttributes'],
 			styleSheets: [normalize, styles],
 			...opts,
-		},
+		}
 	);
