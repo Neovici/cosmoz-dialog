@@ -20,8 +20,10 @@ describe('cosmoz-dialog-loading', () => {
 					</div>
 					<div class="divider"></div>
 					<div class="content" part="content">
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
@@ -48,8 +50,10 @@ describe('cosmoz-dialog-loading', () => {
 					</div>
 					<div class="divider"></div>
 					<div class="content" part="content">
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
@@ -79,8 +83,10 @@ describe('cosmoz-dialog-loading', () => {
 					</div>
 					<div class="divider"></div>
 					<div class="content" part="content">
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
@@ -105,8 +111,10 @@ describe('cosmoz-dialog-loading', () => {
 					</div>
 					<div class="divider"></div>
 					<div class="content" part="content">
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
@@ -134,8 +142,10 @@ describe('cosmoz-dialog-loading', () => {
 					</div>
 					<div class="divider"></div>
 					<div class="content" part="content">
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
@@ -175,8 +185,10 @@ describe('cosmoz-dialog-loading', () => {
 					</div>
 					<div class="divider"></div>
 					<div class="content" part="content">
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
