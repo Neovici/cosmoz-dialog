@@ -5,6 +5,7 @@
     "@neovici/cosmoz-dialog": "5.0.2"
   },
   "changesets": [
+    "tangy-loops-grow",
     "update-cosmoz-tokens"
   ]
 }
