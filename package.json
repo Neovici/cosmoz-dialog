@@ -78,7 +78,7 @@
     "@neovici/testing": "^2.1.1",
     "@open-wc/testing": "^4.0.0",
     "@open-wc/testing-helpers": "^3.0.1",
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "1.60.0",
     "@storybook/addon-links": "^10.0.0",
     "@storybook/web-components": "^10.0.0",
     "@storybook/web-components-vite": "^10.0.0",
@@ -94,7 +94,6 @@
     "typescript": "^5.4.3"
   },
   "overrides": {
-    "conventional-changelog-conventionalcommits": ">= 8.0.0",
-    "playwright": "1.60.0"
+    "conventional-changelog-conventionalcommits": ">= 8.0.0"
   }
 }
