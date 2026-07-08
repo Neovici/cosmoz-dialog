@@ -12,8 +12,8 @@ export default css`
 		--cz-padding-block: ${sp(4)};
 		--cz-padding-inline: ${sp(4)};
 		@media screen and (min-width: 640px) {
-			--cz-padding-block: ${sp(10)};
-			--cz-padding-inline: ${sp(10)};
+			--cz-padding-block: ${sp(8)};
+			--cz-padding-inline: ${sp(8)};
 		}
 	}
 
