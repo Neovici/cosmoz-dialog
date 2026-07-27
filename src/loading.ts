@@ -7,7 +7,7 @@ customElements.define(
 	dialog(
 		() => html`
 			<style>
-				.content {
+				.body {
 					flex-direction: row;
 					align-items: center;
 					justify-content: center;

@@ -19,14 +19,14 @@ export const useDialog = () => {
 };
 
 export const renderDialog = ({
-	title,
+	heading,
 	subtitle,
 	icon,
 	content,
 	closeable = false,
 	onClose,
 }: {
-	title: string;
+	heading: string;
 	subtitle?: string;
 	icon?: TemplateResult;
 	content: unknown;
@@ -38,7 +38,7 @@ export const renderDialog = ({
 			${when(icon, () => html`<div class="icon">${icon}</div>`)}
 
 			<div>
-				<h2>${title}</h2>
+				<h2>${heading}</h2>
 				${when(subtitle, () => html`<p class="subtitle">${subtitle}</p>`)}
 			</div>
 
@@ -93,7 +93,7 @@ export const dialog = <T extends Props = Props>(
 				>
 					<dialog ${ref(dialogRef)} @close=${close} part="dialog">
 						${renderDialog({
-							title: host.heading || host.title,
+							heading: host.heading,
 							subtitle: host.subtitle,
 							icon: host.icon,
 							content: renderer(host),
@@ -106,7 +106,6 @@ export const dialog = <T extends Props = Props>(
 		},
 		{
 			observedAttributes: [
-				'title',
 				'subtitle',
 				'icon',
 				'heading',

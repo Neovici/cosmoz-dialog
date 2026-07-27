@@ -91,6 +91,7 @@ export default css`
 		align-items: center;
 		justify-content: center;
 		width: calc(var(--cz-spacing) * 10);
+		min-width: calc(var(--cz-spacing) * 10);
 		height: calc(var(--cz-spacing) * 10);
 		background: var(--cz-color-bg-secondary);
 		border: 1px solid var(--cz-color-border-primary);
