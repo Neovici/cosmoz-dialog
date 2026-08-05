@@ -73,6 +73,8 @@ export default css`
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
+		flex: 1;
+		min-height: 0;
 		color: var(--cz-color-text-primary);
 		font-size: var(--cz-text-base);
 		font-weight: var(--cz-font-weight-regular);
@@ -80,10 +82,25 @@ export default css`
 	}
 
 	.body {
-		overflow-y: auto;
-		scrollbar-gutter: stable both-edges;
-		padding: var(--cz-padding-block);
+		padding: var(--cz-padding-block)
+			calc(var(--cz-padding-inline) + var(--cz-scrollbar-width));
+		display: flex;
+		flex-direction: column;
 		flex: 1;
+		min-height: 0;
+	}
+
+	.body > * {
+		overflow-y: auto;
+		padding-right: var(--cz-scrollbar-width);
+		flex: 1;
+		min-height: 0;
+	}
+
+	.body > :last-child:not(:first-child) {
+		flex: 0 0 auto;
+		overflow-y: visible;
+		padding-right: 0;
 	}
 
 	.icon {
