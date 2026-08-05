@@ -6,6 +6,7 @@
   },
   "changesets": [
     "cool-dancers-battle",
+    "strict-pots-change",
     "tangy-loops-grow",
     "update-cosmoz-tokens"
   ]
