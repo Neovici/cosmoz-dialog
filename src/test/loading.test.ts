@@ -14,28 +14,20 @@ describe('cosmoz-dialog-loading', () => {
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
 					<div class="title" part="title">
-						Loading...
+						<div>
+							<h2>Loading...</h2>
+						</div>
 					</div>
+					<div class="divider"></div>
 					<div class="content" part="content">
-						<style>
-							.content {
-								flex-direction: row;
-								align-items: center;
-								justify-content: center;
-								padding: 30px;
-							}
-							cosmoz-spinner {
-								width: 32px;
-								height: 32px;
-								margin-right: 12px;
-							}
-						</style>
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
-			`,
+			`
 		);
 	});
 
@@ -52,28 +44,20 @@ describe('cosmoz-dialog-loading', () => {
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
 					<div class="title" part="title">
-						Please wait
+						<div>
+							<h2>Please wait</h2>
+						</div>
 					</div>
+					<div class="divider"></div>
 					<div class="content" part="content">
-						<style>
-							.content {
-								flex-direction: row;
-								align-items: center;
-								justify-content: center;
-								padding: 30px;
-							}
-							cosmoz-spinner {
-								width: 32px;
-								height: 32px;
-								margin-right: 12px;
-							}
-						</style>
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
-			`,
+			`
 		);
 	});
 
@@ -91,32 +75,22 @@ describe('cosmoz-dialog-loading', () => {
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
 					<div class="title" part="title">
-						Loading...
-						<button class="close">
-							<svg aria-hidden="true" focusable="false" height="16" viewBox="0 0 16 16" width="16">
-							</svg>
-						</button>
+						<div>
+							<h2>Loading...</h2>
+						</div>
+						<cosmoz-button class="close" part="close" size="sm" variant="tertiary">
+						</cosmoz-button>
 					</div>
+					<div class="divider"></div>
 					<div class="content" part="content">
-						<style>
-							.content {
-								flex-direction: row;
-								align-items: center;
-								justify-content: center;
-								padding: 30px;
-							}
-							cosmoz-spinner {
-								width: 32px;
-								height: 32px;
-								margin-right: 12px;
-							}
-						</style>
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
-			`,
+			`
 		);
 	});
 
@@ -131,28 +105,20 @@ describe('cosmoz-dialog-loading', () => {
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
 					<div class="title" part="title">
-						Loading...
+						<div>
+							<h2>Loading...</h2>
+						</div>
 					</div>
+					<div class="divider"></div>
 					<div class="content" part="content">
-						<style>
-							.content {
-								flex-direction: row;
-								align-items: center;
-								justify-content: center;
-								padding: 30px;
-							}
-							cosmoz-spinner {
-								width: 32px;
-								height: 32px;
-								margin-right: 12px;
-							}
-						</style>
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
-			`,
+			`
 		);
 	});
 
@@ -170,28 +136,20 @@ describe('cosmoz-dialog-loading', () => {
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
 					<div class="title" part="title">
-						Loading...
+						<div>
+							<h2>Loading...</h2>
+						</div>
 					</div>
+					<div class="divider"></div>
 					<div class="content" part="content">
-						<style>
-							.content {
-								flex-direction: row;
-								align-items: center;
-								justify-content: center;
-								padding: 30px;
-							}
-							cosmoz-spinner {
-								width: 32px;
-								height: 32px;
-								margin-right: 12px;
-							}
-						</style>
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
-			`,
+			`
 		);
 	});
 
@@ -221,28 +179,20 @@ describe('cosmoz-dialog-loading', () => {
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
 					<div class="title" part="title">
-						Processing
+						<div>
+							<h2>Processing</h2>
+						</div>
 					</div>
+					<div class="divider"></div>
 					<div class="content" part="content">
-						<style>
-							.content {
-								flex-direction: row;
-								align-items: center;
-								justify-content: center;
-								padding: 30px;
-							}
-							cosmoz-spinner {
-								width: 32px;
-								height: 32px;
-								margin-right: 12px;
-							}
-						</style>
-						<cosmoz-spinner></cosmoz-spinner>
-						<slot></slot>
+						<div class="body">
+							<cosmoz-spinner></cosmoz-spinner>
+							<slot></slot>
+						</div>
 					</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
-			`,
+			`
 		);
 	});
 });

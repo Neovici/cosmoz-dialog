@@ -7,20 +7,19 @@ customElements.define(
 	dialog(
 		() => html`
 			<style>
-				.content {
+				.body {
 					flex-direction: row;
 					align-items: center;
 					justify-content: center;
-					padding: 30px;
+					gap: calc(var(--cz-spacing) * 3);
 				}
 				cosmoz-spinner {
 					width: 32px;
 					height: 32px;
-					margin-right: 12px;
 				}
 			</style>
 			<cosmoz-spinner></cosmoz-spinner>
 			<slot></slot>
-		`,
-	),
+		`
+	)
 );

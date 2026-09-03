@@ -1,5 +1,9 @@
-import { clearIcon } from '@neovici/cosmoz-icons';
+import '@neovici/cosmoz-button';
+import { xCloseIcon } from '@neovici/cosmoz-icons/untitled';
+
+import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, ComponentOptions, html, useRef } from '@pionjs/pion';
+import { TemplateResult } from 'lit-html';
 import { ref } from 'lit-html/directives/ref.js';
 import { when } from 'lit-html/directives/when.js';
 import './connectable.js';
@@ -7,7 +11,6 @@ import styles from './style.css';
 import { Props } from './types';
 import useClose from './use-close';
 import useMove from './use-move';
-
 export type { Props };
 
 export const useDialog = () => {
@@ -16,27 +19,49 @@ export const useDialog = () => {
 };
 
 export const renderDialog = ({
-	title,
+	heading,
+	subtitle,
+	icon,
 	content,
 	closeable = false,
 	onClose,
 }: {
-	title: string;
+	heading: string;
+	subtitle?: string;
+	icon?: TemplateResult;
 	content: unknown;
 	closeable: boolean;
 	onClose: () => void;
 }) => {
 	return html`
 		<div class="title" part="title">
-			${title}
+			${when(icon, () => html`<div class="icon">${icon}</div>`)}
+
+			<div>
+				<h2>${heading}</h2>
+				${when(subtitle, () => html`<p class="subtitle">${subtitle}</p>`)}
+			</div>
+
 			${when(
 				closeable,
 				() => html`
-					<button class="close" @click=${onClose}>${clearIcon()}</button>
-				`,
+					<cosmoz-button
+						variant="tertiary"
+						size="sm"
+						class="close"
+						part="close"
+						@click=${onClose}
+					>
+						${xCloseIcon({ width: '20', height: '20' })}
+					</cosmoz-button>
+				`
 			)}
 		</div>
-		<div class="content" part="content">${content}</div>
+
+		<div class="divider"></div>
+		<div class="content" part="content">
+			<div class="body">${content}</div>
+		</div>
 	`;
 };
 
@@ -44,7 +69,7 @@ type Opts<P extends object> = ComponentOptions<P> & { styles?: unknown };
 
 export const dialog = <T extends Props = Props>(
 	renderer: (host: HTMLElement & T) => unknown,
-	{ observedAttributes, styles: extraStyles, ...opts }: Opts<T> = {},
+	{ observedAttributes, styles: extraStyles, ...opts }: Opts<T> = {}
 ) =>
 	component<T>(
 		(host) => {
@@ -58,7 +83,7 @@ export const dialog = <T extends Props = Props>(
 					() =>
 						html`<style>
 							${extraStyles}
-						</style>`,
+						</style>`
 				)}
 				<cosmoz-dialog-connectable
 					@connected=${(e: Event) => {
@@ -68,7 +93,9 @@ export const dialog = <T extends Props = Props>(
 				>
 					<dialog ${ref(dialogRef)} @close=${close} part="dialog">
 						${renderDialog({
-							title: host.heading || host.title,
+							heading: host.heading,
+							subtitle: host.subtitle,
+							icon: host.icon,
 							content: renderer(host),
 							closeable: host.closeable,
 							onClose: close,
@@ -79,13 +106,14 @@ export const dialog = <T extends Props = Props>(
 		},
 		{
 			observedAttributes: [
-				'title',
+				'subtitle',
+				'icon',
 				'heading',
 				'unmovable',
 				'closeable',
 				...(observedAttributes ?? []),
 			] as ComponentOptions<T>['observedAttributes'],
-			styleSheets: [styles],
+			styleSheets: [normalize, styles],
 			...opts,
-		},
+		}
 	);
