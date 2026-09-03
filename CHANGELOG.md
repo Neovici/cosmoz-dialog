@@ -1,5 +1,3 @@
-## [5.0.1](https://github.com/Neovici/cosmoz-dialog/compare/v5.0.0...v5.0.1) (2026-04-24)
-
 ## 6.0.0
 
 ### Major Changes
