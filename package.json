@@ -1,6 +1,6 @@
 {
   "name": "@neovici/cosmoz-dialog",
-  "version": "5.1.0-beta.4",
+  "version": "6.0.0",
   "description": "Cosmoz dialog component built with pionjs",
   "keywords": [
     "web-components",

@@ -1,5 +1,21 @@
 ## [5.0.1](https://github.com/Neovici/cosmoz-dialog/compare/v5.0.0...v5.0.1) (2026-04-24)
 
+## 6.0.0
+
+### Major Changes
+
+- 6704ecb: Remove deprecated `title` prop and attribute (breaking): use `heading` instead. Add `subtitle` and `icon` props for the title bar. The close button is now a `cosmoz-button` (tertiary, sm) with the `xCloseIcon` icon and exposes a `close` part.
+
+### Minor Changes
+
+- 6704ecb: Add scrollable .body wrapper with built-in padding and responsive CSS custom properties
+- 6704ecb: Update to latest cosmoz-tokens
+
+### Patch Changes
+
+- 6704ecb: Decrease inline and block padding for title and main content. Padding is now driven by the responsive `--cz-padding-block` and `--cz-padding-inline` custom properties.
+- 6704ecb: The dialog body now scrolls its content while keeping the actions row (e.g. buttons) pinned to the bottom. Works correctly whether the body contains a single element or a content + actions pair.
+
 ## 5.0.2
 
 ### Patch Changes
