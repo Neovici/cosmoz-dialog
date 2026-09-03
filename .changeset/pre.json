@@ -1,14 +1,4 @@
 {
-  "mode": "pre",
-  "tag": "beta",
-  "initialVersions": {
-    "@neovici/cosmoz-dialog": "5.0.2"
-  },
-  "changesets": [
-    "cool-dancers-battle",
-    "strict-pots-change",
-    "strong-queens-serve",
-    "tangy-loops-grow",
-    "update-cosmoz-tokens"
-  ]
+  "mode": "exit",
+  "tag": "beta"
 }

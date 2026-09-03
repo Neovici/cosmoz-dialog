@@ -1,35 +1,5 @@
 ## [5.0.1](https://github.com/Neovici/cosmoz-dialog/compare/v5.0.0...v5.0.1) (2026-04-24)
 
-## 5.1.0-beta.4
-
-### Patch Changes
-
-- b265b4c: The dialog body now scrolls its content while keeping the actions row (e.g. buttons) pinned to the bottom. Works correctly whether the body contains a single element or a content + actions pair.
-
-## 5.1.0-beta.3
-
-### Patch Changes
-
-- 566c69d: Remove deprecated title prop and fix style
-
-## 5.1.0-beta.2
-
-### Patch Changes
-
-- 8fa0c89: Decrease inline and block padding for title and main content
-
-## 5.1.0-beta.1
-
-### Minor Changes
-
-- dc83b1d: Add scrollable .body wrapper with built-in padding and responsive CSS custom properties
-
-## 5.1.0-beta.0
-
-### Minor Changes
-
-- 5a59717: Update to latest cosmoz-tokens
-
 ## 5.0.2
 
 ### Patch Changes
