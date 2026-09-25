@@ -135,17 +135,17 @@ export default css`
 
 	/* Background/track of the scroll bar */
 	::-webkit-scrollbar-track {
-		background: var(--cz-color-gray-300);
+		background: var(--cz-color-border-primary);
 	}
 
 	/* The draggable scroll handle/thumb */
 	::-webkit-scrollbar-thumb {
-		background: var(--cz-color-gray-500);
+		background: var(--cz-color-fg-quaternary-hover);
 		border-radius: var(--cz-radius-2xl);
 	}
 
 	/* The handle on hover */
 	::-webkit-scrollbar-thumb:hover {
-		background: var(--cz-color-gray-400);
+		background: var(--cz-color-fg-quaternary);
 	}
 `;
