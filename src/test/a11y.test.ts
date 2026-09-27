@@ -37,6 +37,10 @@ customElements.define(
 	dialog(() => html`<input /><cosmoz-button autofocus>Pick me</cosmoz-button>`)
 );
 customElements.define(
+	'a11y-dialog-buttons',
+	dialog(() => html`<button>First</button><button id="second">Second</button>`)
+);
+customElements.define(
 	'a11y-dialog-empty',
 	dialog(() => html`<p>Nothing to focus</p>`)
 );
@@ -118,6 +122,27 @@ describe('dialog a11y', () => {
 			(focused()!.getRootNode() as ShadowRoot).host,
 			el.shadowRoot!.querySelector('cosmoz-button[autofocus]')
 		);
+	});
+
+	it('leaves focus alone once the user moved it', async () => {
+		const host = await fixture<HTMLElement>(html`<div></div>`);
+		render(
+			html`<a11y-dialog-buttons heading="Pick"></a11y-dialog-buttons>`,
+			host
+		);
+		const root = host.firstElementChild!.shadowRoot!;
+		// Before the next frame, when the dialog looks for what to focus.
+		await new Promise<void>((resolve) =>
+			new MutationObserver((_, observer) => {
+				if (!root.querySelector('dialog')?.open) return;
+				observer.disconnect();
+				resolve();
+			}).observe(root, { subtree: true, childList: true, attributes: true })
+		);
+		root.querySelector<HTMLElement>('#second')!.focus();
+		await nextFrame();
+		await nextFrame();
+		assert.equal(focused()?.id, 'second');
 	});
 
 	it('focuses the dialog itself when there is nothing to tab to', async () => {

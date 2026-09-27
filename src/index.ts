@@ -120,7 +120,9 @@ export const dialog = <T extends Props = Props>(
 						returnTo.current = deepActiveElement();
 						dlg.showModal();
 						// showModal() only sees what has rendered so far.
+						const opened = deepActiveElement();
 						requestAnimationFrame(() => {
+							if (deepActiveElement() !== opened) return;
 							const content = dlg.querySelector('.content')!;
 							(
 								content.querySelector<HTMLElement>('[autofocus]') ??
