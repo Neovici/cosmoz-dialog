@@ -1,3 +1,13 @@
+## 6.1.0
+
+### Minor Changes
+
+- 7f0aa24: Allow `@neovici/cosmoz-tokens` ^3 || ^4 (light-dark() adoption)
+
+### Patch Changes
+
+- 7f0aa24: Follow dark mode in the scrollbar colours
+
 ## 6.0.0
 
 ### Major Changes
