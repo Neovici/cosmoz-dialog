@@ -15,7 +15,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { ref } from 'lit-html/directives/ref.js';
 import { when } from 'lit-html/directives/when.js';
 import './connectable.js';
-import { deepActiveElement, firstTabbable } from './focus';
+import { deepActiveElement } from './focus';
 import styles from './style.css';
 import { Props } from './types';
 import useClose from './use-close';
@@ -53,28 +53,27 @@ export const renderDialog = ({
 					() => html`<p id="subtitle" class="subtitle">${subtitle}</p>`
 				)}
 			</div>
-
-			${when(
-				closeable,
-				() => html`
-					<cosmoz-button
-						variant="tertiary"
-						size="sm"
-						class="close"
-						part="close"
-						@click=${onClose}
-					>
-						${xCloseIcon({ width: '20', height: '20' })}
-						<span class="visually-hidden">${t('Close')}</span>
-					</cosmoz-button>
-				`
-			)}
 		</div>
 
 		<div class="divider"></div>
 		<div class="content" part="content">
 			<div class="body">${content}</div>
 		</div>
+		${when(
+			closeable,
+			() => html`
+				<cosmoz-button
+					variant="tertiary"
+					size="sm"
+					class="close"
+					part="close"
+					@click=${onClose}
+				>
+					${xCloseIcon({ width: '20', height: '20' })}
+					<span class="visually-hidden">${t('Close')}</span>
+				</cosmoz-button>
+			`
+		)}
 	`;
 };
 
@@ -118,16 +117,18 @@ export const dialog = <T extends Props = Props>(
 						const dlg = (e.target as HTMLElement).querySelector('dialog');
 						if (!dlg || dlg.open) return;
 						returnTo.current = deepActiveElement();
-						dlg.showModal();
-						// showModal() only sees what has rendered so far.
-						const opened = deepActiveElement();
+						// Opened once the content has rendered, so the browser can pick
+						// what to focus: [autofocus] first, else the first focusable.
 						requestAnimationFrame(() => {
-							if (deepActiveElement() !== opened) return;
-							const content = dlg.querySelector('.content')!;
-							(
-								content.querySelector<HTMLElement>('[autofocus]') ??
-								firstTabbable(content)
-							)?.focus();
+							if (!dlg.isConnected || dlg.open) {
+								return;
+							}
+							dlg.showModal();
+							// Chromium skips [autofocus] on hosts that delegate focus.
+							const auto = dlg.querySelector<HTMLElement>('[autofocus]');
+							if (auto && !auto.matches(':focus-within')) {
+								auto.focus();
+							}
 						});
 					}}
 				>

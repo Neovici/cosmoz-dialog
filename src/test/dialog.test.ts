@@ -1,4 +1,4 @@
-import { assert, fixture } from '@open-wc/testing';
+import { assert, fixture, nextFrame } from '@open-wc/testing';
 import { init } from 'i18next';
 import { html } from 'lit-html';
 import { dialog } from '../index';
@@ -13,6 +13,7 @@ describe('dialog', () => {
 		const el = await fixture(html`
 			<test-dialog heading="Test Dialog" closeable></test-dialog>
 		`);
+		await nextFrame();
 
 		assert.shadowDom.equal(
 			el,
@@ -23,9 +24,6 @@ describe('dialog', () => {
             <div>
               <h2 id="heading">Test Dialog</h2>
             </div>
-            <cosmoz-button class="close" part="close" size="sm" variant="tertiary">
-              <span class="visually-hidden">Close</span>
-            </cosmoz-button>
           </div>
           <div class="divider"></div>
           <div class="content" part="content">
@@ -33,6 +31,9 @@ describe('dialog', () => {
               <p>Test dialog content</p>
             </div>
           </div>
+          <cosmoz-button class="close" part="close" size="sm" variant="tertiary">
+            <span class="visually-hidden">Close</span>
+          </cosmoz-button>
         </dialog>
       </cosmoz-dialog-connectable>
       `
@@ -43,6 +44,7 @@ describe('dialog', () => {
 		const el = await fixture(html`
 			<test-dialog heading="Dialog Without Close Button"></test-dialog>
 		`);
+		await nextFrame();
 
 		assert.shadowDom.equal(
 			el,

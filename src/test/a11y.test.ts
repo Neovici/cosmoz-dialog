@@ -14,11 +14,10 @@ init({ lng: 'en', resources: {} });
 customElements.define(
 	'shadow-field',
 	class extends HTMLElement {
-		// Renders after connecting, like pion components, so the native dialog
-		// finds nothing to focus when it opens.
+		// Renders after connecting and delegates focus, like cosmoz-input.
 		connectedCallback() {
 			queueMicrotask(() => {
-				this.attachShadow({ mode: 'open' }).innerHTML =
+				this.attachShadow({ mode: 'open', delegatesFocus: true }).innerHTML =
 					'<input disabled id="off" /><input id="on" />';
 			});
 		}
@@ -102,7 +101,7 @@ describe('dialog a11y', () => {
 		);
 	});
 
-	it('moves focus to the first tabbable element in the content, through shadow roots', async () => {
+	it('focuses the first field, inside a component that delegates focus', async () => {
 		const { el } = await setup();
 		await waitUntil(() => focused()?.id === 'on');
 		assert.equal(
@@ -124,25 +123,15 @@ describe('dialog a11y', () => {
 		);
 	});
 
-	it('leaves focus alone once the user moved it', async () => {
-		const host = await fixture<HTMLElement>(html`<div></div>`);
-		render(
-			html`<a11y-dialog-buttons heading="Pick"></a11y-dialog-buttons>`,
-			host
+	it('starts on the content, not the close button', async () => {
+		await setup(
+			() =>
+				html`<a11y-dialog-buttons
+					heading="Pick"
+					closeable
+				></a11y-dialog-buttons>`
 		);
-		const root = host.firstElementChild!.shadowRoot!;
-		// Before the next frame, when the dialog looks for what to focus.
-		await new Promise<void>((resolve) =>
-			new MutationObserver((_, observer) => {
-				if (!root.querySelector('dialog')?.open) return;
-				observer.disconnect();
-				resolve();
-			}).observe(root, { subtree: true, childList: true, attributes: true })
-		);
-		root.querySelector<HTMLElement>('#second')!.focus();
-		await nextFrame();
-		await nextFrame();
-		assert.equal(focused()?.id, 'second');
+		assert.equal(focused()?.textContent, 'First');
 	});
 
 	it('focuses the dialog itself when there is nothing to tab to', async () => {
