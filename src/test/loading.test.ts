@@ -1,21 +1,25 @@
-import { assert, fixture } from '@open-wc/testing';
+import { assert, fixture, nextFrame } from '@open-wc/testing';
+import { init } from 'i18next';
 import { html } from 'lit-html';
 import '../loading';
+
+init({ lng: 'en', resources: {} });
 
 describe('cosmoz-dialog-loading', () => {
 	it('renders loading spinner correctly', async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading heading="Loading..."></cosmoz-dialog-loading>
 		`);
+		await nextFrame();
 
 		assert.shadowDom.equal(
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -37,15 +41,16 @@ describe('cosmoz-dialog-loading', () => {
 				<p>Processing your request...</p>
 			</cosmoz-dialog-loading>
 		`);
+		await nextFrame();
 
 		assert.shadowDom.equal(
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Please wait</h2>
+							<h2 id="heading">Please wait</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -68,18 +73,17 @@ describe('cosmoz-dialog-loading', () => {
 				closeable
 			></cosmoz-dialog-loading>
 		`);
+		await nextFrame();
 
 		assert.shadowDom.equal(
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
-						<cosmoz-button class="close" part="close" size="sm" variant="tertiary">
-						</cosmoz-button>
 					</div>
 					<div class="divider"></div>
 					<div class="content" part="content">
@@ -88,6 +92,9 @@ describe('cosmoz-dialog-loading', () => {
 							<slot></slot>
 						</div>
 					</div>
+					<cosmoz-button class="close" part="close" size="sm" variant="tertiary">
+						<span class="visually-hidden">Close</span>
+					</cosmoz-button>
 				</dialog>
 			</cosmoz-dialog-connectable>
 			`
@@ -98,15 +105,16 @@ describe('cosmoz-dialog-loading', () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading heading="Loading..."></cosmoz-dialog-loading>
 		`);
+		await nextFrame();
 
 		assert.shadowDom.equal(
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -129,15 +137,16 @@ describe('cosmoz-dialog-loading', () => {
 				unmovable
 			></cosmoz-dialog-loading>
 		`);
+		await nextFrame();
 
 		assert.shadowDom.equal(
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -160,6 +169,7 @@ describe('cosmoz-dialog-loading', () => {
 				closeable
 			></cosmoz-dialog-loading>
 		`);
+		await nextFrame();
 
 		const closeButton = el.shadowRoot?.querySelector('.close');
 		closeButton?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
@@ -172,15 +182,16 @@ describe('cosmoz-dialog-loading', () => {
 				<span>Please wait...</span>
 			</cosmoz-dialog-loading>
 		`);
+		await nextFrame();
 
 		assert.shadowDom.equal(
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Processing</h2>
+							<h2 id="heading">Processing</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
