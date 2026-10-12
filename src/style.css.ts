@@ -33,8 +33,12 @@ export default css`
 		outline: none;
 	}
 
+	/* bg-overlay is gray-800 in dark mode, which lightens a gray-950 page. */
 	dialog::backdrop {
-		background: color-mix(in srgb, var(--cz-color-bg-overlay) 70%, transparent);
+		background: light-dark(
+			color-mix(in srgb, var(--cz-color-gray-950) 45%, transparent),
+			color-mix(in srgb, var(--cz-color-black) 60%, transparent)
+		);
 	}
 
 	.title {
