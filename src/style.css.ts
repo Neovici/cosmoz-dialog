@@ -73,7 +73,7 @@ export default css`
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
-		flex: 1;
+		flex: 1 1 auto;
 		min-height: 0;
 		color: var(--cz-color-text-primary);
 		font-size: var(--cz-text-base);
@@ -86,14 +86,14 @@ export default css`
 			calc(var(--cz-padding-inline) + var(--cz-scrollbar-width));
 		display: flex;
 		flex-direction: column;
-		flex: 1;
+		flex: 1 1 auto;
 		min-height: 0;
 	}
 
 	.body > * {
 		overflow-y: auto;
 		padding-right: var(--cz-scrollbar-width);
-		flex: 1;
+		flex: 1 1 auto;
 		min-height: 0;
 	}
 
