@@ -21,15 +21,18 @@ export default css`
 		position: relative;
 		margin: auto;
 		padding: 0;
-		border: none;
+		border: 1px solid
+			var(--cz-color-border-glass, var(--cz-color-border-primary));
 		width: 550px;
 		max-width: 98vw;
 		max-height: 96vh;
-		border-radius: var(--cz-radius-2xl);
+		border-radius: var(--cz-radius-3xl);
 		display: flex;
 		flex-direction: column;
-		background: var(--cz-color-bg-secondary);
-		box-shadow: var(--cz-shadow-2xl);
+		background: var(--cz-color-bg-glass-panel, var(--cz-color-bg-secondary));
+		box-shadow: var(--cz-shadow-glass-panel, var(--cz-shadow-lg));
+		backdrop-filter: var(--cz-backdrop-filter-glass, none);
+		overscroll-behavior: contain;
 		outline: none;
 	}
 
@@ -70,6 +73,7 @@ export default css`
 	}
 
 	.content {
+		background: var(--cz-color-bg-primary);
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
