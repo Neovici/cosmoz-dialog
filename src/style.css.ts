@@ -2,6 +2,8 @@ import { css } from '@pionjs/pion';
 
 const sp = (n: number) => `calc(var(--cz-spacing) * ${n})`;
 
+export const narrow = '(max-width: 639px)';
+
 export default css`
 	dialog:not([open]) {
 		display: none;
@@ -35,6 +37,37 @@ export default css`
 
 	dialog::backdrop {
 		background: color-mix(in srgb, var(--cz-color-bg-overlay) 70%, transparent);
+	}
+
+	@media ${narrow} {
+		:host([sheet]) dialog {
+			margin: auto 0 0;
+			width: 100%;
+			max-width: 100%;
+			max-height: calc(100dvh - ${sp(8)});
+			border-radius: var(--cz-radius-3xl) var(--cz-radius-3xl) 0 0;
+			padding-bottom: env(safe-area-inset-bottom);
+		}
+
+		:host([sheet]) dialog[open] {
+			animation: sheet-in 200ms ease-out;
+		}
+
+		:host([sheet]:not([unmovable])) .title {
+			cursor: auto;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:host([sheet]) dialog[open] {
+			animation: none;
+		}
+	}
+
+	@keyframes sheet-in {
+		from {
+			transform: translateY(100%);
+		}
 	}
 
 	.title {
