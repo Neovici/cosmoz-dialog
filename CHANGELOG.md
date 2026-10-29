@@ -1,3 +1,9 @@
+## 6.2.0
+
+### Minor Changes
+
+- ae22d55: align dependencies with latest cosmoz-components
+
 ## 6.1.0
 
 ### Minor Changes
