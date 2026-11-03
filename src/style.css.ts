@@ -30,13 +30,16 @@ export default css`
 		background: none;
 		outline: none;
 		overflow: clip;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.sheet {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		height: 100%;
+		flex: 1 1 auto;
+		min-height: 0;
 		border-radius: var(--cz-radius-2xl);
 		background: var(--cz-color-bg-secondary);
 		box-shadow: var(--cz-shadow-2xl);
@@ -148,25 +151,27 @@ export default css`
 	}
 
 	.body {
-		padding: var(--cz-padding-block)
-			calc(var(--cz-padding-inline) + var(--cz-scrollbar-width));
+		padding: var(--cz-padding-block) var(--cz-padding-inline);
 		display: flex;
 		flex-direction: column;
 		flex: 1 1 auto;
 		min-height: 0;
+		overflow-y: auto;
 	}
 
 	.body > * {
-		overflow-y: auto;
-		padding-right: var(--cz-scrollbar-width);
 		flex: 1 1 auto;
-		min-height: 0;
 	}
 
-	.body > :last-child:not(:first-child) {
-		flex: 0 0 auto;
-		overflow-y: visible;
-		padding-right: 0;
+	.buttons {
+		display: flex;
+		justify-content: flex-end;
+		gap: calc(var(--cz-spacing) * 2);
+		padding: calc(var(--cz-spacing) * 5.5);
+
+		& cosmoz-button {
+			flex: 1;
+		}
 	}
 
 	.icon {

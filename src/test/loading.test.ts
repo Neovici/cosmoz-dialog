@@ -25,6 +25,7 @@ describe('cosmoz-dialog-loading', () => {
 										<cosmoz-spinner></cosmoz-spinner>
 										<slot></slot>
 								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
 				</div>
 				</dialog>
@@ -57,6 +58,7 @@ describe('cosmoz-dialog-loading', () => {
 										<cosmoz-spinner></cosmoz-spinner>
 										<slot></slot>
 								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
 				</div>
 				</dialog>
@@ -92,6 +94,7 @@ describe('cosmoz-dialog-loading', () => {
 										<cosmoz-spinner></cosmoz-spinner>
 										<slot></slot>
 								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
 				</div>
 				</dialog>
@@ -122,6 +125,7 @@ describe('cosmoz-dialog-loading', () => {
 										<cosmoz-spinner></cosmoz-spinner>
 										<slot></slot>
 								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
 				</div>
 				</dialog>
@@ -155,6 +159,7 @@ describe('cosmoz-dialog-loading', () => {
 										<cosmoz-spinner></cosmoz-spinner>
 										<slot></slot>
 								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
 				</div>
 				</dialog>
@@ -200,6 +205,7 @@ describe('cosmoz-dialog-loading', () => {
 										<cosmoz-spinner></cosmoz-spinner>
 										<slot></slot>
 								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
 				</div>
 				</dialog>

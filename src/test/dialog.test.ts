@@ -29,6 +29,7 @@ describe('dialog', () => {
                 <div class="body">
                     <p>Test dialog content</p>
                 </div>
+                <div class="buttons" part="buttons"><slot name="buttons"></slot></div>
             </div>
         </div>
         </dialog>
@@ -58,6 +59,7 @@ describe('dialog', () => {
                 <div class="body">
                     <p>Test dialog content</p>
                 </div>
+                <div class="buttons" part="buttons"><slot name="buttons"></slot></div>
             </div>
         </div>
         </dialog>

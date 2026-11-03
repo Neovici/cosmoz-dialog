@@ -61,6 +61,7 @@ export const renderDialog = ({
 		<div class="divider"></div>
 		<div class="content" part="content">
 			<div class="body">${content}</div>
+			<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 		</div>
 	`;
 };
