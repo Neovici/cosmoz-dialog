@@ -1,3 +1,13 @@
+## 6.3.0
+
+### Minor Changes
+
+- 995db6f: Dock dialogs to the bottom edge as a sheet on viewports narrower than 640px.
+
+### Patch Changes
+
+- 995db6f: Bug fixed: keep base styles when `dialog()` is given its own `styleSheets`.
+
 ## 6.2.0
 
 ### Minor Changes
