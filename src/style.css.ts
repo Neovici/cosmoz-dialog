@@ -27,12 +27,19 @@ export default css`
 		width: 550px;
 		max-width: 98vw;
 		max-height: 96vh;
-		border-radius: var(--cz-radius-2xl);
+		background: none;
+		outline: none;
+		overflow: clip;
+	}
+
+	.sheet {
 		display: flex;
 		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		border-radius: var(--cz-radius-2xl);
 		background: var(--cz-color-bg-secondary);
 		box-shadow: var(--cz-shadow-2xl);
-		outline: none;
 	}
 
 	dialog::backdrop {
@@ -45,12 +52,15 @@ export default css`
 			width: 100%;
 			max-width: 100%;
 			max-height: calc(100dvh - ${sp(8)});
+		}
+
+		.sheet {
 			border-radius: var(--cz-radius-3xl) var(--cz-radius-3xl) 0 0;
 			padding-bottom: env(safe-area-inset-bottom);
 		}
 	}
 
-	dialog[open] {
+	.sheet {
 		transition:
 			transform var(--cz-duration-normal, 250ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
 			opacity var(--cz-duration-normal, 250ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
@@ -61,7 +71,7 @@ export default css`
 	}
 
 	@media ${narrow} {
-		dialog[open] {
+		.sheet {
 			transition:
 				transform var(--cz-duration-slow, 600ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
 				opacity var(--cz-duration-slow, 600ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
@@ -73,7 +83,7 @@ export default css`
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		dialog[open] {
+		.sheet {
 			transition: none;
 		}
 	}

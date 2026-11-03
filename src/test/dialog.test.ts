@@ -16,19 +16,21 @@ describe('dialog', () => {
 			`
       <cosmoz-dialog-connectable>
         <dialog open="" part="dialog">
-          <div class="title" part="title">
-            <div>
-              <h2>Test Dialog</h2>
+          <div class="sheet">
+            <div class="title" part="title">
+                <div>
+                    <h2>Test Dialog</h2>
+                </div>
+                <cosmoz-button class="close" part="close" size="sm" variant="tertiary">
+                </cosmoz-button>
             </div>
-            <cosmoz-button class="close" part="close" size="sm" variant="tertiary">
-            </cosmoz-button>
-          </div>
-          <div class="divider"></div>
-          <div class="content" part="content">
-            <div class="body">
-              <p>Test dialog content</p>
+            <div class="divider"></div>
+            <div class="content" part="content">
+                <div class="body">
+                    <p>Test dialog content</p>
+                </div>
             </div>
-          </div>
+        </div>
         </dialog>
       </cosmoz-dialog-connectable>
       `
@@ -45,17 +47,19 @@ describe('dialog', () => {
 			`
       <cosmoz-dialog-connectable>
         <dialog open="" part="dialog">
-          <div class="title" part="title">
-            <div>
-              <h2>Dialog Without Close Button</h2>
+          <div class="sheet">
+            <div class="title" part="title">
+                <div>
+                    <h2>Dialog Without Close Button</h2>
+                </div>
             </div>
-          </div>
-          <div class="divider"></div>
-          <div class="content" part="content">
-            <div class="body">
-              <p>Test dialog content</p>
+            <div class="divider"></div>
+            <div class="content" part="content">
+                <div class="body">
+                    <p>Test dialog content</p>
+                </div>
             </div>
-          </div>
+        </div>
         </dialog>
       </cosmoz-dialog-connectable>
       `
