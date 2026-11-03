@@ -48,21 +48,18 @@ export default css`
 			border-radius: var(--cz-radius-3xl) var(--cz-radius-3xl) 0 0;
 			padding-bottom: env(safe-area-inset-bottom);
 		}
+	}
 
-		dialog[open] {
-			animation: sheet-in 200ms ease-out;
+	dialog[open] {
+		transition: transform 200ms ease-out;
+		@starting-style {
+			transform: translateY(100%);
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		dialog[open] {
-			animation: none;
-		}
-	}
-
-	@keyframes sheet-in {
-		from {
-			transform: translateY(100%);
+			transition: none;
 		}
 	}
 
