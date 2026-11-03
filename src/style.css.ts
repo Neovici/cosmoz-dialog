@@ -44,6 +44,13 @@ export default css`
 
 	dialog::backdrop {
 		background: color-mix(in srgb, var(--cz-color-bg-overlay) 70%, transparent);
+		transition: opacity var(--cz-duration-normal, 250ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+	}
+
+	dialog[open]::backdrop {
+		@starting-style {
+			opacity: 0;
+		}
 	}
 
 	@media ${narrow} {
@@ -52,6 +59,10 @@ export default css`
 			width: 100%;
 			max-width: 100%;
 			max-height: calc(100dvh - ${sp(8)});
+		}
+
+		dialog::backdrop {
+			transition: opacity var(--cz-duration-slow, 600ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 		}
 
 		.sheet {
@@ -83,7 +94,8 @@ export default css`
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.sheet {
+		.sheet,
+		dialog::backdrop {
 			transition: none;
 		}
 	}
