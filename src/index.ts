@@ -61,6 +61,7 @@ export const renderDialog = ({
 		<div class="divider"></div>
 		<div class="content" part="content">
 			<div class="body">${content}</div>
+			<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 		</div>
 	`;
 };
@@ -97,14 +98,16 @@ export const dialog = <T extends Props = Props>(
 					}}
 				>
 					<dialog ${ref(dialogRef)} @close=${close} part="dialog">
-						${renderDialog({
-							heading: host.heading,
-							subtitle: host.subtitle,
-							icon: host.icon,
-							content: renderer(host),
-							closeable: host.closeable,
-							onClose: close,
-						})}
+						<div class="sheet">
+							${renderDialog({
+								heading: host.heading,
+								subtitle: host.subtitle,
+								icon: host.icon,
+								content: renderer(host),
+								closeable: host.closeable,
+								onClose: close,
+							})}
+						</div>
 					</dialog>
 				</cosmoz-dialog-connectable>
 			`;

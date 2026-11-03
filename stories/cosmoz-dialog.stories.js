@@ -1,5 +1,5 @@
 import { building05Icon, trash01Icon } from '@neovici/cosmoz-icons/untitled';
-import { html } from 'lit-html';
+import { component, html, useState } from '@pionjs/pion';
 import { dialog } from '../src/index';
 import '../src/loading';
 customElements.define(
@@ -28,6 +28,24 @@ customElements.define(
 			<div></div>`
 	)
 );
+
+const DemoToggle = component(() => {
+	const [open, setOpen] = useState(false);
+
+	return html`
+		<cosmoz-button @click=${() => setOpen(true)}>Open dialog</cosmoz-button>
+		${open &&
+		html`
+			<demo-dialog
+				heading="Blog post published"
+				subtitle="Close with the x button or Escape, then open it again."
+				closeable
+				.onClose=${() => setOpen(false)}
+			></demo-dialog>
+		`}
+	`;
+});
+customElements.define('demo-dialog-open', DemoToggle);
 
 const Dialog = ({ heading, subtitle, icon, closeable, unmovable }) => html`
 	<demo-dialog
@@ -96,6 +114,10 @@ export const WithCustomIcon = {
 		closeable: true,
 		unmovable: false,
 	},
+};
+
+export const OpenClose = {
+	render: () => html`<demo-dialog-open></demo-dialog-open>`,
 };
 
 export const Loading = {

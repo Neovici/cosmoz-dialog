@@ -27,16 +27,33 @@ export default css`
 		width: 550px;
 		max-width: 98vw;
 		max-height: 96vh;
-		border-radius: var(--cz-radius-2xl);
+		background: none;
+		outline: none;
+		overflow: clip;
 		display: flex;
 		flex-direction: column;
+	}
+
+	.sheet {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		flex: 1 1 auto;
+		min-height: 0;
+		border-radius: var(--cz-radius-2xl);
 		background: var(--cz-color-bg-secondary);
 		box-shadow: var(--cz-shadow-2xl);
-		outline: none;
 	}
 
 	dialog::backdrop {
 		background: color-mix(in srgb, var(--cz-color-bg-overlay) 70%, transparent);
+		transition: opacity var(--cz-duration-normal, 250ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+	}
+
+	dialog[open]::backdrop {
+		@starting-style {
+			opacity: 0;
+		}
 	}
 
 	@media ${narrow} {
@@ -45,24 +62,44 @@ export default css`
 			width: 100%;
 			max-width: 100%;
 			max-height: calc(100dvh - ${sp(8)});
+		}
+
+		dialog::backdrop {
+			transition: opacity var(--cz-duration-slow, 600ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+		}
+
+		.sheet {
 			border-radius: var(--cz-radius-3xl) var(--cz-radius-3xl) 0 0;
 			padding-bottom: env(safe-area-inset-bottom);
 		}
+	}
 
-		dialog[open] {
-			animation: sheet-in 200ms ease-out;
+	.sheet {
+		transition:
+			transform var(--cz-duration-normal, 250ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+			opacity var(--cz-duration-normal, 250ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+		@starting-style {
+			transform: translateY(calc(-1 * ${sp(2)}));
+			opacity: 0;
+		}
+	}
+
+	@media ${narrow} {
+		.sheet {
+			transition:
+				transform var(--cz-duration-slow, 600ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+				opacity var(--cz-duration-slow, 600ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+			@starting-style {
+				transform: translateY(100%);
+				opacity: 0;
+			}
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		dialog[open] {
-			animation: none;
-		}
-	}
-
-	@keyframes sheet-in {
-		from {
-			transform: translateY(100%);
+		.sheet,
+		dialog::backdrop {
+			transition: none;
 		}
 	}
 
@@ -114,25 +151,27 @@ export default css`
 	}
 
 	.body {
-		padding: var(--cz-padding-block)
-			calc(var(--cz-padding-inline) + var(--cz-scrollbar-width));
+		padding: var(--cz-padding-block) var(--cz-padding-inline);
 		display: flex;
 		flex-direction: column;
 		flex: 1 1 auto;
 		min-height: 0;
+		overflow-y: auto;
 	}
 
 	.body > * {
-		overflow-y: auto;
-		padding-right: var(--cz-scrollbar-width);
 		flex: 1 1 auto;
-		min-height: 0;
 	}
 
-	.body > :last-child:not(:first-child) {
-		flex: 0 0 auto;
-		overflow-y: visible;
-		padding-right: 0;
+	.buttons {
+		display: flex;
+		justify-content: flex-end;
+		gap: calc(var(--cz-spacing) * 2);
+		padding: calc(var(--cz-spacing) * 5.5);
+
+		& cosmoz-button {
+			flex: 1;
+		}
 	}
 
 	.icon {

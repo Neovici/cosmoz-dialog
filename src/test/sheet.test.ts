@@ -18,6 +18,7 @@ customElements.define(
 );
 
 const dialogOf = (el: Element) => el.shadowRoot!.querySelector('dialog')!;
+const sheetOf = (el: Element) => el.shadowRoot!.querySelector('.sheet')!;
 
 describe('sheet', () => {
 	afterEach(() => setViewport({ width: 800, height: 600 }));
@@ -61,6 +62,19 @@ describe('sheet', () => {
 		);
 		const body = el.shadowRoot!.querySelector('.extra')!;
 		assert.equal(getComputedStyle(body).color, 'rgb(1, 2, 3)');
-		assert.equal(getComputedStyle(dialogOf(el)).flexDirection, 'column');
+		assert.equal(getComputedStyle(sheetOf(el)).flexDirection, 'column');
+	});
+
+	it('does not overflow the document while the sheet is open', async () => {
+		await setViewport({ width: 390, height: 800 });
+		await fixture(
+			html`<sheet-test-dialog heading="Sheet"></sheet-test-dialog>`
+		);
+		const de = document.documentElement;
+		await nextFrame();
+		assert.equal(getComputedStyle(de).overflow, 'visible');
+		assert.equal(de.scrollHeight - de.clientHeight, 0);
+		await new Promise((r) => setTimeout(r, 700));
+		assert.equal(de.scrollHeight - de.clientHeight, 0);
 	});
 });

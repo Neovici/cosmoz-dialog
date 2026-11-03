@@ -13,18 +13,21 @@ describe('cosmoz-dialog-loading', () => {
 			`
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
-					<div class="title" part="title">
-						<div>
-							<h2>Loading...</h2>
+					<div class="sheet">
+						<div class="title" part="title">
+								<div>
+										<h2>Loading...</h2>
+								</div>
 						</div>
-					</div>
-					<div class="divider"></div>
-					<div class="content" part="content">
-						<div class="body">
-							<cosmoz-spinner></cosmoz-spinner>
-							<slot></slot>
+						<div class="divider"></div>
+						<div class="content" part="content">
+								<div class="body">
+										<cosmoz-spinner></cosmoz-spinner>
+										<slot></slot>
+								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
-					</div>
+				</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
 			`
@@ -43,18 +46,21 @@ describe('cosmoz-dialog-loading', () => {
 			`
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
-					<div class="title" part="title">
-						<div>
-							<h2>Please wait</h2>
+					<div class="sheet">
+						<div class="title" part="title">
+								<div>
+										<h2>Please wait</h2>
+								</div>
 						</div>
-					</div>
-					<div class="divider"></div>
-					<div class="content" part="content">
-						<div class="body">
-							<cosmoz-spinner></cosmoz-spinner>
-							<slot></slot>
+						<div class="divider"></div>
+						<div class="content" part="content">
+								<div class="body">
+										<cosmoz-spinner></cosmoz-spinner>
+										<slot></slot>
+								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
-					</div>
+				</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
 			`
@@ -74,20 +80,23 @@ describe('cosmoz-dialog-loading', () => {
 			`
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
-					<div class="title" part="title">
-						<div>
-							<h2>Loading...</h2>
+					<div class="sheet">
+						<div class="title" part="title">
+								<div>
+										<h2>Loading...</h2>
+								</div>
+								<cosmoz-button class="close" part="close" size="sm" variant="tertiary">
+								</cosmoz-button>
 						</div>
-						<cosmoz-button class="close" part="close" size="sm" variant="tertiary">
-						</cosmoz-button>
-					</div>
-					<div class="divider"></div>
-					<div class="content" part="content">
-						<div class="body">
-							<cosmoz-spinner></cosmoz-spinner>
-							<slot></slot>
+						<div class="divider"></div>
+						<div class="content" part="content">
+								<div class="body">
+										<cosmoz-spinner></cosmoz-spinner>
+										<slot></slot>
+								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
-					</div>
+				</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
 			`
@@ -104,18 +113,21 @@ describe('cosmoz-dialog-loading', () => {
 			`
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
-					<div class="title" part="title">
-						<div>
-							<h2>Loading...</h2>
+					<div class="sheet">
+						<div class="title" part="title">
+								<div>
+										<h2>Loading...</h2>
+								</div>
 						</div>
-					</div>
-					<div class="divider"></div>
-					<div class="content" part="content">
-						<div class="body">
-							<cosmoz-spinner></cosmoz-spinner>
-							<slot></slot>
+						<div class="divider"></div>
+						<div class="content" part="content">
+								<div class="body">
+										<cosmoz-spinner></cosmoz-spinner>
+										<slot></slot>
+								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
-					</div>
+				</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
 			`
@@ -135,18 +147,21 @@ describe('cosmoz-dialog-loading', () => {
 			`
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
-					<div class="title" part="title">
-						<div>
-							<h2>Loading...</h2>
+					<div class="sheet">
+						<div class="title" part="title">
+								<div>
+										<h2>Loading...</h2>
+								</div>
 						</div>
-					</div>
-					<div class="divider"></div>
-					<div class="content" part="content">
-						<div class="body">
-							<cosmoz-spinner></cosmoz-spinner>
-							<slot></slot>
+						<div class="divider"></div>
+						<div class="content" part="content">
+								<div class="body">
+										<cosmoz-spinner></cosmoz-spinner>
+										<slot></slot>
+								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
-					</div>
+				</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
 			`
@@ -178,18 +193,21 @@ describe('cosmoz-dialog-loading', () => {
 			`
 			<cosmoz-dialog-connectable>
 				<dialog open="" part="dialog">
-					<div class="title" part="title">
-						<div>
-							<h2>Processing</h2>
+					<div class="sheet">
+						<div class="title" part="title">
+								<div>
+										<h2>Processing</h2>
+								</div>
 						</div>
-					</div>
-					<div class="divider"></div>
-					<div class="content" part="content">
-						<div class="body">
-							<cosmoz-spinner></cosmoz-spinner>
-							<slot></slot>
+						<div class="divider"></div>
+						<div class="content" part="content">
+								<div class="body">
+										<cosmoz-spinner></cosmoz-spinner>
+										<slot></slot>
+								</div>
+								<div class="buttons" part="buttons"><slot name="buttons"></slot></div>
 						</div>
-					</div>
+				</div>
 				</dialog>
 			</cosmoz-dialog-connectable>
 			`
