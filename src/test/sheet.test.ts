@@ -64,18 +64,18 @@ describe('sheet', () => {
 		assert.equal(getComputedStyle(dialogOf(el)).flexDirection, 'column');
 	});
 
-	it('does not overflow the document while the entrance runs', async () => {
+	it('locks the page scroll while the sheet is open', async () => {
 		await setViewport({ width: 390, height: 800 });
 		const el = await fixture(
 			html`<sheet-test-dialog heading="Sheet"></sheet-test-dialog>`
 		);
 		const de = document.documentElement;
-		const overflow = () => de.scrollHeight - de.clientHeight;
-		assert.equal(overflow(), 0);
-		await new Promise((r) => setTimeout(r, 100));
-		assert.equal(overflow(), 0);
-		await new Promise((r) => setTimeout(r, 200));
-		assert.equal(overflow(), 0);
-		assert.equal(getComputedStyle(dialogOf(el)).transform, 'none');
+		await nextFrame();
+		assert.equal(getComputedStyle(de).overflow, 'hidden');
+		await new Promise((r) => setTimeout(r, 700));
+		assert.equal(de.scrollHeight - de.clientHeight, 0);
+		dialogOf(el).close();
+		await nextFrame();
+		assert.equal(getComputedStyle(de).overflow, 'visible');
 	});
 });

@@ -60,6 +60,18 @@ export default css`
 		}
 	}
 
+	@media ${narrow} {
+		dialog[open] {
+			transition:
+				transform var(--cz-duration-slow, 600ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+				opacity var(--cz-duration-slow, 600ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+			@starting-style {
+				transform: translateY(100%);
+				opacity: 0;
+			}
+		}
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		dialog[open] {
 			transition: none;

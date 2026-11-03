@@ -10,11 +10,13 @@ import './connectable.js';
 import styles from './style.css';
 import { Props } from './types';
 import useClose from './use-close';
+import useLock from './use-lock';
 import useMove from './use-move';
 export type { Props };
 
 export const useDialog = () => {
 	useClose();
+	useLock();
 	useMove();
 };
 
@@ -79,6 +81,7 @@ export const dialog = <T extends Props = Props>(
 	component<T>(
 		(host) => {
 			const { close } = useClose();
+			useLock();
 			useMove();
 			const dialogRef = useRef<HTMLDialogElement>();
 
