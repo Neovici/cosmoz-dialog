@@ -33,6 +33,7 @@ export default css`
 		background: var(--cz-color-bg-secondary);
 		box-shadow: var(--cz-shadow-2xl);
 		outline: none;
+		overflow: clip;
 	}
 
 	dialog::backdrop {
@@ -51,14 +52,22 @@ export default css`
 	}
 
 	dialog[open] {
+		transition: opacity 200ms ease-out;
+		@starting-style {
+			opacity: 0;
+		}
+	}
+
+	dialog > * {
 		transition: transform 200ms ease-out;
 		@starting-style {
-			transform: translateY(100%);
+			transform: translateY(100dvh);
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		dialog[open] {
+		dialog[open],
+		dialog > * {
 			transition: none;
 		}
 	}

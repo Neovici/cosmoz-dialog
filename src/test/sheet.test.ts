@@ -63,4 +63,20 @@ describe('sheet', () => {
 		assert.equal(getComputedStyle(body).color, 'rgb(1, 2, 3)');
 		assert.equal(getComputedStyle(dialogOf(el)).flexDirection, 'column');
 	});
+
+	it('does not overflow the document while the entrance runs', async () => {
+		await setViewport({ width: 390, height: 800 });
+		const el = await fixture(
+			html`<sheet-test-dialog heading="Sheet"></sheet-test-dialog>`
+		);
+		const de = document.documentElement;
+		const overflow = () => de.scrollHeight - de.clientHeight;
+		assert.equal(getComputedStyle(dialogOf(el)).transform, 'none');
+		assert.equal(overflow(), 0);
+		await new Promise((r) => setTimeout(r, 100));
+		assert.equal(getComputedStyle(dialogOf(el)).transform, 'none');
+		assert.equal(overflow(), 0);
+		await new Promise((r) => setTimeout(r, 200));
+		assert.equal(overflow(), 0);
+	});
 });
