@@ -116,7 +116,6 @@ export const dialog = <T extends Props = Props>(
 				'heading',
 				'unmovable',
 				'closeable',
-				'sheet',
 				...(observedAttributes ?? []),
 			] as ComponentOptions<T>['observedAttributes'],
 			...opts,

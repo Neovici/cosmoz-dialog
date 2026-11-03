@@ -6,11 +6,7 @@ Cosmoz dialog component built with pionjs
 
 ## Sheet on narrow viewports
 
-Set `sheet` to dock a dialog to the bottom edge as a sheet on viewports narrower than 640px. It spans the full width, respects the bottom safe area and is not draggable there. Wider viewports keep the floating dialog.
-
-```html
-<my-dialog sheet heading="Edit row"></my-dialog>
-```
+On viewports narrower than 640px, dialogs dock to the bottom edge as a sheet. They span the full width, respect the bottom safe area and are not draggable there. Wider viewports keep the floating dialog.
 
 ## Extra styles
 

@@ -7,7 +7,7 @@ import type { DialogElement } from './types';
 
 export default () => {
 	const host = useHost<DialogElement>(),
-		{ unmovable, sheet } = host;
+		{ unmovable } = host;
 	useEffect(() => {
 		if (unmovable) {
 			return;
@@ -20,11 +20,11 @@ export default () => {
 		const move = relocate(dlg, '.title'),
 			// a docked sheet stays put; it only moves where it floats
 			onDown = (e: MouseEvent) => {
-				if (sheet && matchMedia(narrow).matches) return;
+				if (matchMedia(narrow).matches) return;
 				move(e);
 			};
 
 		root.addEventListener('mousedown', onDown as EventListener);
 		return () => root.removeEventListener('mousedown', onDown as EventListener);
-	}, [unmovable, sheet]);
+	}, [unmovable]);
 };

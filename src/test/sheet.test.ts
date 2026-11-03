@@ -25,7 +25,7 @@ describe('sheet', () => {
 	it('docks to the bottom edge on narrow viewports', async () => {
 		await setViewport({ width: 390, height: 800 });
 		const el = await fixture(
-			html`<sheet-test-dialog sheet heading="Sheet"></sheet-test-dialog>`
+			html`<sheet-test-dialog heading="Sheet"></sheet-test-dialog>`
 		);
 		await nextFrame();
 		const rect = dialogOf(el).getBoundingClientRect();
@@ -33,21 +33,9 @@ describe('sheet', () => {
 		assert.closeTo(rect.width, innerWidth, 1);
 	});
 
-	it('stays a centred dialog without the attribute', async () => {
-		await setViewport({ width: 390, height: 800 });
-		const el = await fixture(
-			html`<sheet-test-dialog heading="Dialog"></sheet-test-dialog>`
-		);
-		await nextFrame();
-		assert.isBelow(
-			dialogOf(el).getBoundingClientRect().bottom,
-			innerHeight - 1
-		);
-	});
-
 	it('floats on wide viewports and does not move when docked', async () => {
 		const el = await fixture(
-			html`<sheet-test-dialog sheet heading="Sheet"></sheet-test-dialog>`
+			html`<sheet-test-dialog heading="Sheet"></sheet-test-dialog>`
 		);
 		await nextFrame();
 		assert.isBelow(

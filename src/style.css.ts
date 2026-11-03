@@ -40,7 +40,7 @@ export default css`
 	}
 
 	@media ${narrow} {
-		:host([sheet]) dialog {
+		dialog {
 			margin: auto 0 0;
 			width: 100%;
 			max-width: 100%;
@@ -49,17 +49,13 @@ export default css`
 			padding-bottom: env(safe-area-inset-bottom);
 		}
 
-		:host([sheet]) dialog[open] {
+		dialog[open] {
 			animation: sheet-in 200ms ease-out;
-		}
-
-		:host([sheet]:not([unmovable])) .title {
-			cursor: auto;
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		:host([sheet]) dialog[open] {
+		dialog[open] {
 			animation: none;
 		}
 	}
@@ -100,6 +96,9 @@ export default css`
 	:host(:not([unmovable])) .title {
 		cursor: move;
 		user-select: none;
+		@media ${narrow} {
+			cursor: auto;
+		}
 	}
 
 	.content {
