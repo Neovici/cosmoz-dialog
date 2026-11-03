@@ -33,7 +33,6 @@ export default css`
 		background: var(--cz-color-bg-secondary);
 		box-shadow: var(--cz-shadow-2xl);
 		outline: none;
-		overflow: clip;
 	}
 
 	dialog::backdrop {
@@ -52,22 +51,17 @@ export default css`
 	}
 
 	dialog[open] {
-		transition: opacity 200ms ease-out;
+		transition:
+			transform var(--cz-duration-normal, 250ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+			opacity var(--cz-duration-normal, 250ms) var(--cz-ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 		@starting-style {
+			transform: translateY(calc(-1 * ${sp(2)}));
 			opacity: 0;
 		}
 	}
 
-	dialog > * {
-		transition: transform 200ms ease-out;
-		@starting-style {
-			transform: translateY(100dvh);
-		}
-	}
-
 	@media (prefers-reduced-motion: reduce) {
-		dialog[open],
-		dialog > * {
+		dialog[open] {
 			transition: none;
 		}
 	}

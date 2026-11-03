@@ -71,12 +71,11 @@ describe('sheet', () => {
 		);
 		const de = document.documentElement;
 		const overflow = () => de.scrollHeight - de.clientHeight;
-		assert.equal(getComputedStyle(dialogOf(el)).transform, 'none');
 		assert.equal(overflow(), 0);
 		await new Promise((r) => setTimeout(r, 100));
-		assert.equal(getComputedStyle(dialogOf(el)).transform, 'none');
 		assert.equal(overflow(), 0);
 		await new Promise((r) => setTimeout(r, 200));
 		assert.equal(overflow(), 0);
+		assert.equal(getComputedStyle(dialogOf(el)).transform, 'none');
 	});
 });
