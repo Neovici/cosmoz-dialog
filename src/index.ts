@@ -96,7 +96,15 @@ export const dialog = <T extends Props = Props>(
 						if (dlg && !dlg.open) dlg.showModal();
 					}}
 				>
-					<dialog ${ref(dialogRef)} @close=${close} part="dialog">
+					<dialog
+						${ref(dialogRef)}
+						part="dialog"
+						@close=${close}
+						@cancel=${(e: Event) => host.uncancelable && e.preventDefault()}
+						@keydown=${(e: KeyboardEvent) =>
+							// Chromium ignores a prevented cancel without user activation
+							e.key === 'Escape' && host.uncancelable && e.preventDefault()}
+					>
 						${renderDialog({
 							heading: host.heading,
 							subtitle: host.subtitle,
@@ -116,6 +124,7 @@ export const dialog = <T extends Props = Props>(
 				'heading',
 				'unmovable',
 				'closeable',
+				'uncancelable',
 				...(observedAttributes ?? []),
 			] as ComponentOptions<T>['observedAttributes'],
 			...opts,
