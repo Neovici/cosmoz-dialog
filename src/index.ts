@@ -3,7 +3,9 @@ import { xCloseIcon } from '@neovici/cosmoz-icons/untitled';
 
 import { normalize } from '@neovici/cosmoz-tokens/normalize';
 import { component, ComponentOptions, html, useRef } from '@pionjs/pion';
+import { t } from 'i18next';
 import { TemplateResult } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { ref } from 'lit-html/directives/ref.js';
 import { when } from 'lit-html/directives/when.js';
 import './connectable.js';
@@ -38,8 +40,11 @@ export const renderDialog = ({
 			${when(icon, () => html`<div class="icon">${icon}</div>`)}
 
 			<div>
-				<h2>${heading}</h2>
-				${when(subtitle, () => html`<p class="subtitle">${subtitle}</p>`)}
+				<h2 id="heading">${heading}</h2>
+				${when(
+					subtitle,
+					() => html`<p id="subtitle" class="subtitle">${subtitle}</p>`
+				)}
 			</div>
 
 			${when(
@@ -53,6 +58,7 @@ export const renderDialog = ({
 						@click=${onClose}
 					>
 						${xCloseIcon({ width: '20', height: '20' })}
+						<span class="visually-hidden">${t('Close')}</span>
 					</cosmoz-button>
 				`
 			)}
@@ -96,7 +102,16 @@ export const dialog = <T extends Props = Props>(
 						if (dlg && !dlg.open) dlg.showModal();
 					}}
 				>
-					<dialog ${ref(dialogRef)} @close=${close} part="dialog">
+					<dialog
+						${ref(dialogRef)}
+						part="dialog"
+						role=${ifDefined(host.alert ? 'alertdialog' : undefined)}
+						aria-labelledby="heading"
+						aria-describedby=${ifDefined(
+							host.subtitle ? 'subtitle' : undefined
+						)}
+						@close=${close}
+					>
 						${renderDialog({
 							heading: host.heading,
 							subtitle: host.subtitle,
@@ -116,6 +131,7 @@ export const dialog = <T extends Props = Props>(
 				'heading',
 				'unmovable',
 				'closeable',
+				'alert',
 				...(observedAttributes ?? []),
 			] as ComponentOptions<T>['observedAttributes'],
 			...opts,

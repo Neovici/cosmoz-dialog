@@ -1,9 +1,12 @@
-import { assert, fixture } from '@open-wc/testing';
-import { html } from 'lit-html';
-import '../loading';
+import { assert, fixture } from "@open-wc/testing";
+import { init } from "i18next";
+import { html } from "lit-html";
+import "../loading";
 
-describe('cosmoz-dialog-loading', () => {
-	it('renders loading spinner correctly', async () => {
+init({ lng: "en", resources: {} });
+
+describe("cosmoz-dialog-loading", () => {
+	it("renders loading spinner correctly", async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading heading="Loading..."></cosmoz-dialog-loading>
 		`);
@@ -12,10 +15,10 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -31,7 +34,7 @@ describe('cosmoz-dialog-loading', () => {
 		);
 	});
 
-	it('renders with slot content', async () => {
+	it("renders with slot content", async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading heading="Please wait">
 				<p>Processing your request...</p>
@@ -42,10 +45,10 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Please wait</h2>
+							<h2 id="heading">Please wait</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -61,7 +64,7 @@ describe('cosmoz-dialog-loading', () => {
 		);
 	});
 
-	it('renders close button when closeable', async () => {
+	it("renders close button when closeable", async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading
 				heading="Loading..."
@@ -73,12 +76,13 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 						<cosmoz-button class="close" part="close" size="sm" variant="tertiary">
+						  <span class="visually-hidden">Close</span>
 						</cosmoz-button>
 					</div>
 					<div class="divider"></div>
@@ -94,7 +98,7 @@ describe('cosmoz-dialog-loading', () => {
 		);
 	});
 
-	it('does not render close button when not closeable', async () => {
+	it("does not render close button when not closeable", async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading heading="Loading..."></cosmoz-dialog-loading>
 		`);
@@ -103,10 +107,10 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -122,7 +126,7 @@ describe('cosmoz-dialog-loading', () => {
 		);
 	});
 
-	it('handles unmovable attribute', async () => {
+	it("handles unmovable attribute", async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading
 				heading="Loading..."
@@ -134,10 +138,10 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -153,7 +157,7 @@ describe('cosmoz-dialog-loading', () => {
 		);
 	});
 
-	it('emits close event when close button clicked', async () => {
+	it("emits close event when close button clicked", async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading
 				heading="Loading..."
@@ -161,11 +165,11 @@ describe('cosmoz-dialog-loading', () => {
 			></cosmoz-dialog-loading>
 		`);
 
-		const closeButton = el.shadowRoot?.querySelector('.close');
-		closeButton?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+		const closeButton = el.shadowRoot?.querySelector(".close");
+		closeButton?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 	});
 
-	it('renders with multiple slot items', async () => {
+	it("renders with multiple slot items", async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading heading="Processing">
 				<span>Step 1 of 3</span>
@@ -177,10 +181,10 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Processing</h2>
+							<h2 id="heading">Processing</h2>
 						</div>
 					</div>
 					<div class="divider"></div>

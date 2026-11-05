@@ -1,4 +1,4 @@
-import { TemplateResult } from 'lit-html';
+import { TemplateResult } from "lit-html";
 
 export interface Props {
 	heading?: string;
@@ -7,6 +7,8 @@ export interface Props {
 	onClose?: () => void;
 	unmovable?: boolean;
 	closeable?: boolean;
+	/** Renders an alertdialog: for confirmations that interrupt the user. */
+	alert?: boolean;
 }
 
 export type DialogElement = HTMLElement & Props;
