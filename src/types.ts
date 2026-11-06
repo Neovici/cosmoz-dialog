@@ -7,6 +7,8 @@ export interface Props {
 	onClose?: () => void;
 	unmovable?: boolean;
 	closeable?: boolean;
+	/** Escape doesn't close the dialog. */
+	uncancelable?: boolean;
 }
 
 export type DialogElement = HTMLElement & Props;
