@@ -1,6 +1,9 @@
 import { assert, fixture } from '@open-wc/testing';
+import { init } from 'i18next';
 import { html } from 'lit-html';
 import '../loading';
+
+init({ lng: 'en', resources: {} });
 
 describe('cosmoz-dialog-loading', () => {
 	it('renders loading spinner correctly', async () => {
@@ -12,10 +15,10 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -42,10 +45,10 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Please wait</h2>
+							<h2 id="heading">Please wait</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -73,12 +76,13 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 						<cosmoz-button class="close" part="close" size="sm" variant="tertiary">
+						  <span class="visually-hidden">Close</span>
 						</cosmoz-button>
 					</div>
 					<div class="divider"></div>
@@ -103,10 +107,10 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -134,10 +138,10 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Loading...</h2>
+							<h2 id="heading">Loading...</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
@@ -177,10 +181,10 @@ describe('cosmoz-dialog-loading', () => {
 			el,
 			`
 			<cosmoz-dialog-connectable>
-				<dialog open="" part="dialog">
+				<dialog aria-labelledby="heading" open="" part="dialog">
 					<div class="title" part="title">
 						<div>
-							<h2>Processing</h2>
+							<h2 id="heading">Processing</h2>
 						</div>
 					</div>
 					<div class="divider"></div>
