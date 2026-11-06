@@ -1,4 +1,4 @@
-import { TemplateResult } from "lit-html";
+import { TemplateResult } from 'lit-html';
 
 export interface Props {
 	heading?: string;

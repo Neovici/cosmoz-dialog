@@ -1,12 +1,12 @@
-import { assert, fixture } from "@open-wc/testing";
-import { init } from "i18next";
-import { html } from "lit-html";
-import "../loading";
+import { assert, fixture } from '@open-wc/testing';
+import { init } from 'i18next';
+import { html } from 'lit-html';
+import '../loading';
 
-init({ lng: "en", resources: {} });
+init({ lng: 'en', resources: {} });
 
-describe("cosmoz-dialog-loading", () => {
-	it("renders loading spinner correctly", async () => {
+describe('cosmoz-dialog-loading', () => {
+	it('renders loading spinner correctly', async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading heading="Loading..."></cosmoz-dialog-loading>
 		`);
@@ -34,7 +34,7 @@ describe("cosmoz-dialog-loading", () => {
 		);
 	});
 
-	it("renders with slot content", async () => {
+	it('renders with slot content', async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading heading="Please wait">
 				<p>Processing your request...</p>
@@ -64,7 +64,7 @@ describe("cosmoz-dialog-loading", () => {
 		);
 	});
 
-	it("renders close button when closeable", async () => {
+	it('renders close button when closeable', async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading
 				heading="Loading..."
@@ -98,7 +98,7 @@ describe("cosmoz-dialog-loading", () => {
 		);
 	});
 
-	it("does not render close button when not closeable", async () => {
+	it('does not render close button when not closeable', async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading heading="Loading..."></cosmoz-dialog-loading>
 		`);
@@ -126,7 +126,7 @@ describe("cosmoz-dialog-loading", () => {
 		);
 	});
 
-	it("handles unmovable attribute", async () => {
+	it('handles unmovable attribute', async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading
 				heading="Loading..."
@@ -157,7 +157,7 @@ describe("cosmoz-dialog-loading", () => {
 		);
 	});
 
-	it("emits close event when close button clicked", async () => {
+	it('emits close event when close button clicked', async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading
 				heading="Loading..."
@@ -165,11 +165,11 @@ describe("cosmoz-dialog-loading", () => {
 			></cosmoz-dialog-loading>
 		`);
 
-		const closeButton = el.shadowRoot?.querySelector(".close");
-		closeButton?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+		const closeButton = el.shadowRoot?.querySelector('.close');
+		closeButton?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
 	});
 
-	it("renders with multiple slot items", async () => {
+	it('renders with multiple slot items', async () => {
 		const el = await fixture(html`
 			<cosmoz-dialog-loading heading="Processing">
 				<span>Step 1 of 3</span>
