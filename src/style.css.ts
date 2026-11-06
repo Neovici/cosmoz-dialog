@@ -43,6 +43,24 @@ export default css`
 		);
 	}
 
+	@media not ${narrow} {
+		dialog[open] {
+			transition: opacity var(--cz-duration-fast) var(--cz-ease-out),
+				scale var(--cz-duration-normal) var(--cz-ease-out);
+			@starting-style {
+				opacity: 0;
+				scale: 0.97;
+			}
+		}
+	}
+
+	dialog[open]::backdrop {
+		transition: opacity var(--cz-duration-normal) var(--cz-ease-out);
+		@starting-style {
+			opacity: 0;
+		}
+	}
+
 	@media ${narrow} {
 		dialog {
 			margin: auto 0 0;
@@ -54,13 +72,14 @@ export default css`
 		}
 
 		dialog[open] {
-			animation: sheet-in 200ms ease-out;
+			animation: sheet-in var(--cz-duration-normal) var(--cz-ease-out);
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		dialog[open] {
 			animation: none;
+			transition: opacity var(--cz-duration-fast) linear;
 		}
 	}
 
