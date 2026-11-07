@@ -27,7 +27,7 @@ export default css`
 		width: 550px;
 		max-width: 98vw;
 		max-height: 96vh;
-		border-radius: var(--cz-radius-2xl);
+		border-radius: var(--cz-radius-dialog, var(--cz-radius-2xl));
 		display: flex;
 		flex-direction: column;
 		background: var(--cz-color-bg-secondary);
@@ -67,7 +67,8 @@ export default css`
 			width: 100%;
 			max-width: 100%;
 			max-height: calc(100dvh - ${sp(8)});
-			border-radius: var(--cz-radius-3xl) var(--cz-radius-3xl) 0 0;
+			border-radius: var(--cz-radius-sheet, var(--cz-radius-3xl))
+				var(--cz-radius-sheet, var(--cz-radius-3xl)) 0 0;
 			padding-bottom: env(safe-area-inset-bottom);
 		}
 
@@ -167,7 +168,7 @@ export default css`
 		height: calc(var(--cz-spacing) * 10);
 		background: var(--cz-color-bg-secondary);
 		border: 1px solid var(--cz-color-border-primary);
-		border-radius: var(--cz-radius-md);
+		border-radius: var(--cz-radius-control, var(--cz-radius-md));
 		color: var(--cz-color-text-secondary);
 		box-shadow: var(--cz-shadow-sm);
 
