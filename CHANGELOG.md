@@ -1,3 +1,23 @@
+## 6.4.0
+
+### Minor Changes
+
+- 82aa967: New `uncancelable` property: Escape doesn't close the dialog, for example while it's saving.
+- 1014c9a: Open dialogs with a short rise and fade the backdrop in
+
+  Dialogs fade in and rise from 97% scale, and the backdrop fades in, using the
+  `--cz-duration-*` and `--cz-ease-out` motion tokens. The narrow-viewport sheet
+  slide uses the same tokens. Under reduced motion only the fade remains.
+
+### Patch Changes
+
+- b14f584: Dim the page behind dialogs in dark mode
+
+  The backdrop used `--cz-color-bg-overlay` at 70%, which is gray-800 in dark
+  mode and lightened the gray-950 page into a gray haze. It is now a
+  black-based scrim in both schemes: gray-950 at 45% in light, black at 60% in
+  dark.
+
 ## 6.3.0
 
 ### Minor Changes
