@@ -30,9 +30,13 @@ export default css`
 		border-radius: var(--cz-radius-2xl);
 		display: flex;
 		flex-direction: column;
-		background: var(--cz-color-bg-secondary);
+		background: var(
+			--cz-material-overlay-background,
+			var(--cz-color-bg-secondary)
+		);
+		backdrop-filter: var(--cz-material-blur, none);
+		outline: 1px solid var(--cz-material-edge, transparent);
 		box-shadow: var(--cz-shadow-2xl);
-		outline: none;
 	}
 
 	/* bg-overlay is gray-800 in dark mode, which lightens a gray-950 page. */
