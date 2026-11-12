@@ -61,4 +61,22 @@ describe('dialog', () => {
       `
 		);
 	});
+
+	it('lines up the scrolling content with the last row', async () => {
+		const Aligned = dialog(
+			() => html`<div><div class="field">Field</div></div>
+				<div class="buttons">OK</div>`
+		);
+		customElements.define('test-aligned-dialog', Aligned);
+		const el = await fixture(
+			html`<test-aligned-dialog
+				heading="Aligned"
+				style="--cz-spacing: 4px"
+			></test-aligned-dialog>`
+		);
+		const right = (selector: string) =>
+			el.shadowRoot!.querySelector(selector)!.getBoundingClientRect().right;
+
+		assert.equal(right('.field'), right('.buttons'));
+	});
 });
