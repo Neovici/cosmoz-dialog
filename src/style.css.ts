@@ -147,7 +147,6 @@ export default css`
 
 	.body > * {
 		overflow-y: auto;
-		padding-right: var(--cz-scrollbar-width);
 		flex: 1 1 auto;
 		min-height: 0;
 	}
@@ -155,7 +154,6 @@ export default css`
 	.body > :last-child:not(:first-child) {
 		flex: 0 0 auto;
 		overflow-y: visible;
-		padding-right: 0;
 	}
 
 	.icon {
